@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>hello_title2 | Hexo</title><meta name="keywords" content="test1"><meta name="author" content="Lucas"><meta name="copyright" content="Lucas"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="测试环境我的阿里云服务： LSB Version:    core-11.1.0ubuntu2-noarch:security-11.1.0ubuntu2-noarchDistributor ID:    UbuntuDescription:    Ubuntu 20.04.1 LTSRelease:        20.04Codename:    focal 我本人系统 windows 10">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hello_title2">
+<meta property="og:url" content="http://example.com/2020/10/25/window-shi-xian-yuan-cheng-fang-wen-ubuntu-zhuo-mian-he-mysql/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="测试环境我的阿里云服务： LSB Version:    core-11.1.0ubuntu2-noarch:security-11.1.0ubuntu2-noarchDistributor ID:    UbuntuDescription:    Ubuntu 20.04.1 LTSRelease:        20.04Codename:    focal 我本人系统 windows 10">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2020-10-25T13:43:28.000Z">
+<meta property="article:modified_time" content="2020-10-25T19:40:05.272Z">
+<meta property="article:author" content="Lucas">
+<meta property="article:tag" content="test1">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/10/25/window-shi-xian-yuan-cheng-fang-wen-ubuntu-zhuo-mian-he-mysql/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-10-26 03:40:05'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">6</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">3</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83"><span class="toc-number">1.</span> <span class="toc-text">测试环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AEubuntu%E5%9B%BE%E5%BD%A2%E6%A1%8C%E9%9D%A2"><span class="toc-number">2.</span> <span class="toc-text">一、远程访问ubuntu图形桌面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">2.1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BF%85%E5%A4%87%E6%9D%A1%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text">2. 必备条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-number">2.3.</span> <span class="toc-text">3. 安装依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.4.</span> <span class="toc-text">4. 连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AEMySQL%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">3.</span> <span class="toc-text">二、远程访问MySQL数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80-1"><span class="toc-number">3.1.</span> <span class="toc-text">1. 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85"><span class="toc-number">3.2.</span> <span class="toc-text">2. 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90"><span class="toc-number">3.3.</span> <span class="toc-text">3. 配置远程访问权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%BF%9E%E6%8E%A5-1"><span class="toc-number">3.4.</span> <span class="toc-text">4. 连接</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">hello_title2</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-10-25T13:43:28.000Z" title="发表于 2020-10-25 21:43:28">2020-10-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-25T19:40:05.272Z" title="更新于 2020-10-26 03:40:05">2020-10-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/super/">super</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h2><p>我的阿里云服务：</p>
+<p>LSB Version:    core-11.1.0ubuntu2-noarch:security-11.1.0ubuntu2-noarch<br>Distributor ID:    Ubuntu<br>Description:    Ubuntu 20.04.1 LTS<br>Release:        20.04<br>Codename:    focal</p>
+<p>我本人系统 windows 10 。</p>
+<h2 id="一、远程访问ubuntu图形桌面"><a href="#一、远程访问ubuntu图形桌面" class="headerlink" title="一、远程访问ubuntu图形桌面"></a>一、远程访问ubuntu图形桌面</h2><h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h3><p>在有些场景下，我们可能在使用阿里云linux系统的服务器的时候想设置一些系统相关的配置，但是自己经常会忘记命令且有些情况下远远没有直接操作图形界面来实现的方便，那么通过远程桌面的方式来实现对服务器间的访问就很有必要了。</p>
+<p>以前我们用的都是在通过SSH服务连接，局限于仅能使用文字的终端，其操作很简单，这里不做介绍，在window系统通过远程访问ubuntu桌面图形的方式主要有俩种：</p>
+<ul>
+<li>通过 xrdp 服务</li>
+<li>VNC 方式</li>
+</ul>
+<p>本文我主要介绍通过xrdp连接服务器。</p>
+<h3 id="2-必备条件"><a href="#2-必备条件" class="headerlink" title="2. 必备条件"></a>2. 必备条件</h3><p>（1）阿里云安全组上开启 3389 端口，详细请跳转百度百度。</p>
+<p>（2）关闭系统防火墙，或者使用防火墙设置允许3389端口通过</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关闭防火墙,我的阿里云系统, 默认没有安装iptables,倒是自带了命令更简单ufw防火墙</span></span><br><span class="line">sudo service ufw stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 允许从任何地方访问（因为安全原因，极度不鼓励这样做）</span></span><br><span class="line">sudo ufw allow 3389/tcp </span><br><span class="line"></span><br><span class="line"><span class="comment"># 想要允许对于 Xrdp 服务器的来自于某个 IP 地址或者某个 IP 范围的访问</span></span><br><span class="line">sudo ufw allow from 192.168.1.0/24 to any port 3389</span><br></pre></td></tr></table></figure>
+
+<p>（3）安装最新源</p>
+<p>编辑 <code>vim /etc/apt/sources.list</code> 添加镜像，如<a target="_blank" rel="noopener" href="https://developer.aliyun.com/mirror/">阿里云官方镜像站</a>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更新软件列表</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="comment"># 更新升级已安装的软件</span></span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-安装依赖"><a href="#3-安装依赖" class="headerlink" title="3. 安装依赖"></a>3. 安装依赖</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装xrdp服务,其提供的远程计算机的图形登录,接受来自各种客户端远程桌面控制的连接</span></span><br><span class="line">sudo apt-get install xrdp</span><br><span class="line"></span><br><span class="line"><span class="comment"># ssh 连接必备</span></span><br><span class="line">sudo apt-get install openssh-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装桌面环境,用于显示桌面各种文件图形的(下面安装一个即可, 本人安装的是Xfce桌面环境)</span></span><br><span class="line">sudo apt-get install ubuntu-desktop  <span class="comment"># 使用Gnome桌面环境,也称为标准版</span></span><br><span class="line">sudo apt-get install xubuntu-desktop <span class="comment"># 使用Xfce桌面环境,比标准版资源占用率低一些</span></span><br></pre></td></tr></table></figure>
+
+<p>安装完后编辑<code>vim /etc/xrdp/startwm.sh</code> ，在<code>/etc/X11/Xsession</code> 前一行插入<code>xfce4-session</code>。</p>
+<blockquote>
+<p>下面显示文件部分配置</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">test</span> -r /etc/profile; <span class="keyword">then</span></span><br><span class="line">        . /etc/profile</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">xfce4-session	<span class="comment">####### 插入这行字（如果不插入则登录成功后会出现闪退）	</span></span><br><span class="line"><span class="built_in">test</span> -x /etc/X11/Xsession &amp;&amp; <span class="built_in">exec</span> /etc/X11/Xsession</span><br><span class="line"><span class="built_in">exec</span> /bin/sh /etc/X11/Xsession</span><br></pre></td></tr></table></figure>
+
+<p>重启服务生效：<code>service xrdp restart</code>    </p>
+<blockquote>
+<p>如果报错试试看执行<code>echo &quot;xfce4-session&quot; &gt;~/.xsession</code></p>
+</blockquote>
+<h3 id="4-连接"><a href="#4-连接" class="headerlink" title="4. 连接"></a>4. 连接</h3><p>我的电脑 window 10 系统，直接 <code>Alt + R </code>运行 <code>mstsc</code> 命令调出系统自带的远程桌面工具，输入你的阿里云服务器 ip 地址进行连接，进去访问界面， session中选择xorg，使用阿里云的账号密码登录即可访问桌面。</p>
+<blockquote>
+<p>如果你是Linux系统用户想连接另一个Linux系统或者Window系统，实现远程连接图形界面，你可以尝试使用Remmina 或者 Vinagre。</p>
+</blockquote>
+<h2 id="二、远程访问MySQL数据库"><a href="#二、远程访问MySQL数据库" class="headerlink" title="二、远程访问MySQL数据库"></a>二、远程访问MySQL数据库</h2><h3 id="1-前言-1"><a href="#1-前言-1" class="headerlink" title="1. 前言"></a>1. 前言</h3><p>虽然可以通过使用ssh终端连接去访问阿里云的mysql数据库，但是总是不那么方便，毕竟命令繁杂，也没必要刻意去记住，当然，你可以通过在阿里云开启apache2 服务配置通过web页面方式<code>phpmyadmin</code>来访问数据库，但是有时速度感人，还不如本地电脑安装个navicat 方便。</p>
+<p>我在网上看了很多篇关于远程访问云服务器Mysql的方式，但是自己测试都没有通过，后面我来说说我的解决方法。</p>
+<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认安装最新版8.xx版本,我的版本8.0.21</span></span><br><span class="line">sudo apt-get install mysql-server <span class="comment"># 安装过程根据提示为MySQL设置root用户的密码</span></span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line">service mysql start </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>下面的版本以8.0版本的mysql语法操作和低版本的语法不同</p>
+</blockquote>
+<h3 id="3-配置远程访问权限"><a href="#3-配置远程访问权限" class="headerlink" title="3. 配置远程访问权限"></a>3. 配置远程访问权限</h3><p>进入mysql数据库：<code>mysql -u root -p</code> 输入你之前安装配置的密码：</p>
+<p>下面是数据库语法：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 最好不要使用 root 用户去远程访问, 为了避免报错最好新建一个用户</span></span><br><span class="line">use mysql;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建用户名为lucas密码为123456, 但默认没有任何数据库权限的</span></span><br><span class="line">create user lucas identified by <span class="string">&#x27;123456&#x27;</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前mysql所有用户</span></span><br><span class="line">select host, user, plugin from user; </span><br><span class="line"></span><br><span class="line"> <span class="comment"># 授予lucas用户权限 </span></span><br><span class="line">grant insert,select,update on test01.* to <span class="string">&#x27;lucas&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;  <span class="comment"># 对test01数据库&quot;增查更新&quot;</span></span><br><span class="line">grant all privileges on *.* to <span class="string">&#x27;lucas&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;  <span class="comment"># 授权所有数据库最大权限, 但无授权其他用户的权限</span></span><br><span class="line">revoke all privileges on *.* from <span class="string">&#x27;lucas&#x27;</span>@<span class="string">&#x27;%&#x27;</span>; <span class="comment"># 撤销权限的方法</span></span><br><span class="line"></span><br><span class="line">flush privileges;  <span class="comment"># 刷新权限</span></span><br><span class="line"><span class="built_in">exit</span> <span class="comment"># 退出</span></span><br></pre></td></tr></table></figure>
+
+<p>做完上面，就尝试使用navicat可能连接不上，会报错。</p>
+<p>之前看了很多篇文章都说编辑<code>/etc/my.cnf</code>文件，但我这安装的mysql版本在相应目录没有这个文件，网上查了查终于找到了解决方法。</p>
+<p>编辑：<code>vim /etc/mysql/mysql.conf.d/mysqld.cnf</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 找到</span></span><br><span class="line">bind-address  = 127.0.0.1</span><br><span class="line"><span class="comment"># 改为</span></span><br><span class="line">bind-address  = 0.0.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 找到[mysqld]下的</span></span><br><span class="line">user = mysql </span><br><span class="line"><span class="comment"># 改为</span></span><br><span class="line">user = root</span><br><span class="line"><span class="comment"># 端口去掉注释</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-连接-1"><a href="#4-连接-1" class="headerlink" title="4. 连接"></a>4. 连接</h3><p>注意先在阿里云安全组配置以及防火墙设置允许3306端口。</p>
+<p>我的window 10打开<code>navicat premium 15.0.12</code>版本，选择<code>文件 ——&gt; 新建连接 ——&gt;mysql</code> 输入阿里云服务器IP地址和前面配置的数据库用户密码登录即可。</p>
+<p>另一种通过终端访问方式：<code>mysql -h 远程ip地址 -u lucas -p -P 3306 </code></p>
+<p>本人遇到一个坑，mysql 8.0版本默认对数据表区分大小写，这点和window版本的不一样，所以有时候你将window测试的后端项目放到linux去执行有可能会报错。</p>
+<p><strong>解决方法：</strong> 修改my.cnf，然后初始化数据库（所有数据会被清除，建议先备份）才会生效。</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Lucas</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/10/25/window-shi-xian-yuan-cheng-fang-wen-ubuntu-zhuo-mian-he-mysql/">http://example.com/2020/10/25/window-shi-xian-yuan-cheng-fang-wen-ubuntu-zhuo-mian-he-mysql/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/test1/">test1</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/10/25/linux-bu-shu-nginx-he-wamp-fan-xiang-dai-li-shang-xian/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">hello_title3</div></div></a></div><div class="next-post pull-right"><a href="/2020/10/25/hello-world/"><img class="next-cover" src="https://p.pstatp.com/origin/ff33000078ee9b86865b" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/10/25/hello-title/" title="hello_title"><img class="cover" src="https://madmalls.com/api/medias/uploaded/1-9a58f00f.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-25</div><div class="title">hello_title</div></div></a></div><div><a href="/2020/10/25/window-bu-shu-nginx-he-wamp-fan-xiang-dai-li-shang-xian/" title="hello_title1"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-25</div><div class="title">hello_title1</div></div></a></div></div></div></article></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lucas</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script></div></body></html>
