@@ -1,0 +1,217 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>归档 | Hexo</title><meta name="author" content="Lucas"><meta name="copyright" content="Lucas"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="一个收藏回忆与分享技术的地方！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://root-lucas.github.io/archives/2019/page/9/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一个收藏回忆与分享技术的地方！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://root-lucas.github.io/img/avatar.jpg">
+<meta property="article:author" content="Lucas">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://root-lucas.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://root-lucas.github.io/archives/2019/page/9/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2020-10-28 16:13:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/tags.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><header class="not-index-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="page-site-info"><h1 id="site-title">归档</h1></div></header><main class="layout_page" id="content-inner"><div id="archive"><div class="article-sort-title">文章总览 - 128</div><div class="article-sort"><div class="article-sort-item year">2019</div><div class="article-sort-item"><a class="article-sort-item-img" href="/2019/04/15/qian-duan-kuang-jia/03.wx-xiao-cheng-xu/wei-xin-wang-ye-deng-lu-luo-ji-yu-shi-xian/" title="微信网页登录逻辑与实现"><img src="https://s1.ax1x.com/2020/10/27/BQQCMF.md.jpg" alt="微信网页登录逻辑与实现" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2019-04-15T00:00:00.000Z" title="发表于 2019-04-15 08:00:00">2019-04-15</time></div><a class="article-sort-item-title" href="/2019/04/15/qian-duan-kuang-jia/03.wx-xiao-cheng-xu/wei-xin-wang-ye-deng-lu-luo-ji-yu-shi-xian/" title="微信网页登录逻辑与实现">微信网页登录逻辑与实现</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2019/04/08/qian-duan-kuang-jia/02.reactjs/01.react-zu-jian-tong-xin-jie-jue-fang-an/" title="React组件通信解决方案"><img src="https://s1.ax1x.com/2020/10/27/BMjocD.md.jpg" alt="React组件通信解决方案" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2019-04-08T00:00:00.000Z" title="发表于 2019-04-08 08:00:00">2019-04-08</time></div><a class="article-sort-item-title" href="/2019/04/08/qian-duan-kuang-jia/02.reactjs/01.react-zu-jian-tong-xin-jie-jue-fang-an/" title="React组件通信解决方案">React组件通信解决方案</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2019/04/01/she-ji-mo-shi-shou-ce/01.chuang-jian-xing-mo-shi/03.chou-xiang-gong-han-mo-shi/" title="设计模式手册之抽象工厂模式"><img src="https://s1.ax1x.com/2020/10/27/BMjXNt.jpg" alt="设计模式手册之抽象工厂模式" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2019-04-01T00:00:00.000Z" title="发表于 2019-04-01 08:00:00">2019-04-01</time></div><a class="article-sort-item-title" href="/2019/04/01/she-ji-mo-shi-shou-ce/01.chuang-jian-xing-mo-shi/03.chou-xiang-gong-han-mo-shi/" title="设计模式手册之抽象工厂模式">设计模式手册之抽象工厂模式</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2019/03/31/she-ji-mo-shi-shou-ce/01.chuang-jian-xing-mo-shi/02.gong-han-mo-shi/" title="设计模式手册之工厂模式"><img src="https://s1.ax1x.com/2020/10/27/BQMqbj.md.jpg" alt="设计模式手册之工厂模式" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2019-03-31T00:00:00.000Z" title="发表于 2019-03-31 08:00:00">2019-03-31</time></div><a class="article-sort-item-title" href="/2019/03/31/she-ji-mo-shi-shou-ce/01.chuang-jian-xing-mo-shi/02.gong-han-mo-shi/" title="设计模式手册之工厂模式">设计模式手册之工厂模式</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2019/03/28/qian-duan-zhi-shi-ti-xi/01.javascript/shu-zu-yu-zi-fu-chuan-lei-xing-xiang-tong-fang-fa-qu-bie/" title="数组与字符串类型相同方法区别"><img src="https://s1.ax1x.com/2020/10/27/BQQZPx.jpg" alt="数组与字符串类型相同方法区别" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2019-03-28T00:00:00.000Z" title="发表于 2019-03-28 08:00:00">2019-03-28</time></div><a class="article-sort-item-title" href="/2019/03/28/qian-duan-zhi-shi-ti-xi/01.javascript/shu-zu-yu-zi-fu-chuan-lei-xing-xiang-tong-fang-fa-qu-bie/" title="数组与字符串类型相同方法区别">数组与字符串类型相同方法区别</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2019/03/28/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-gao-ji-cheng-xu-she-ji-du-shu-bi-ji/" title="《JavaScript高级程序设计》读书笔记"><img src="https://s1.ax1x.com/2020/10/27/BMjG6g.jpg" alt="《JavaScript高级程序设计》读书笔记" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2019-03-28T00:00:00.000Z" title="发表于 2019-03-28 08:00:00">2019-03-28</time></div><a class="article-sort-item-title" href="/2019/03/28/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-gao-ji-cheng-xu-she-ji-du-shu-bi-ji/" title="《JavaScript高级程序设计》读书笔记">《JavaScript高级程序设计》读书笔记</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2019/03/26/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-ji-chu-zhi-shi-shu-li-xia/" title="JavaScript基础知识梳理(下)"><img src="https://s1.ax1x.com/2020/10/27/BMj59K.md.jpg" alt="JavaScript基础知识梳理(下)" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2019-03-26T00:00:00.000Z" title="发表于 2019-03-26 08:00:00">2019-03-26</time></div><a class="article-sort-item-title" href="/2019/03/26/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-ji-chu-zhi-shi-shu-li-xia/" title="JavaScript基础知识梳理(下)">JavaScript基础知识梳理(下)</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2019/03/26/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-ji-chu-zhi-shi-shu-li-shang/" title="JavaScript基础知识梳理(上)"><img src="https://s1.ax1x.com/2020/10/27/BMjocD.md.jpg" alt="JavaScript基础知识梳理(上)" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2019-03-26T00:00:00.000Z" title="发表于 2019-03-26 08:00:00">2019-03-26</time></div><a class="article-sort-item-title" href="/2019/03/26/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-ji-chu-zhi-shi-shu-li-shang/" title="JavaScript基础知识梳理(上)">JavaScript基础知识梳理(上)</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2019/03/24/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-yuan-xing-lian/" title="Javascript原型链"><img src="https://s1.ax1x.com/2020/10/27/BMjtmj.md.jpg" alt="Javascript原型链" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2019-03-24T13:43:28.000Z" title="发表于 2019-03-24 21:43:28">2019-03-24</time></div><a class="article-sort-item-title" href="/2019/03/24/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-yuan-xing-lian/" title="Javascript原型链">Javascript原型链</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2019/03/20/ui-she-ji/01.css3/02.flex-shang-shou-yu-shi-zhan/" title="Flex上手与实战"><img src="https://s1.ax1x.com/2020/10/27/BMjocD.md.jpg" alt="Flex上手与实战" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2019-03-20T00:00:00.000Z" title="发表于 2019-03-20 08:00:00">2019-03-20</time></div><a class="article-sort-item-title" href="/2019/03/20/ui-she-ji/01.css3/02.flex-shang-shou-yu-shi-zhan/" title="Flex上手与实战">Flex上手与实战</a></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/archives/2019/page/8/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/archives/2019/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/2019/page/10/">10</a><a class="page-number" href="/archives/2019/page/11/">11</a><a class="extend next" rel="next" href="/archives/2019/page/10/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Lucas</div><div class="author-info__description">一个收藏回忆与分享技术的地方！</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/root-lucas"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/root-lucas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/945832032@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title=""><i class="fa fa-rss"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-bilibili-fill"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-weixin"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-qq"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-zhifubao"></i></a></div></div></div><div class="sticky_layout"><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/01/14/qian-duan-zhi-shi-ti-xi/05.qi-ta-wen-zhang/qian-duan-cuo-wu-jian-kong/" title="前端错误监控"><img src="https://s2.ax1x.com/2019/05/27/VZWhn0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端错误监控"/></a><div class="content"><a class="title" href="/2020/01/14/qian-duan-zhi-shi-ti-xi/05.qi-ta-wen-zhang/qian-duan-cuo-wu-jian-kong/" title="前端错误监控">前端错误监控</a><time datetime="2020-01-13T16:00:00.000Z" title="发表于 2020-01-14 00:00:00">2020-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/12/12/ui-she-ji/04.html-css/02.css-he-mo-xing-xiang-jie/" title="CSS盒模型详解"><img src="https://s1.ax1x.com/2020/10/27/BQQiqJ.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSS盒模型详解"/></a><div class="content"><a class="title" href="/2019/12/12/ui-she-ji/04.html-css/02.css-he-mo-xing-xiang-jie/" title="CSS盒模型详解">CSS盒模型详解</a><time datetime="2019-12-11T16:00:00.000Z" title="发表于 2019-12-12 00:00:00">2019-12-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/12/12/ui-she-ji/04.html-css/03.dom-shi-jian-xiang-jie/" title="DOM事件详解"><img src="https://s1.ax1x.com/2020/10/27/BMvCuQ.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DOM事件详解"/></a><div class="content"><a class="title" href="/2019/12/12/ui-she-ji/04.html-css/03.dom-shi-jian-xiang-jie/" title="DOM事件详解">DOM事件详解</a><time datetime="2019-12-11T16:00:00.000Z" title="发表于 2019-12-12 00:00:00">2019-12-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019-12-11-learning-five-layout" title="三栏布局的5种方案"><img src="https://s1.ax1x.com/2020/10/27/BMjocD.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="三栏布局的5种方案"/></a><div class="content"><a class="title" href="/2019-12-11-learning-five-layout" title="三栏布局的5种方案">三栏布局的5种方案</a><time datetime="2019-12-10T16:00:00.000Z" title="发表于 2019-12-11 00:00:00">2019-12-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/11/11/qian-duan-kuang-jia/02.reactjs/04.yi-wen-shuo-qing-virtualdom-de-han-yi-yu-shi-xian/" title="一文说清「VirtualDOM」的含义与实现"><img src="https://s1.ax1x.com/2020/10/27/BMjwt0.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一文说清「VirtualDOM」的含义与实现"/></a><div class="content"><a class="title" href="/2019/11/11/qian-duan-kuang-jia/02.reactjs/04.yi-wen-shuo-qing-virtualdom-de-han-yi-yu-shi-xian/" title="一文说清「VirtualDOM」的含义与实现">一文说清「VirtualDOM」的含义与实现</a><time datetime="2019-11-11T00:00:00.000Z" title="发表于 2019-11-11 08:00:00">2019-11-11</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E7%B3%BB%E7%BB%9F/"><span class="card-category-list-name">Linux系统</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Node-js/"><span class="card-category-list-name">Node.js</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/UI%E8%AE%BE%E8%AE%A1/"><span class="card-category-list-name">UI设计</span><span class="card-category-list-count">14</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">前端开发</span><span class="card-category-list-count">27</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/"><span class="card-category-list-name">前端框架</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">基础学习</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BA%94%E7%94%A8/"><span class="card-category-list-name">数据库应用</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"><span class="card-category-list-name">网络安全</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">设计模式与算法</span><span class="card-category-list-count">65</span></a></li>
+            <li class="card-category-list-item more is-center"><a class="card-category-list-link-more" href="/categories/">
+                <span>查看更多</span><i class="fas fa-angle-right"></i></a></li>
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CSS3/" style="font-size: 1.44em; color: #99a7ba">CSS3</a> <a href="/tags/Chrome/" style="font-size: 1.16em; color: #999b9e">Chrome</a> <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 1.1em; color: #999">C语言</a> <a href="/tags/HTML5/" style="font-size: 1.33em; color: #99a2af">HTML5</a> <a href="/tags/Javascript/" style="font-size: 1.39em; color: #99a4b4">Javascript</a> <a href="/tags/Jest/" style="font-size: 1.21em; color: #999ea4">Jest</a> <a href="/tags/Koa/" style="font-size: 1.27em; color: #99a0a9">Koa</a> <a href="/tags/Linux%E5%91%BD%E4%BB%A4/" style="font-size: 1.1em; color: #999">Linux命令</a> <a href="/tags/MySQL/" style="font-size: 1.1em; color: #999">MySQL</a> <a href="/tags/Node-js/" style="font-size: 1.21em; color: #999ea4">Node.js</a> <a href="/tags/React/" style="font-size: 1.27em; color: #99a0a9">React</a> <a href="/tags/Serverless/" style="font-size: 1.1em; color: #999">Serverless</a> <a href="/tags/TypeScript/" style="font-size: 1.16em; color: #999b9e">TypeScript</a> <a href="/tags/Vue/" style="font-size: 1.1em; color: #999">Vue</a> <a href="/tags/Web%E5%AE%89%E5%85%A8/" style="font-size: 1.16em; color: #999b9e">Web安全</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 1.1em; color: #999">微信小程序</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.1em; color: #999">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.5em; color: #99a9bf">算法</a> <a href="/tags/%E8%81%94%E8%B0%83/" style="font-size: 1.1em; color: #999">联调</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.1em; color: #999">读书笔记</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 1.33em; color: #99a2af">面试</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/01/"><span class="card-archive-list-date">一月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/12/"><span class="card-archive-list-date">十二月 2019</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/11/"><span class="card-archive-list-date">十一月 2019</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/10/"><span class="card-archive-list-date">十月 2019</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/09/"><span class="card-archive-list-date">九月 2019</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/08/"><span class="card-archive-list-date">八月 2019</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/07/"><span class="card-archive-list-date">七月 2019</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/06/"><span class="card-archive-list-date">六月 2019</span><span class="card-archive-list-count">49</span></a></li><li class="card-archive-list-item more is-center"><a class="card-archive-list-link-more" href="/archives/">
+              <span>查看更多</span><i class="fas fa-angle-right"  ></i></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">128</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2018-06-06T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">148.5k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2020-10-28T08:13:01.821Z"></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lucas</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="aplayer no-destroy" data-listmaxheight="200px" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script src="/js/background.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>

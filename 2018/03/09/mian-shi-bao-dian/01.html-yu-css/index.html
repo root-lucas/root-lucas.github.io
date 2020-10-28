@@ -1,0 +1,401 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HTML与CSS | Hexo</title><meta name="keywords" content="HTML与CSS面试集锦"><meta name="author" content="Lucas"><meta name="copyright" content="Lucas"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="HTML与CSS面试集锦">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML与CSS">
+<meta property="og:url" content="https://root-lucas.github.io/2018/03/09/mian-shi-bao-dian/01.html-yu-css/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="HTML与CSS面试集锦">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/27/BMjdkq.md.jpg">
+<meta property="article:published_time" content="2018-03-08T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-10-27T15:10:14.263Z">
+<meta property="article:author" content="Lucas">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/10/27/BMjdkq.md.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://root-lucas.github.io/2018/03/09/mian-shi-bao-dian/01.html-yu-css/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-10-27 23:10:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/tags.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">HTML问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E4%B8%8B%E4%BD%A0%E5%AF%B9-WEB-%E6%A0%87%E5%87%86%E4%BB%A5%E5%8F%8A-W3C-%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E8%AE%A4%E8%AF%86"><span class="toc-number">1.1.</span> <span class="toc-text">说下你对 WEB 标准以及 W3C 的理解与认识?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xhtml-%E5%92%8C-html-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.</span> <span class="toc-text">xhtml 和 html 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E6%9C%89%E9%82%A3%E4%B8%89%E5%B1%82%E6%9E%84%E6%88%90%EF%BC%8C%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.3.</span> <span class="toc-text">前端页面有那三层构成，分别是什么？作用是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E8%97%8F%E5%85%83%E7%B4%A0%E7%9A%84%E4%B8%89%E4%B8%AA%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text">隐藏元素的三个方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Doctype-%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%B7%B7%E6%9D%82%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.5.</span> <span class="toc-text">Doctype? 严格模式与混杂模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E9%A1%B5%E9%9D%A2%E5%AE%BD%E9%AB%98%E5%BA%A6%E8%AE%BE%E7%BD%AE%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">1.6.</span> <span class="toc-text">浏览器页面宽高度设置有哪些？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9B%B8%E5%85%B3"><span class="toc-number">1.6.1.</span> <span class="toc-text">与浏览器相关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%83%E7%B4%A0%E6%9C%89%E5%85%B3"><span class="toc-number">1.6.2.</span> <span class="toc-text">与浏览器元素有关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%BC%E5%AE%B9%E5%86%99%E6%B3%95"><span class="toc-number">1.6.3.</span> <span class="toc-text">兼容写法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E8%AF%AD%E4%B9%89%E5%8C%96%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-number">1.7.</span> <span class="toc-text">标签语义化的好处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML5-%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-number">1.8.</span> <span class="toc-text">HTML5 新特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.9.</span> <span class="toc-text">伪类和伪元素的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM-%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C-API"><span class="toc-number">1.10.</span> <span class="toc-text">DOM 节点操作 API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http-%E4%BA%8B%E5%8A%A1%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%E4%B8%80%E4%B8%AA%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="toc-number">1.11.</span> <span class="toc-text">http 事务是怎样的一个过程？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AJAX-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="toc-number">1.12.</span> <span class="toc-text">AJAX 的优缺点？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AJAX-%E8%AF%B7%E6%B1%82%E6%97%B6-get-%E5%92%8C-post-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.13.</span> <span class="toc-text">AJAX 请求时 get 和 post 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E5%85%85-get-%E5%92%8C-post-%E8%AF%B7%E6%B1%82%E5%9C%A8%E7%BC%93%E5%AD%98%E6%96%B9%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.14.</span> <span class="toc-text">补充 get 和 post 请求在缓存方面的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B4%E4%B8%8B-xml%EF%BC%8Chtml-xhtml-%E4%BB%A5%E5%8F%8A-html5-%E5%8C%BA%E5%88%AB"><span class="toc-number">1.15.</span> <span class="toc-text">简单说下 xml，html,xhtml,以及 html5 区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E7%9A%84%E9%A2%84%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%87%92%E5%8A%A0%E8%BD%BD%EF%BC%9F"><span class="toc-number">1.16.</span> <span class="toc-text">图片的预加载和懒加载？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E5%8A%A8%E5%AE%9A%E4%BD%8D%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D"><span class="toc-number">1.17.</span> <span class="toc-text">浮动定位和绝对定位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML-5-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%BC%93%E5%AD%98"><span class="toc-number">1.18.</span> <span class="toc-text">HTML 5 应用程序缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%87%E6%9C%AC%E8%8A%82%E7%82%B9%EF%BC%88Text%EF%BC%89%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-number">1.19.</span> <span class="toc-text">创建一个文本节点（Text）的过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML-%E7%9A%84%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E8%BF%87%E7%A8%8B"><span class="toc-number">1.20.</span> <span class="toc-text">HTML 的渲染引擎过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BOM-%E5%92%8C-DOM-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.21.</span> <span class="toc-text">BOM 和 DOM 的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XML-%E6%93%8D%E4%BD%9C-API"><span class="toc-number">1.22.</span> <span class="toc-text">XML 操作 API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E5%88%B0%E9%9B%AA%E7%A2%A7%E5%9B%BE%E7%9A%84%E5%9C%BA%E6%99%AF"><span class="toc-number">1.23.</span> <span class="toc-text">用到雪碧图的场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#div-css-%E8%BE%83-table-%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8A%BF"><span class="toc-number">1.24.</span> <span class="toc-text">div+css 较 table 有哪些优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http-%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-number">1.25.</span> <span class="toc-text">http 状态码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js-%E5%8A%A8%E7%94%BB%E5%92%8C-css3-%E5%8A%A8%E7%94%BB%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="toc-number">1.26.</span> <span class="toc-text">js 动画和 css3 动画的差异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ajax-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.27.</span> <span class="toc-text">Ajax 的工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E6%80%A7%E8%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">1.28.</span> <span class="toc-text">前端优化性能有哪些？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E5%85%B7%E5%A4%87%E5%93%AA%E4%BA%9B%E6%9D%A1%E4%BB%B6%EF%BC%9F"><span class="toc-number">1.29.</span> <span class="toc-text">前端开发人员具备哪些条件？</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://s1.ax1x.com/2020/10/27/BMjdkq.md.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">HTML与CSS</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2018-03-08T16:00:00.000Z" title="发表于 2018-03-09 00:00:00">2018-03-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-27T15:10:14.263Z" title="更新于 2020-10-27 23:10:14">2020-10-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>19分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="HTML问题"><a href="#HTML问题" class="headerlink" title="HTML问题"></a>HTML问题</h2><h3 id="说下你对-WEB-标准以及-W3C-的理解与认识"><a href="#说下你对-WEB-标准以及-W3C-的理解与认识" class="headerlink" title="说下你对 WEB 标准以及 W3C 的理解与认识?"></a>说下你对 WEB 标准以及 W3C 的理解与认识?</h3><p><strong>web 标准：</strong> 简单来说可以分为结构、表现和行为。其中结构主要是有 HTML 标签组成。或许通俗点说，在页面 body 里面我们写入的标签都是为了页面的结构。表现即指 css 样式表，通过 css 可以是页面的结构标签更具美感。行为是指页面和用户具有一定的交互，同时页面结构或者表现发生变化，主要是有 js 组成。</p>
+<p>web 标准一般是将该三部分独立分开，使其更具有模块化。但一般产生行为时，就会有结构或者表现的变化，也使这三者的界限并不那么清晰。</p>
+<p><strong>W3C</strong> 对 web 标准提出了规范化的要求，也就是在实际编程中的一些代码规范：包含如下几点</p>
+<p>1.对于结构要求：（标签规范可以提高搜索引擎对页面的抓取效率，对 SEO 很有帮助）</p>
+<p>1）。标签字母要小写</p>
+<p>2）。标签要闭合</p>
+<p>3）。标签不允许随意嵌套</p>
+<p>2.对于 css 和 js 来说</p>
+<p>1）。能提高搜索机器人的搜索几率,内容能被更广泛的用户所访问,尽量使用外链 css 样式表和 js 脚本。是结构、表现和行为分为三块，符合规范。同时提高页面渲染速度，提高用户的体验。</p>
+<p>2）。样式尽量少用行间样式表，使结构与表现分离，标签的 id 和 class 等属性命名要做到见文知义，标签越少，加载越快，用户体验提高，代码维护简单，便于改版</p>
+<p>3）。使用更少的代码和组件，使其容易维护改版方便，不需要变动页面内容，便可提供打印版本而不需要复制内容，提高网站易用性。</p>
+<h3 id="xhtml-和-html-的区别"><a href="#xhtml-和-html-的区别" class="headerlink" title="xhtml 和 html 的区别"></a>xhtml 和 html 的区别</h3><pre><code>必须被正确的嵌套
+必须是小写
+必须关闭标签
+必须有根元素</code></pre>
+<h3 id="前端页面有那三层构成，分别是什么？作用是什么"><a href="#前端页面有那三层构成，分别是什么？作用是什么" class="headerlink" title="前端页面有那三层构成，分别是什么？作用是什么"></a>前端页面有那三层构成，分别是什么？作用是什么</h3><pre><code>结构层   html  做页面显示结构的
+表示层   css     做样式显示的
+行为层   javascript  做事件触发显示的</code></pre>
+<h3 id="隐藏元素的三个方法"><a href="#隐藏元素的三个方法" class="headerlink" title="隐藏元素的三个方法"></a>隐藏元素的三个方法</h3><pre><code>display:none可以隐藏某个元素，且隐藏的元素不会占用任何空间。也就是说，该元素不但被隐藏了，而且该元素原本占用的空间也会从页面布局中消失。    
+
+visibility:hidden可以隐藏某个元素，但隐藏的元素仍需占用与未隐藏之前一样的空间。也就是说，该元素虽然被隐藏了，但仍然会影响布局。        
+
+visibility: collapse;  当在表格元素中使用时，此值可删除一行或一列，但是它不会影响表格的布局。被行或列占据的空间会留给其他内容使用。如果此值被用在其他的元素上，会呈现为 &quot;hidden&quot;。其表现却跟 display: none 一样，也即其占用的空间会释放。</code></pre>
+<h3 id="Doctype-严格模式与混杂模式"><a href="#Doctype-严格模式与混杂模式" class="headerlink" title="Doctype? 严格模式与混杂模式"></a>Doctype? 严格模式与混杂模式</h3><p>doctype 的作用：<br>　　声明位于文档 的最前面，告知浏览器的解析器，用什么文档类型、规范来解析这个文档。</p>
+<p><strong>可以分为两种:</strong></p>
+<p>一种是 html4.01 中申明的严格模式：<code>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD *XHTML 1.0* Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</code>；DOCTYPE 不存在或形式不正确会导致 HTML 和 XHTML 文档以混杂模式呈现。没有文档声明的话大多数浏览器都将会转换到为怪异模式(quirk mode)，有些地方会称为混杂模式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 这个是正常模式就是(标准模式也成为严格模式) --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 这个是怪异模式也称为混杂模式,怪异模式则是使用浏览器自己的方式来解析执行代码。--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>混杂模式：混杂模式的页面以宽松的向后兼容的方式显示；模拟老的浏览器的行为以防止站点无法工作。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 到底都有哪些声明呢？哪种声明更好呢？我们建议你使用XHTML 1.0最严格模式，从一开始我们就应该严格的要求自己，具体声明如下： --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;</span> <span class="meta-string">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.w3.org/1999/xhtml&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 如果你接手的是一个遗留网页，最初并没有DTD声明，并且使用了很多在XHTML中已经废除的标签，那么，我们建议你使用XHTML兼容模式，声明如下： --&gt;</span></span><br><span class="line">  <span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;</span> <span class="meta-string">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.w3.org/1999/xhtml&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">怪异模式中，IE6/7/8都不认识!important声明，这只是区别的一种，还有很多其它区别。所以，要想写出跨浏览器的CSS，你必须采用标准模式。 </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">在ie6中，如果在doctype声明前加一个xml声明，采用quirks模式解析</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">在标准模式和怪异模式下，盒子模型的差异：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">标准模式下：  width = content</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">怪异模式下 ： width = border + padding  + content </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">在标准情况下使用  box-sizing:border-box  才能和怪异模式下的盒子模型保持一致</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>还有一种是 javascript 中申明的严格模式：在函数内部的最上方写上“use strict”,严格模式的排版和 JS 运作模式是以该浏览器支持的最高标准运行。</p>
+<p>两者区别很多，包括 css（、html 不知道有没有）、javascript 都有区别，严格模式可以向后兼容，其实严格模式可以理解为是已经确定了不需要更改的内容</p>
+<p>就目前来说 html5 的<code>&lt;!DOCTYPE html&gt;</code>没有 DTD 因此也就没有严格模式与混杂模式的区别，HTML5 有相对宽松的语法，实现时，已经尽可能大的实现了向后兼容.</p>
+<h3 id="浏览器页面宽高度设置有哪些？"><a href="#浏览器页面宽高度设置有哪些？" class="headerlink" title="浏览器页面宽高度设置有哪些？"></a>浏览器页面宽高度设置有哪些？</h3><h4 id="与浏览器相关"><a href="#与浏览器相关" class="headerlink" title="与浏览器相关"></a>与浏览器相关</h4><p>window.innerWidth<br>window.outerWidth<br>window.screen.width<br>window.screen.availWidth<br>window.screenLeft (浏览器距离屏幕左侧的距离宽度)</p>
+<p>含有 screen 关键字的与浏览器无关</p>
+<h4 id="与浏览器元素有关"><a href="#与浏览器元素有关" class="headerlink" title="与浏览器元素有关"></a>与浏览器元素有关</h4><p>语法：document.documentElement.clientWidth.或者 doucment.body.clientWidth.</p>
+<p>clientWidth（距离父级元素 clientLeft）</p>
+<p>offsetWidth（距离父级元素 offsetLeft）</p>
+<p>scrollWidth（距离滚动条顶部 scrollTop）</p>
+<h4 id="兼容写法"><a href="#兼容写法" class="headerlink" title="兼容写法"></a>兼容写法</h4><p>由于 document.compatMode 在 IE 浏览器是”BackCompat”;而在 chrome 浏览器则是”CSS1Compat”。</p>
+<p>兼容写法：页面不出现滚动条，那么 clientWidth 和 scrollWidth 应该相等。但不同浏览器有不同的处理，这两个值未必相等，所以取最大值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPagearea</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">document</span>.compatMode == <span class="string">&quot;BackCompat&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      width: <span class="built_in">Math</span>.max(<span class="built_in">document</span>.body.scrollWidth, <span class="built_in">document</span>.body.clientWidth),</span><br><span class="line">      height: <span class="built_in">Math</span>.max(<span class="built_in">document</span>.body.scrollHeight, <span class="built_in">document</span>.body.clientHeight)</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      width: <span class="built_in">Math</span>.max(</span><br><span class="line">        <span class="built_in">document</span>.documentElement.scrollWidth,</span><br><span class="line">        <span class="built_in">document</span>.documentElement.clientWidth</span><br><span class="line">      ),</span><br><span class="line">      height: <span class="built_in">Math</span>.max(</span><br><span class="line">        <span class="built_in">document</span>.documentElement.scrollHeight,</span><br><span class="line">        <span class="built_in">document</span>.documentElement.clientHeight</span><br><span class="line">      )</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>一般无滚动条情况下 offsetWidth=clientWidth=scrollWidth(有可能存在误差 1px)</p>
+</blockquote>
+<h3 id="标签语义化的好处"><a href="#标签语义化的好处" class="headerlink" title="标签语义化的好处"></a>标签语义化的好处</h3><p>更直观的认识标签，让页面的内容结构化，对搜索引擎抓取有好处，用正确的标签做正确的事，便于开发者更好的阅读理解，以及修改代码。<br>后期方便维护，更利于 seo</p>
+<h3 id="HTML5-新特性"><a href="#HTML5-新特性" class="headerlink" title="HTML5 新特性"></a>HTML5 新特性</h3><pre><code>1.新的绘画  canvas  svg
+2.新的媒体图像  video  audio
+3.新的存储方式  localstorage   sessionstorage
+4.新的标签  header nav  section article  aside footer
+5.新的控件  email url search date time calendar
+6.新的技术 websocket  webworker  geolocation
+7.ie8,ie7,ie6支持通过createElement方法产生的标签可以利用这一特性让这些浏览器支持HTML5新标签</code></pre>
+<h3 id="伪类和伪元素的区别"><a href="#伪类和伪元素的区别" class="headerlink" title="伪类和伪元素的区别"></a>伪类和伪元素的区别</h3><p>①伪类选择元素基于的是当前元素处于的状态，或者说元素当前所具有的特性，而不是元素的id、class、属性等静态的标志。由于状态是动态变化的，所以一个元素达到一个特定状态时，它可能得到一个伪类的样式；当状态改变时，它又会失去这个样式。由此可以看出，它的功能和class有些类似，但它是基于文档之外的抽象，所以叫伪类。</p>
+<p>②与伪类针对特殊状态的元素不同的是，伪元素是对元素中的特定内容进行操作，它所操作的层次比伪类更深了一层，也因此它的动态性比伪类要低得多。实际上，设计伪元素的目的就是去选取诸如元素内容第一个字（母）、第一行，选取某些内容前面或后面这种普通的选择器无法完成的工作。它控制的内容实际上和元素是相同的，但是它本身只是基于元素的抽象，并不存在于文档中，所以叫伪元素。</p>
+<p><strong>区别：</strong> 伪类是”:”,伪元素是”::”<br>伪类一般有:<code>:hover,:focus,:nth-child,:checked,:not</code>     </p>
+<p>伪元素一般有<code> ::before,::first-letter,::first-line</code>,伪元素也可以将双冒号改为单冒号。</p>
+<h3 id="DOM-节点操作-API"><a href="#DOM-节点操作-API" class="headerlink" title="DOM 节点操作 API"></a>DOM 节点操作 API</h3><pre><code>getElementById()    返回带有指定 ID 的元素。
+getElementsByTagName()    返回包含带有指定标签名称的所有元素的节点列表（集合/节点数组）。
+getElementsByClassName()    返回包含带有指定类名的所有元素的节点列表。
+appendChild()    把新的子节点添加到指定节点。
+removeChild()    删除子节点。
+replaceChild()    替换子节点。
+insertBefore()    在指定的子节点前面插入新的子节点。
+createAttribute()    创建属性节点。
+createElement()    创建元素节点。
+createTextNode()    创建文本节点。
+getAttribute()    返回指定的属性值。getAttributeNode
+setAttribute()    把指定属性设置或修改为指定的值。setAttributeNode</code></pre>
+<p><strong>tip：</strong> 删除，替换与插入的第二参数都必须是节点写法：<code>abc.replaceChild(news,abc.childNodes[0])</code>,</p>
+<p><strong>删除已有的 HTML 元素:</strong></p>
+<pre><code>方法一必需引用父元素
+var parent=document.getElementById(&quot;div1&quot;);     //如果p元素的父元素是Body就用ByTagName(&quot;body&quot;)[0]
+var child=document.getElementById(&quot;p1&quot;);
+parent.removeChild(child);
+
+方法二无需引用父元素    //此方法缺点：只能清空元素内容，但元素依旧存在并占据原有空间
+var a=document.getElementById(&quot;p1&quot;);
+    a.removeChild(a.childNodes[0]);
+
+方法三无缺点
+
+child.parentNode.removeChild(child)
+这是常用的解决方案：找到您希望删除的子元素，然后使用其 parentNode 属性来找到父元素</code></pre>
+<p><code>cloneNode(true) //true</code>表示复制包括其子节点，false 只复制其标签元素(但不复制其 innerHTML 内容)</p>
+<p><strong>非 node 与 node 的区别</strong><br>俩这都是删除指定的属性,前者不返回值,后者以 Attr Node 对象返回被删除的属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*1.removeAttribute与removeAttributeNode的区别*/</span></span><br><span class="line"><span class="comment">//前者写法:没有返回值</span></span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;H1&quot;</span>)[<span class="number">0</span>].removeAttribute(<span class="string">&quot;style&quot;</span>); <span class="comment">//正确</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//后者写法:返回具有指定名称的属性</span></span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;H1&quot;</span>)[<span class="number">0</span>].removeAttributeNode(); <span class="comment">//报错,不能一行完成</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> n = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;H1&quot;</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> a = n.getAttributeNode(<span class="string">&quot;style&quot;</span>);</span><br><span class="line">n.removeAttributeNode(a); <span class="comment">//正确</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;INPUT&quot;</span>)[<span class="number">0</span>].attributes.removeNamedItem(<span class="string">&quot;type&quot;</span>);</span><br><span class="line"><span class="comment">/*2.setAttribute和setAttributeNode区别*/</span></span><br><span class="line"><span class="comment">//前者写法</span></span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;H1&quot;</span>)[<span class="number">0</span>].setAttribute(<span class="string">&quot;id&quot;</span>, <span class="string">&quot;sett&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//后者写法</span></span><br><span class="line"><span class="keyword">var</span> atr = <span class="built_in">document</span>.createAttribute(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">atr.nodeValue = <span class="string">&quot;sett&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> h = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;H1&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">h.setAttributeNode(atr);</span><br><span class="line"></span><br><span class="line"><span class="comment">//简写document.getElementsByTagName(&quot;H1&quot;)[0].setAttributeNode(atr)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*3.getAttribute和getAttributeNode区别*/</span></span><br><span class="line"><span class="comment">//前者写法</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].getAttribute(<span class="string">&quot;target&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//后者写法</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].getAttributeNode(<span class="string">&quot;target&quot;</span>); <span class="comment">//返回的是[object Attr],Attr对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].getAttributeNode(<span class="string">&quot;target&quot;</span>).value; <span class="comment">//正确,或者nodeValue</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*4.hasAttribute和hasAttributes区别*/</span></span><br><span class="line"><span class="comment">//俩这均返回布尔值</span></span><br><span class="line"><span class="comment">//前者写法</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;BUTTON&quot;</span>)[<span class="number">0</span>].hasAttribute(<span class="string">&quot;onclick&quot;</span>);</span><br><span class="line"><span class="comment">//后者写法</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;BUTTON&quot;</span>)[<span class="number">0</span>].hasAttributes(); <span class="comment">//无参数的</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*5.children和childNodes*/</span></span><br><span class="line"><span class="keyword">var</span> y = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;UL&quot;</span>)[<span class="number">0</span>].children[<span class="number">0</span>].tagName; <span class="comment">//等于</span></span><br><span class="line"><span class="keyword">var</span> y = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;UL&quot;</span>)[<span class="number">0</span>].childNodes[<span class="number">0</span>].tagName; <span class="comment">//其中tagName也可以写为nodeName</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//childNodes返回类似数组形式</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*6.parentNode使用*/</span></span><br><span class="line">parentNode.nodeName;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*7.previousSibling和previousElementSibling*/</span></span><br><span class="line">itm.previousSibling.id; <span class="comment">//等于</span></span><br><span class="line">itm.previousElementSibling.id; <span class="comment">//节点写法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*8.nextSibling和nextElementSibling*/</span></span><br><span class="line">itm.nextSibling.id; <span class="comment">//等于</span></span><br><span class="line">itm.nextElementSibling.id; <span class="comment">//节点写法</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>返回该元素的所有属性长度：x.innerHTML=btn.attributes.length</p>
+</blockquote>
+<blockquote>
+<p>childNodes[0]等于 abc.firstChild</p>
+</blockquote>
+<h3 id="http-事务是怎样的一个过程？"><a href="#http-事务是怎样的一个过程？" class="headerlink" title="http 事务是怎样的一个过程？"></a>http 事务是怎样的一个过程？</h3><pre><code>1.域名解析
+2.tcp三次握手
+3.建立tcp连接，发起http请求
+4.服务器响应，浏览器得到代码
+5.浏览器解析代码，请求代码中的资源
+6.得到资源，呈现给用户网页</code></pre>
+<h3 id="AJAX-的优缺点？"><a href="#AJAX-的优缺点？" class="headerlink" title="AJAX 的优缺点？"></a>AJAX 的优缺点？</h3><pre><code>优点：相对于同步而言，不会产生卡死，无需刷新网页更新，
+缺点：后退按钮无效，多个请求同时触发，由于回调时间不确定会造成混乱，不利于SEO,数据安全有隐患</code></pre>
+<h3 id="AJAX-请求时-get-和-post-的区别"><a href="#AJAX-请求时-get-和-post-的区别" class="headerlink" title="AJAX 请求时 get 和 post 的区别"></a>AJAX 请求时 get 和 post 的区别</h3><pre><code>1.一个在url后面，一个在虚拟载体里
+2.根据不同的浏览器区别有大小限制
+3.安全问题，应用不同，一个是只需要请求明文可见的，一个类似于修改密码的</code></pre>
+<h3 id="补充-get-和-post-请求在缓存方面的区别"><a href="#补充-get-和-post-请求在缓存方面的区别" class="headerlink" title="补充 get 和 post 请求在缓存方面的区别"></a>补充 get 和 post 请求在缓存方面的区别</h3><pre><code>1.get在查找的过程，用户获取数据(明文传输)，可以不用每次都与后台数据库连接，所以可以使用缓存。
+2.post不同，post做的一般是修改和删除的工作，所以每次都需要与数据库进行交互，所以不能使用缓存</code></pre>
+<h3 id="简单说下-xml，html-xhtml-以及-html5-区别"><a href="#简单说下-xml，html-xhtml-以及-html5-区别" class="headerlink" title="简单说下 xml，html,xhtml,以及 html5 区别"></a>简单说下 xml，html,xhtml,以及 html5 区别</h3><pre><code>1. XML 用来描述数据，而 HTML 则用来显示数据
+2. xhtml是为了取代html的，但xhtml不是html的升级版，html5是html的升级版，html5不是xhtml的升级版。
+3. 简单来说，XHTML 可以认为是 XML 版本的 HTML，为符合 XML 要求，XHTML 语法上要求更严谨些。XHTML相对于HTML更严谨，不过被html5规范淘汰了。</code></pre>
+<p>由于 SGML 的复杂，因而难以普及。HTML 和 XML 同样衍生于 SGML，XML 可以被认为是 SGML 的一个子集，而 HTML 是 SGML 的一个应用。</p>
+<p>从继承关系上讲，HTML 是一种基于标准通用标记语言(SGML)的应用，是一种非常灵活的置标语言，而 XHTML 则基于可扩展标记语言(XML)，XML 是 SGML 的一个子集。XHTML 1.0 在 2000 年 1 月 26 日成为 W3C 的推荐标准。</p>
+<h3 id="图片的预加载和懒加载？"><a href="#图片的预加载和懒加载？" class="headerlink" title="图片的预加载和懒加载？"></a>图片的预加载和懒加载？</h3><p>预加载：提前加载图片，当用户需要查看图片的时候可直接从本地缓存中渲染，预加载会给服务器增加压力。<br>懒加载：不提前加载，甚至不加载，优化了服务器前端的优化，减少了请求数或延迟请求数</p>
+<h3 id="浮动定位和绝对定位"><a href="#浮动定位和绝对定位" class="headerlink" title="浮动定位和绝对定位"></a>浮动定位和绝对定位</h3><p>一个元素若设置了 position:absolute | fixed; 则该元素就不能设置 float。这是一个常识性的知识点，因为这是两个不同的流，一个是浮动流，另一个是“定位流(这是自己起的名字，呵呵)”。</p>
+<p>但是 relative 却可以。因为它原本所占的空间仍然占据文档流。<br>当元素设置 position:absolute、float:left、float:right 中任意一个时，都会让元素以<code>display:inline-block</code>的方式显示（特点是：可以设置长宽，默认宽度不占满父元素）。这时，即使故意设置 display:inline; display:block 都是无效的。<br>但是 float 在 IE6 下的双边距 bug 就是用 display:inline; 来解决的。</p>
+<h3 id="HTML-5-应用程序缓存"><a href="#HTML-5-应用程序缓存" class="headerlink" title="HTML 5 应用程序缓存"></a>HTML 5 应用程序缓存</h3><pre><code>HTML5 引入了应用程序缓存，这意味着 web 应用可进行缓存，并可在没有因特网连接时进行访问。
+应用程序缓存为应用带来三个优势：
+1.离线浏览 - 用户可在应用离线时使用它们
+2.速度 - 已缓存资源加载得更快
+3.减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源。
+
+manifest 文件可分为三个部分：
+CACHE MANIFEST - 在此标题下列出的文件将在首次下载后进行缓存
+NETWORK - 在此标题下列出的文件需要与服务器的连接，且不会被缓存
+FALLBACK - 在此标题下列出的文件规定当页面无法访问时的回退页面（比如 404 页面）</code></pre>
+<h3 id="创建一个文本节点（Text）的过程"><a href="#创建一个文本节点（Text）的过程" class="headerlink" title="创建一个文本节点（Text）的过程"></a>创建一个文本节点（Text）的过程</h3><p>创建一个文本节点一共溯寻了 6 层原型链。</p>
+<pre><code>使用document.createTextNode(&quot;xxx&quot;)创建文本节点，
+其实document.createTextNode(&quot;xxx&quot;)是Text的一个实例，
+而Text的父类是CharactorData，CharactorData的父类是Node，
+Node的父类是EventTarget，
+EventTarget的父类是Function，
+Function的父类是Object。</code></pre>
+<h3 id="HTML-的渲染引擎过程"><a href="#HTML-的渲染引擎过程" class="headerlink" title="HTML 的渲染引擎过程"></a>HTML 的渲染引擎过程</h3><pre><code>这四步仅仅是HTML的渲染引擎过程，
+1.解析HTML，构建DOM树(将标签转化为节点) ——&gt;
+2.解析样式信息，构建渲染树(外部css文件、style标签) ——&gt;
+3.布局渲染树，即布局DOM节点(确定每个节点在屏幕上的确切坐标) ——&gt;
+4.绘制渲染树，即绘制DOM节点(遍历渲染树，使用UI后端层绘制每个节点)</code></pre>
+<h3 id="BOM-和-DOM-的关系"><a href="#BOM-和-DOM-的关系" class="headerlink" title="BOM 和 DOM 的关系"></a>BOM 和 DOM 的关系</h3><p>1.BOM（Browser Object Model）是指浏览器对象模型，它使 JavaScript 有能力与浏览器进行“对话”，主要处理浏览器窗口和框架。</p>
+<p>2.DOM （Document Object Model）是指文档对象模型，通过它，可以访问 HTML 文档的所有元素。是 HTML 和 XML 的应用程序接口（API），遵循 W3C 的标准，所有浏览器公共遵守的标准。</p>
+<p>可以说，BOM包含了DOM(对象)，浏览器提供出来给予访问的是BOM对象，从BOM对象再访问到DOM对象，从而js可以操作浏览器以及浏览器读取到的文档。</p>
+<h3 id="XML-操作-API"><a href="#XML-操作-API" class="headerlink" title="XML 操作 API"></a>XML 操作 API</h3><p>下面的 api 用于获取 book.xml 文档的使用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">appendData()，deleteData()，insertData()，replaceData()，subStringData()</span><br><span class="line">以下5个方法都是编辑Text节点文本内容的方法。</span><br><span class="line">appendData()：在Text节点尾部追加字符串。</span><br><span class="line">deleteData()：删除Text节点内部的子字符串，第一个参数为子字符串开始位置，第二个参数为子字符串长度。</span><br><span class="line">insertData()：在Text节点插入字符串，第一个参数为插入位置，第二个参数为插入的子字符串。</span><br><span class="line">replaceData()：用于替换文本，第一个参数为替换开始位置，第二个参数为需要被替换掉的长度，第三个参数为新加入的字符串。</span><br><span class="line">subStringData()：用于获取子字符串，第一个参数为子字符串在Text节点中的开始位置，第二个参数为子字符串长度。</span><br><span class="line">// HTML 代码为 //</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">var pElementText = document.querySelector(&#x27;p&#x27;).firstChild;</span><br><span class="line">pElementText.appendData(&#x27;!&#x27;); // 页面显示 Hello World!</span><br><span class="line">pElementText.deleteData(7, 5); // 页面显示 Hello W pElementText.insertData(7,</span><br><span class="line">&#x27;Hello &#x27;); // 页面显示 Hello WHello pElementText.replaceData(7, 5, &#x27;World&#x27;); //</span><br><span class="line">页面显示 Hello WWorld pElementText.substringData(7, 10); //</span><br><span class="line">页面显示不变，返回&quot;orld&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>tip：</strong> 貌似可以和 nodeValue 获取值,也就是说可以使用节点的 API。</p>
+<h3 id="用到雪碧图的场景"><a href="#用到雪碧图的场景" class="headerlink" title="用到雪碧图的场景"></a>用到雪碧图的场景</h3><p>1.静态图片，不随用户信息的变化而变化</p>
+<p>2.小图片，图片容量比较小</p>
+<p>3.加载量比较大<br>一些大图不建议拼成雪碧图</p>
+<p>为了减少 http 请求数量，加速网页内容显示，很多网站的导航栏图标、登录框图片等，使用的并不是<code>&lt;image&gt;</code>标签，而是 CSS Sprite 雪碧图</p>
+<h3 id="div-css-较-table-有哪些优势"><a href="#div-css-较-table-有哪些优势" class="headerlink" title="div+css 较 table 有哪些优势"></a>div+css 较 table 有哪些优势</h3><pre><code>1.表现与结构相分离
+2.扩展性更好，便于维护
+3.页面加载速度更快，结构化清晰，页面显示简洁
+4.对搜索引擎更友好，网站排名更靠前
+统一的标准，降低开发难度，开发成本，SEO也会更好做</code></pre>
+<h3 id="http-状态码"><a href="#http-状态码" class="headerlink" title="http 状态码"></a>http 状态码</h3><pre><code>200, OK，访问正常
+301, Moved Permanently，永久移动
+302, Moved temporarily，暂时移动
+304, Not Modified，未修改
+307, Temporary Redirect，暂时重定向
+401, Unauthorized，未授权    //如豆瓣需要apiKey才能访问
+403, Forbidden，禁止访问    //需要特指的服务器或者IP以及账号才能访问
+404, Not Found，未发现指定网址
+500, Internal Server Error，服务器发生错误</code></pre>
+<h3 id="js-动画和-css3-动画的差异"><a href="#js-动画和-css3-动画的差异" class="headerlink" title="js 动画和 css3 动画的差异"></a>js 动画和 css3 动画的差异</h3><pre><code>1.js功能覆盖上，比css3好
+2.重构/构建上css3比js简单，快速方便
+3.css3对表现帧速不好的低版本浏览器，可以做到自动降级
+4.css3有天然事件支持
+5.css3有兼容性问题</code></pre>
+<h3 id="Ajax-的工作原理"><a href="#Ajax-的工作原理" class="headerlink" title="Ajax 的工作原理"></a>Ajax 的工作原理</h3><p>AJAX 全称 Async Javascript and XML 翻译成中文：异步的 JavaScript 和 XML</p>
+<p>Ajax 技术的核心是 XMLHttpRequest 对象（简称：XHR），可以在不刷新页面页面也能取得新的数据。</p>
+<p>满足下面的条件就是 AJAX</p>
+<p>使用 XMLHttpReques 发请求<br>服务器返回 XML 格式的字符串<br>JS 解析 XML，并更新局部页面</p>
+<p>Ajax 的工作原理相当于在用户和服务器之间加了—个中间层(AJAX 引擎)，使用户操作与服务器响应异步化。并不是所有的用户请求都提交给服务器。像—些数据验证和数据处理等都交给 Ajax 引擎自己来做,，只有确定需要从服务器读取新数据时再由 Ajax 引擎代为向服务器提交请求。</p>
+<h3 id="前端优化性能有哪些？"><a href="#前端优化性能有哪些？" class="headerlink" title="前端优化性能有哪些？"></a>前端优化性能有哪些？</h3><pre><code>1.减少http请求数
+2.减少html标签带来的带宽浪费
+3.用innerHTML代替基本的DOM 操作
+4.用className代替style
+5.少用全局变量，减少IO操作
+6.避免使用css表达式
+7.图片预加载，样式放在顶部，脚本放在底部</code></pre>
+<h3 id="前端开发人员具备哪些条件？"><a href="#前端开发人员具备哪些条件？" class="headerlink" title="前端开发人员具备哪些条件？"></a>前端开发人员具备哪些条件？</h3><pre><code>1.将产品从90分做到100分，甚至更好
+2.快速的做出高效高质量的效果图，精确到1px
+3.与团队成员，UI设计，产品经理沟通
+4.做好页面结构/页面重构工作，给用户好体验
+5.处理hack，兼容，优化代码格式
+6.针对服务器优化</code></pre>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Lucas</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://root-lucas.github.io/2018/03/09/mian-shi-bao-dian/01.html-yu-css/">https://root-lucas.github.io/2018/03/09/mian-shi-bao-dian/01.html-yu-css/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://root-lucas.github.io" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2020/10/27/BMjdkq.md.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2018/05/29/ui-she-ji/02.scss/02.jin-jie-ji-cheng-zhan-wei-fu-he-hun-he-hong/"><img class="prev-cover" src="https://s1.ax1x.com/2020/10/27/BQMXan.md.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">进阶：继承、占位符和混合宏</div></div></a></div><div class="next-post pull-right"><a href="/2016/11/24/c-yu-yan/c-yu-yan-ji-chu-zong-jie/"><img class="next-cover" src="https://s2.ax1x.com/2019/05/27/VZWhn0.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C语言基础总结</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2018/07/15/mian-shi-bao-dian/03.vue-wen-ti/" title="Vue问题"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BQQAaR.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-07-15</div><div class="title">Vue问题</div></div></a></div><div><a href="/2018/07/25/mian-shi-bao-dian/04.fei-ji-zhu-mian-shi-wen-da/" title="非技术面试问答"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjXNt.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-07-25</div><div class="title">非技术面试问答</div></div></a></div><div><a href="/2018/08/24/qian-duan-zhi-shi-ti-xi/04.offer/qian-duan-mian-shi-zhong-chang-kao-de-yuan-ma-shi-xian/" title="前端面试中常考的源码实现"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BQQEI1.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-08-24</div><div class="title">前端面试中常考的源码实现</div></div></a></div><div><a href="/2018/11/24/qian-duan-zhi-shi-ti-xi/04.offer/liu-lan-qi-chang-jian-kao-dian/" title="浏览器常见考点"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMTZ9J.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-11-24</div><div class="title">浏览器常见考点</div></div></a></div><div><a href="/2018/07/09/mian-shi-bao-dian/02.javascript-wen-ti/" title="Javascript问题"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjJXQ.md.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-07-09</div><div class="title">Javascript问题</div></div></a></div></div></div></article></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lucas</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="aplayer no-destroy" data-listmaxheight="200px" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script src="/js/background.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>

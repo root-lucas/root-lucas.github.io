@@ -1,0 +1,323 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hexo</title><meta name="author" content="Lucas"><meta name="copyright" content="Lucas"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="一个收藏回忆与分享技术的地方！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://root-lucas.github.io/page/13/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一个收藏回忆与分享技术的地方！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://root-lucas.github.io/img/avatar.jpg">
+<meta property="article:author" content="Lucas">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://root-lucas.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://root-lucas.github.io/page/13/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2020-10-28 16:13:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/tags.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/earth.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site-title">Hexo</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/root-lucas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/945832032@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title=""><i class="fa fa-rss"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-bilibili-fill"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-weixin"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-qq"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-zhifubao"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2018/07/15/mian-shi-bao-dian/03.vue-wen-ti/" title="Vue问题">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BQQAaR.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue问题"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/07/15/mian-shi-bao-dian/03.vue-wen-ti/" title="Vue问题">Vue问题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2018-07-14T16:00:00.000Z" title="发表于 2018-07-15 00:00:00">2018-07-15</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">什么是单向数据绑定？单向数据绑定即一方面只受另一方面影响，却无法影响另一方面。前端常说的单向数据绑定一般都指数据影响页面，而页面不影响数据。
+什么是双向数据绑定？双向的意思即两个方面相互影响，前端来说，即数据影响页面，页面同时影响数据。例如，在 MVVM 框架中，View(视图) 和 Model(数据) 是不可以直接通讯的，在它们之间存在着 ViewModel 这个中间介充当着观察者的角色。当用户操作 View(视图)，ViewModel 感知到变化，然后通知 Model 发生相应改变；反之当 Model(数据) 发生改变，ViewModel 也能感知到变化，使 View 作出相应更新。
+什么是单页面？什么是双页面单页面即 第一次进入页面的时候会请求一个html文件，刷新清除一下。切换到其他组件，此时路径也相应变化，但是并没有新的html文件请求，页面内容也变化了。（多用于移动端）
+原理是：JS会感知到url的变化，通过这一点，可以用js动态的将当前页面的内容清除掉，然后将下一个页面的内容挂载到当前页面上，这个时候的路由不是后端来做了，而是前端来做，判断页面到底是显示哪个组件，清除不需 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2018/07/09/mian-shi-bao-dian/02.javascript-wen-ti/" title="Javascript问题">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMjJXQ.md.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Javascript问题"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/07/09/mian-shi-bao-dian/02.javascript-wen-ti/" title="Javascript问题">Javascript问题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2018-07-08T16:00:00.000Z" title="发表于 2018-07-09 00:00:00">2018-07-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">这里列一些我在面试时最常问到的，都是老生常谈的问题:
+什么是闭包？
+什么是面向对象？
+JS如何实现类，对象之间的继承？
+什么是冒泡和捕获以及事件委托？
+JS有哪些数据类型？
+Null和Undefined的区别？
+判断时if是false的值？
+isNaN（）的作用？
+JS对象中的Array对象和String对象的各种方法　
+this关键字在不同环境下的指向　　　
+JS的作用域
+setTimeout和setInterval
+了解CSS3或HTML5吗，都用过哪些
+精通原生 JS 闭包，异步编程，原型继承，类型数组，事件代理，原生 ajax。
+都用过哪些计算机基础：主要是计算机网络、算法、数据结构方面的知识，这一块儿是我最薄弱的，而运气好的是面试官问的也较少，更多的是询问排序查找相关的一些，经验不足就不多说。
+技能延伸：前面两者技术的基础上对技能的延伸能增加获得 offer 的机会，比如了解模板引擎、熟悉比较火的前端框架或前端技术（JQuery、Bootstrap、Zepto、Node，Angular.JS），并且研究过源码、对 svn 或 git 等版本控制软件的操作、 长期更新博客、 在 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2018/06/24/qian-duan-zhi-shi-ti-xi/01.javascript/zheng-ze-biao-da-shi/" title="正则表达式">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BQMqbj.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="正则表达式"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/06/24/qian-duan-zhi-shi-ti-xi/01.javascript/zheng-ze-biao-da-shi/" title="正则表达式">正则表达式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2018-06-24T13:43:28.000Z" title="发表于 2018-06-24 21:43:28">2018-06-24</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">正则常见函数正则表达式常用的方法分为 2 类：
+
+字符串上调用，进行正则规则匹配。操作对象是正则表达式
+正则表达式上调用。操作对象是字符串。
+
+准备了下面代码：
+12const pattern = /runoob/gi; // 正则表达式const str = &quot;Visit Runoob!runoob&quot;; // 待匹配字符串
+
+① 字符串上调用的方法，常见的有：search/ match / replace
+12345678// Return: Number 代表搜索到的开始地址console.log(str.search(/Runoob/i));// Return: Array 匹配出来的所有字符串console.log(str.match(/run/gi));// Return: 新的string对象console.log(str.replace(/visit/i, &quot;visit&quot;));
+
+② 正则表达式对象上的方法，常见的有：test / exec
+12345// Return: Boolean 代表是否符合匹配console.log(pa ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2018/06/05/ui-she-ji/01.css3/01.border-sizing-shu-xing-xiang-jie-he-ying-yong/" title="border-sizing属性详解和应用">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMjyX4.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="border-sizing属性详解和应用"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/06/05/ui-she-ji/01.css3/01.border-sizing-shu-xing-xiang-jie-he-ying-yong/" title="border-sizing属性详解和应用">border-sizing属性详解和应用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2018-06-04T16:00:00.000Z" title="发表于 2018-06-05 00:00:00">2018-06-05</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/UI%E8%AE%BE%E8%AE%A1/">UI设计</a></span></div><div class="content">
+box-sizing用于更改用于计算元素宽度和高度的默认的 CSS 盒子模型。它有content-box、border-box和inherit三种取值。inherit指的是从父元素继承box-sizing表现形式，不再冗赘。
+
+1. 属性讲解content-box默认值，也是 css2.1 中的盒子模型。在计算width和height时候，不计算border、padding和margin。高度、宽度都只是内容高度。
+border-boxcss3新增。 width和height属性包括内容，内边距和边框，但不包括外边距。
+计算公式：
+
+width = width = border + padding + 内容宽度
+height = border + padding + 内容高度
+
+2. 考虑盒子模型的margin从上面可以知道，即时是border-box也是不计算margin，只是多余计算了border和padding。因为border和padding都是盒子模型的一部分，但是margin标记的是盒子和盒子的间距。所以，border-box的解释很符合常理。
+
+问题来了，如果有时候一定 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2018/05/29/ui-she-ji/02.scss/01.ji-chu-pei-zhi-yu-yun-xing/" title="基础：配置与运行">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMjG6g.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基础：配置与运行"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/05/29/ui-she-ji/02.scss/01.ji-chu-pei-zhi-yu-yun-xing/" title="基础：配置与运行">基础：配置与运行</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2018-05-28T16:00:00.000Z" title="发表于 2018-05-29 00:00:00">2018-05-29</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/UI%E8%AE%BE%E8%AE%A1/">UI设计</a></span></div><div class="content">1、SCSS和Sass
+Sass 和 SCSS 其实是同一种东西，我们平时都称之为 Sass。他们都是用Ruby开发 Css 预处理器，boostrap4已经将less换成了sass。
+
+不同之处：
+
+文件拓展名：分别是sass和scss
+缩进：sass严格缩进（类似 python 和 ruby），scss是 css 的缩进样式
+是否兼容 css 语法：显然，由于缩进的不同，scss是兼容原生的 css 写法。
+
+总的来说，scss是sass升级版，兼容 css 语法，并且有着自己的独立语法。
+2、环境配置
+安装 ruby：windows 注意添加注册表路径
+安装 sass：利用 ruby 的包管理器gem安装，命令行运行:gem install sass
+升级和删除 sass：gem update/uninstall sass
+
+如果国外源过慢？
+123gem sources --remove https://rubygems.org/gem sources -a https://ruby.taobao.org/gem sources -l #查看是不是淘宝源
+
+3、编译
+编译指的是 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2018/05/29/ui-she-ji/02.scss/02.jin-jie-ji-cheng-zhan-wei-fu-he-hun-he-hong/" title="进阶：继承、占位符和混合宏">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BQMXan.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="进阶：继承、占位符和混合宏"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/05/29/ui-she-ji/02.scss/02.jin-jie-ji-cheng-zhan-wei-fu-he-hun-he-hong/" title="进阶：继承、占位符和混合宏">进阶：继承、占位符和混合宏</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2018-05-28T16:00:00.000Z" title="发表于 2018-05-29 00:00:00">2018-05-29</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/UI%E8%AE%BE%E8%AE%A1/">UI设计</a></span></div><div class="content">
+如何让 scss 代码可复用？三种复用方式分别用在何处？下方是一段自定义大小的样例 👇
+
+1234567891011121314151617$height: 15px !default;$width: 18px !default;@mixin size($list...) &#123;  @if length($list) == 0 &#123;    height: $height;    width: $width;  &#125; @else if length($list) == 1 &#123;    height: $list;    width: $list;  &#125; @else if length($list) == 2 &#123;    height: nth($list, 1);    width: nth($list, 2);  &#125; @else &#123;    @debug &quot;Too many parameters&quot;;  &#125;&#125;
+
+1、继承和占位符
+两者都是通过@extend来引用。
+
+1.1 继承 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2018/03/09/mian-shi-bao-dian/01.html-yu-css/" title="HTML与CSS">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMjdkq.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTML与CSS"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/03/09/mian-shi-bao-dian/01.html-yu-css/" title="HTML与CSS">HTML与CSS</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2018-03-08T16:00:00.000Z" title="发表于 2018-03-09 00:00:00">2018-03-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">HTML问题说下你对 WEB 标准以及 W3C 的理解与认识?web 标准： 简单来说可以分为结构、表现和行为。其中结构主要是有 HTML 标签组成。或许通俗点说，在页面 body 里面我们写入的标签都是为了页面的结构。表现即指 css 样式表，通过 css 可以是页面的结构标签更具美感。行为是指页面和用户具有一定的交互，同时页面结构或者表现发生变化，主要是有 js 组成。
+web 标准一般是将该三部分独立分开，使其更具有模块化。但一般产生行为时，就会有结构或者表现的变化，也使这三者的界限并不那么清晰。
+W3C 对 web 标准提出了规范化的要求，也就是在实际编程中的一些代码规范：包含如下几点
+1.对于结构要求：（标签规范可以提高搜索引擎对页面的抓取效率，对 SEO 很有帮助）
+1）。标签字母要小写
+2）。标签要闭合
+3）。标签不允许随意嵌套
+2.对于 css 和 js 来说
+1）。能提高搜索机器人的搜索几率,内容能被更广泛的用户所访问,尽量使用外链 css 样式表和 js 脚本。是结构、表现和行为分为三块，符合规范。同时提高页面渲染速度，提高用户的体验。
+2）。样式尽量少用行间样式表 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2016/11/24/c-yu-yan/c-yu-yan-ji-chu-zong-jie/" title="C语言基础总结">     <img class="post_bg" src="https://s2.ax1x.com/2019/05/27/VZWhn0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言基础总结"></a></div><div class="recent-post-info"><a class="article-title" href="/2016/11/24/c-yu-yan/c-yu-yan-ji-chu-zong-jie/" title="C语言基础总结">C语言基础总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2016-11-24T13:43:28.000Z" title="发表于 2016-11-24 21:43:28">2016-11-24</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">基础学习</a></span></div><div class="content">关键字C语言的32个关键词：（由系统定义，不能重做其他定义）
+1234567auto  break  case  char  const  continue  default  do  double  else enum  extern  float  for  goto  if  int  long  register  returnshort  signed  sizeof  static  structswitch  typedef  unsigned  unsigned  union  void  volatile  while  
+数据类型数据类型大概分为俩种：基本类型数据、复合类型数据
+基本类型数据整数
+123整型     —— int      　　　　－－４字节  短整型   —— short int	　　　——２字节长整型   —— long int	　　　——８字节    　　
+浮点数【实数】
+12单精度浮点数 —— float    　　——４字节双精度浮点数 —— double　	　——８字节
+字符
+1char                      　　—— ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/12/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Lucas</div><div class="author-info__description">一个收藏回忆与分享技术的地方！</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/root-lucas"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/root-lucas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/945832032@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title=""><i class="fa fa-rss"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-bilibili-fill"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-weixin"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-qq"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-zhifubao"></i></a></div></div></div><div class="sticky_layout"><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/01/14/qian-duan-zhi-shi-ti-xi/05.qi-ta-wen-zhang/qian-duan-cuo-wu-jian-kong/" title="前端错误监控"><img src="https://s2.ax1x.com/2019/05/27/VZWhn0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端错误监控"/></a><div class="content"><a class="title" href="/2020/01/14/qian-duan-zhi-shi-ti-xi/05.qi-ta-wen-zhang/qian-duan-cuo-wu-jian-kong/" title="前端错误监控">前端错误监控</a><time datetime="2020-01-13T16:00:00.000Z" title="发表于 2020-01-14 00:00:00">2020-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/12/12/ui-she-ji/04.html-css/02.css-he-mo-xing-xiang-jie/" title="CSS盒模型详解"><img src="https://s1.ax1x.com/2020/10/27/BQQiqJ.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSS盒模型详解"/></a><div class="content"><a class="title" href="/2019/12/12/ui-she-ji/04.html-css/02.css-he-mo-xing-xiang-jie/" title="CSS盒模型详解">CSS盒模型详解</a><time datetime="2019-12-11T16:00:00.000Z" title="发表于 2019-12-12 00:00:00">2019-12-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/12/12/ui-she-ji/04.html-css/03.dom-shi-jian-xiang-jie/" title="DOM事件详解"><img src="https://s1.ax1x.com/2020/10/27/BMvCuQ.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DOM事件详解"/></a><div class="content"><a class="title" href="/2019/12/12/ui-she-ji/04.html-css/03.dom-shi-jian-xiang-jie/" title="DOM事件详解">DOM事件详解</a><time datetime="2019-12-11T16:00:00.000Z" title="发表于 2019-12-12 00:00:00">2019-12-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019-12-11-learning-five-layout" title="三栏布局的5种方案"><img src="https://s1.ax1x.com/2020/10/27/BMjocD.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="三栏布局的5种方案"/></a><div class="content"><a class="title" href="/2019-12-11-learning-five-layout" title="三栏布局的5种方案">三栏布局的5种方案</a><time datetime="2019-12-10T16:00:00.000Z" title="发表于 2019-12-11 00:00:00">2019-12-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/11/11/qian-duan-kuang-jia/02.reactjs/04.yi-wen-shuo-qing-virtualdom-de-han-yi-yu-shi-xian/" title="一文说清「VirtualDOM」的含义与实现"><img src="https://s1.ax1x.com/2020/10/27/BMjwt0.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一文说清「VirtualDOM」的含义与实现"/></a><div class="content"><a class="title" href="/2019/11/11/qian-duan-kuang-jia/02.reactjs/04.yi-wen-shuo-qing-virtualdom-de-han-yi-yu-shi-xian/" title="一文说清「VirtualDOM」的含义与实现">一文说清「VirtualDOM」的含义与实现</a><time datetime="2019-11-11T00:00:00.000Z" title="发表于 2019-11-11 08:00:00">2019-11-11</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E7%B3%BB%E7%BB%9F/"><span class="card-category-list-name">Linux系统</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Node-js/"><span class="card-category-list-name">Node.js</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/UI%E8%AE%BE%E8%AE%A1/"><span class="card-category-list-name">UI设计</span><span class="card-category-list-count">14</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">前端开发</span><span class="card-category-list-count">27</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/"><span class="card-category-list-name">前端框架</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">基础学习</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BA%94%E7%94%A8/"><span class="card-category-list-name">数据库应用</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"><span class="card-category-list-name">网络安全</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">设计模式与算法</span><span class="card-category-list-count">65</span></a></li>
+            <li class="card-category-list-item more is-center"><a class="card-category-list-link-more" href="/categories/">
+                <span>查看更多</span><i class="fas fa-angle-right"></i></a></li>
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CSS3/" style="font-size: 1.44em; color: #99a7ba">CSS3</a> <a href="/tags/Chrome/" style="font-size: 1.16em; color: #999b9e">Chrome</a> <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 1.1em; color: #999">C语言</a> <a href="/tags/HTML5/" style="font-size: 1.33em; color: #99a2af">HTML5</a> <a href="/tags/Javascript/" style="font-size: 1.39em; color: #99a4b4">Javascript</a> <a href="/tags/Jest/" style="font-size: 1.21em; color: #999ea4">Jest</a> <a href="/tags/Koa/" style="font-size: 1.27em; color: #99a0a9">Koa</a> <a href="/tags/Linux%E5%91%BD%E4%BB%A4/" style="font-size: 1.1em; color: #999">Linux命令</a> <a href="/tags/MySQL/" style="font-size: 1.1em; color: #999">MySQL</a> <a href="/tags/Node-js/" style="font-size: 1.21em; color: #999ea4">Node.js</a> <a href="/tags/React/" style="font-size: 1.27em; color: #99a0a9">React</a> <a href="/tags/Serverless/" style="font-size: 1.1em; color: #999">Serverless</a> <a href="/tags/TypeScript/" style="font-size: 1.16em; color: #999b9e">TypeScript</a> <a href="/tags/Vue/" style="font-size: 1.1em; color: #999">Vue</a> <a href="/tags/Web%E5%AE%89%E5%85%A8/" style="font-size: 1.16em; color: #999b9e">Web安全</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 1.1em; color: #999">微信小程序</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.1em; color: #999">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.5em; color: #99a9bf">算法</a> <a href="/tags/%E8%81%94%E8%B0%83/" style="font-size: 1.1em; color: #999">联调</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.1em; color: #999">读书笔记</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 1.33em; color: #99a2af">面试</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/01/"><span class="card-archive-list-date">一月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/12/"><span class="card-archive-list-date">十二月 2019</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/11/"><span class="card-archive-list-date">十一月 2019</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/10/"><span class="card-archive-list-date">十月 2019</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/09/"><span class="card-archive-list-date">九月 2019</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/08/"><span class="card-archive-list-date">八月 2019</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/07/"><span class="card-archive-list-date">七月 2019</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/06/"><span class="card-archive-list-date">六月 2019</span><span class="card-archive-list-count">49</span></a></li><li class="card-archive-list-item more is-center"><a class="card-archive-list-link-more" href="/archives/">
+              <span>查看更多</span><i class="fas fa-angle-right"  ></i></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">128</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2018-06-06T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">148.5k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2020-10-28T08:13:01.821Z"></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lucas</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function subtitleType () {
+  if (true) { 
+    var typed = new Typed("#subtitle", {
+      strings: "今日事&#44;今日毕,Never put off till tomorrow what you can do today".split(","),
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50
+    })
+  } else {
+    document.getElementById("subtitle").innerHTML = '今日事&#44;今日毕'
+  }
+}
+
+if (true) {
+  if (typeof Typed === 'function') subtitleType()
+  else $.getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js', subtitleType)
+} else {
+  subtitleType()
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="aplayer no-destroy" data-listmaxheight="200px" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script src="/js/background.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hexo</title><meta name="author" content="Lucas"><meta name="copyright" content="Lucas"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="一个收藏回忆与分享技术的地方！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://root-lucas.github.io/page/7/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一个收藏回忆与分享技术的地方！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://root-lucas.github.io/img/avatar.jpg">
+<meta property="article:author" content="Lucas">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://root-lucas.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://root-lucas.github.io/page/7/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2020-10-28 16:13:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/tags.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/earth.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site-title">Hexo</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/root-lucas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/945832032@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title=""><i class="fa fa-rss"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-bilibili-fill"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-weixin"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-qq"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-zhifubao"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/06/23/jian-zhi-offer-shua-ti-bi-ji/08.wei-yun-suan/03.shu-zu-zhong-zhi-chu-xian-yi-ci-de-shu-zi/" title="数组中只出现一次的数字">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMTZ9J.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数组中只出现一次的数字"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/06/23/jian-zhi-offer-shua-ti-bi-ji/08.wei-yun-suan/03.shu-zu-zhong-zhi-chu-xian-yi-ci-de-shu-zi/" title="数组中只出现一次的数字">数组中只出现一次的数字</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-06-23T00:00:00.000Z" title="发表于 2019-06-23 08:00:00">2019-06-23</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%AE%97%E6%B3%95/">设计模式与算法</a></span></div><div class="content">1. 题目描述一个整型数组中，除了 2 个数字之外，其他数字都出现了 2 次。要求找出来这 2 个数字，时间复杂度 O(N)，空间复杂度 O(1)
+2. 思路分析因为空间复杂度限制，所以没法用哈希表。
+如果只有 1 个数字出现 1 次，那么可以使用“异或”运算，最后的结果就是这个数字。
+但题目中有 2 个数字，要考虑分组问题。将这两个数字分到 2 组中，然后再每组内分别异或：
+
+全部异或，最终结果是 2 个数字异或结果
+找到结果中第一个 1 出现的位数
+按照此位是不是 1，将原数据分成 2 组
+组内分别异或
+
+3. 代码实现123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960/** * 找到num二进制表示中第一个1的位 * * @param &#123;Number&#125; num */function findFirstBitIsOne(num) &#123;    let indexBit = 0,      ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/06/23/jian-zhi-offer-shua-ti-bi-ji/09.ha-xi-biao/01.chou-shu/" title="丑数">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BlS2X8.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="丑数"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/06/23/jian-zhi-offer-shua-ti-bi-ji/09.ha-xi-biao/01.chou-shu/" title="丑数">丑数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-06-23T00:00:00.000Z" title="发表于 2019-06-23 08:00:00">2019-06-23</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%AE%97%E6%B3%95/">设计模式与算法</a></span></div><div class="content">1. 题目描述把只包含因子 2、3 和 5 的数称作丑数（Ugly Number）。例如 6、8 都是丑数，但 14 不是，因为它包含因子 7。习惯上我们把 1 当做是第一个丑数。求按从小到大的顺序的第 1500 个丑数。
+2. 解题思路2.1 思路一根据定义，将给定的数不断除 2、3、5，看看能不能除尽即可。然后从 1 遍历到 1500。
+2.2 思路二前面速度慢是因为计算了太多非丑数。根据丑数定义，每一个丑数都是根据前面一个丑数乘以 2、3 或者 5 得到的。
+在确保顺序的情况下，逐步计算即可。
+3. 代码3.1 思路一实现123456789101112131415161718192021222324252627282930// 判断是否符合丑数定义function isUgly(number) &#123;    while (number % 2 === 0) &#123;        number /= 2    &#125;    while (number % 3 === 0) &#123;        number /= 3    &#125;    while ( ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/06/23/jian-zhi-offer-shua-ti-bi-ji/09.ha-xi-biao/02.di-yi-ci-zhi-chu-xian-yi-ci-de-zi-fu/" title="第一次只出现一次的字符">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第一次只出现一次的字符"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/06/23/jian-zhi-offer-shua-ti-bi-ji/09.ha-xi-biao/02.di-yi-ci-zhi-chu-xian-yi-ci-de-zi-fu/" title="第一次只出现一次的字符">第一次只出现一次的字符</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-06-23T00:00:00.000Z" title="发表于 2019-06-23 08:00:00">2019-06-23</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%AE%97%E6%B3%95/">设计模式与算法</a></span></div><div class="content">1. 题目描述在字符串中找到第一个只出现一次的字符。
+2. 思路从头到尾遍历一遍，统计每个字符的出现次数，保存到哈希表中。
+再重新遍历一遍，每次都检查哈希表中的次数是不是 1，是 1，直接返回，这就是第一个字符。
+3. 代码实现123456789101112131415161718192021222324252627/** * * @param &#123;String&#125; str */function findFirstNoRepeatChar(str) &#123;    const chars = str.split(&#x27;&#x27;)    const map = &#123;&#125;    for (let char of chars) &#123;        if (char in map) &#123;            map[char] += 1        &#125; else &#123;            map[char] = 1        &#125;    &#125;    for (let char of cha ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/06/23/jian-zhi-offer-shua-ti-bi-ji/10.dui/01.zui-xiao-de-k-ge-shu/" title="最小的k个数">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMjwt0.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="最小的k个数"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/06/23/jian-zhi-offer-shua-ti-bi-ji/10.dui/01.zui-xiao-de-k-ge-shu/" title="最小的k个数">最小的k个数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-06-23T00:00:00.000Z" title="发表于 2019-06-23 08:00:00">2019-06-23</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%AE%97%E6%B3%95/">设计模式与算法</a></span></div><div class="content">1. 题目描述输入 n 个整数，找出其中最小的 k 个数。例如输入 4、5、1、6、2、7、3、8 这 8 个数字，则最小的 4 个数字是 1、2、3、4。
+2. 思路分析这里创建一个容量为 k 的最大堆。遍历给定数据集合，每次和堆顶元素进行比较，如果小于堆顶元素，则弹出堆顶元素，然后将当前元素放入堆。
+由于堆大小为 k，所以弹出、推入操作复杂度为：O(logK)。因为有 n 个，总体复杂度为：O(nLogK)。
+对比快排 partition 的思路，这种思路优点如下：
+
+不会变动原数组
+适合处理海量数据，尤其对于不是一次性读取的数据
+
+3. 代码实现请先执行：yarn add heap 或者 npm install heap
+代码如下；
+12345678910111213141516171819202122232425262728293031323334353637383940const Heap = require(&#x27;heap&#x27;)function compare(a, b) &#123;    if (a &lt; b) &#123;        return ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/06/21/hou-duan-kai-fa/nodejs/01.koa/01.koa-yuan-ma-he-xin-ku-yuan-li/" title="深入koa源码：核心库原理">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BQQpxU.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深入koa源码：核心库原理"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/06/21/hou-duan-kai-fa/nodejs/01.koa/01.koa-yuan-ma-he-xin-ku-yuan-li/" title="深入koa源码：核心库原理">深入koa源码：核心库原理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-06-21T00:00:00.000Z" title="发表于 2019-06-21 08:00:00">2019-06-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Node-js/">Node.js</a></span></div><div class="content">
+最近读了 koa2 的源码，理清楚了架构设计与用到的第三方库。本系列将分为 3 篇，分别介绍 koa 的架构设计和 3 个核心库，最终会手动实现一个简易的 koa。这是系列第 2 篇，关于 3 个核心库的原理。
+
+is-generator-function：判断 generatorkoa2 种推荐使用 async 函数，koa1 推荐的是 generator。koa2 为了兼容，在调用use添加中间件的时候，会判断是否是 generator。如果是，则用covert库转化为 async 函数。
+判断是不是 generator 的逻辑写在了 is-generator-function 库中，逻辑非常简单，通过判断Object.prototype.toString.call 的返回结果即可：
+12function* say() &#123;&#125;Object.prototype.toString.call(say) // 输出: [object GeneratorFunction]
+
+delegates：属性代理delegates和 koa 一样，这个库都是出自大佬 TJ 之手。它 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/06/21/hou-duan-kai-fa/nodejs/01.koa/03.koa-yuan-ma-shou-dong-shi-xian/" title="深入koa源码：手动实现玩具版koa">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMj27R.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深入koa源码：手动实现玩具版koa"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/06/21/hou-duan-kai-fa/nodejs/01.koa/03.koa-yuan-ma-shou-dong-shi-xian/" title="深入koa源码：手动实现玩具版koa">深入koa源码：手动实现玩具版koa</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-06-21T00:00:00.000Z" title="发表于 2019-06-21 08:00:00">2019-06-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Node-js/">Node.js</a></span></div><div class="content">
+最近读了 koa2 的源码，理清楚了架构设计与用到的第三方库。本系列将分为 3 篇，分别介绍 koa 的架构设计和 3 个核心库，最终会手动实现一个简易的 koa。这是系列第 3 篇，模拟实现玩具版 koa。
+
+源码和测试代码放在了：simple-koa
+准备设计思想和第三方库原理都在前 2 篇详细说明了。这篇主要目的是做一个验证检验，在语法使用 ES6/7 的语法。
+在开始前，安装一下需要用到的库：
+12npm install --save koa-compose koa-convert is-generator-functionnpm install --save events
+
+测试文件为了说明效果，先按照正常使用 koa 的逻辑编写了测试文件。当启动它的时候，它的预期行为是：
+
+  监听 3000 端口
+  加载中间件
+  浏览器访问localhost:3000，屏幕打印hello
+  服务器的控制台依次输出：1inner =&gt; 2innter =&gt; 2outer =&gt; 1outer
+
+代码如下：
+123456789101112131415161718192 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/06/18/hou-duan-kai-fa/nodejs/01.koa/02.koa-yuan-ma-jia-gou-she-ji/" title="深入koa源码：架构设计">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMjhh6.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深入koa源码：架构设计"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/06/18/hou-duan-kai-fa/nodejs/01.koa/02.koa-yuan-ma-jia-gou-she-ji/" title="深入koa源码：架构设计">深入koa源码：架构设计</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-06-18T00:00:00.000Z" title="发表于 2019-06-18 08:00:00">2019-06-18</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Node-js/">Node.js</a></span></div><div class="content">
+最近读了 koa 的源码，理清楚了架构设计与用到的第三方库。本系列将分为 3 篇，分别介绍 koa 的架构设计和 3 个核心库，最终会手动实现一个简易的 koa。
+
+koa 的实现都在仓库的lib目录下，如下图所示，只有 4 个文件：
+
+对于这四个文件，根据用途和封装逻辑，可以分为 3 类：req 和 res，上下文以及 application。
+req 和 res对应的文件是：request.js 和 response.js。分别代表着客户端请求信息和服务端返回信息。
+这两个文件在实现逻辑上完全一致。对外暴露都是一个对象，对象上的属性都使用了getter或setter来实现读写控制。
+上下文对应的文件是：context.js。存了运行环境的上下文信息，例如cookies。
+除此之外，因为request和response都属于上下文信息，所以通过delegate.js库来实现了对request.js和response.js上所有属性的代理。例如以下代码：
+12345678910/** * Response delegation. */delegate(proto, &#x27;res ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/05/20/qian-duan-zhi-shi-ti-xi/03.html5/websocket-xue-xi-he-qun-liao-shi-xian/" title="WebSocket学习和群聊实现">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BQMj5q.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="WebSocket学习和群聊实现"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/05/20/qian-duan-zhi-shi-ti-xi/03.html5/websocket-xue-xi-he-qun-liao-shi-xian/" title="WebSocket学习和群聊实现">WebSocket学习和群聊实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-05-20T13:43:28.000Z" title="发表于 2019-05-20 21:43:28">2019-05-20</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">
+WebSocket协议可以实现前后端全双工通信，从而取代浪费资源的长轮询。在此协议的基础上，可以实现前后端数据、多端数据，真正的实时响应。在学习WebSocket的过程中，实现了一个简化版群聊，过程和代码详细记录在这篇文章中。
+
+简易版的实时群聊效果图如下：
+1 概述1.1 WebSocket 是什么？
+建立在 TCP 协议之上的网络通信协议
+全双工通信协议
+没有同源限制
+可以发送文本、二进制数据等
+
+1.2 为什么需要 WebSocket？了解计算机网络协议的人，应该都知道：HTTP 协议是一种无状态的、无连接的、单向的应用层协议。它采用了请求/响应模型。通信请求只能由客户端发起，服务端对请求做出应答处理。
+这种通信模型有一个弊端：HTTP 协议无法实现服务器主动向客户端发起消息。
+因此，如果在客户端想实时监听服务器变化，必须使用 ajax 来进行轮询，效率低，浪费资源。
+而 websocket 就可以使得前后端进行全双工通信（两方都可以向对方进行数据推送），是真正的平等对话。
+2 WebSocket 客户端支持HTML5的浏览器支持 WebSocket 协议：
+1var ws = ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/05/17/ui-she-ji/02.scss/03.yi-wen-zhu-bu-ti-huan-sass/" title="「译文」逐步替换Sass">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BQQAaR.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="「译文」逐步替换Sass"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/05/17/ui-she-ji/02.scss/03.yi-wen-zhu-bu-ti-huan-sass/" title="「译文」逐步替换Sass">「译文」逐步替换Sass</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-05-17T00:00:00.000Z" title="发表于 2019-05-17 08:00:00">2019-05-17</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/UI%E8%AE%BE%E8%AE%A1/">UI设计</a></span></div><div class="content">翻译说明这是一篇介绍现代 css 核心特性的文章，并且借助 sass 进行横向对比，充分体现了 css 作为一门设计语言的快速发展以及新特性为我们开发者带来的强大生产力。
+第一次尝试翻译技术文，为了让文章更通俗易懂，很多地方结合了文章本意和自己的说话风格。另外，时间有限水平有限，难免有些失误或者翻译不恰当的地方，欢迎指出讨论。
+英文原文地址：https://cathydutton.co.uk/posts/why-i-stopped-using-sass/
+正文开始我每年都要重新搭建和设计我的网站，这是一个非常不错的方式去跟进 HTML/CSS 的最新进展、开发模式和网站生成器。在上个月，我发布了新版本：从 Jekyll 和 GithubPages 迁移到 Eleventy 和 Netlify。
+一开始，我并没有移除代码中所有的 sass 代码。这本不是我计划中的事情，但随着我不断查看 sass 代码，我一直在思考：它们是否给网站带来了价值，还是仅仅增加了复杂度和依赖性(特指对：scss)？随着这年 css 的发展，曾经让我使用 sass 的原因似乎不那么重要了。
+其中一个例子就是我已经 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/05/07/hou-duan-kai-fa/nodejs/02.ming-ling-xing/01.wan-zhuan-nodejs-ming-ling-xing/" title="玩转 Nodejs 命令行">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMjwt0.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="玩转 Nodejs 命令行"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/05/07/hou-duan-kai-fa/nodejs/02.ming-ling-xing/01.wan-zhuan-nodejs-ming-ling-xing/" title="玩转 Nodejs 命令行">玩转 Nodejs 命令行</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-05-07T00:00:00.000Z" title="发表于 2019-05-07 08:00:00">2019-05-07</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Node-js/">Node.js</a></span></div><div class="content">背景在做 cli 工具的时候，非常需要命令行相关的第三方库。一个比较稳健成熟的命令行应该考虑以下 4 种需求：
+
+读取传入的各种参数，例如： –help, -v=123
+逻辑处理和友好的 UI 交互，例如：提供列表选择
+细致控制字体颜色和背景颜色
+状态显示，例如：等待过程前面是转圈圈，完成过程前面自动换成对号
+
+在开始前，安装一下需要用到的库：
+1234npm install --save inquirernpm install --save commandernpm install --save inquirernpm install --save ora
+
+下面的四个文件例子只需复制粘贴到文件通过 node.js 即可运行
+读取参数: commander这里用到的是 commander 这个库。它的文档地址是：https://www.npmjs.com/package/commander
+请先看下面代码：
+12345678910111213141516171819202122232425262728293031323334353637383940414243const progra ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/6/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/8/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Lucas</div><div class="author-info__description">一个收藏回忆与分享技术的地方！</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/root-lucas"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/root-lucas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/945832032@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title=""><i class="fa fa-rss"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-bilibili-fill"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-weixin"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-qq"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-zhifubao"></i></a></div></div></div><div class="sticky_layout"><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/01/14/qian-duan-zhi-shi-ti-xi/05.qi-ta-wen-zhang/qian-duan-cuo-wu-jian-kong/" title="前端错误监控"><img src="https://s2.ax1x.com/2019/05/27/VZWhn0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端错误监控"/></a><div class="content"><a class="title" href="/2020/01/14/qian-duan-zhi-shi-ti-xi/05.qi-ta-wen-zhang/qian-duan-cuo-wu-jian-kong/" title="前端错误监控">前端错误监控</a><time datetime="2020-01-13T16:00:00.000Z" title="发表于 2020-01-14 00:00:00">2020-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/12/12/ui-she-ji/04.html-css/02.css-he-mo-xing-xiang-jie/" title="CSS盒模型详解"><img src="https://s1.ax1x.com/2020/10/27/BQQiqJ.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSS盒模型详解"/></a><div class="content"><a class="title" href="/2019/12/12/ui-she-ji/04.html-css/02.css-he-mo-xing-xiang-jie/" title="CSS盒模型详解">CSS盒模型详解</a><time datetime="2019-12-11T16:00:00.000Z" title="发表于 2019-12-12 00:00:00">2019-12-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/12/12/ui-she-ji/04.html-css/03.dom-shi-jian-xiang-jie/" title="DOM事件详解"><img src="https://s1.ax1x.com/2020/10/27/BMvCuQ.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DOM事件详解"/></a><div class="content"><a class="title" href="/2019/12/12/ui-she-ji/04.html-css/03.dom-shi-jian-xiang-jie/" title="DOM事件详解">DOM事件详解</a><time datetime="2019-12-11T16:00:00.000Z" title="发表于 2019-12-12 00:00:00">2019-12-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019-12-11-learning-five-layout" title="三栏布局的5种方案"><img src="https://s1.ax1x.com/2020/10/27/BMjocD.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="三栏布局的5种方案"/></a><div class="content"><a class="title" href="/2019-12-11-learning-five-layout" title="三栏布局的5种方案">三栏布局的5种方案</a><time datetime="2019-12-10T16:00:00.000Z" title="发表于 2019-12-11 00:00:00">2019-12-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/11/11/qian-duan-kuang-jia/02.reactjs/04.yi-wen-shuo-qing-virtualdom-de-han-yi-yu-shi-xian/" title="一文说清「VirtualDOM」的含义与实现"><img src="https://s1.ax1x.com/2020/10/27/BMjwt0.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一文说清「VirtualDOM」的含义与实现"/></a><div class="content"><a class="title" href="/2019/11/11/qian-duan-kuang-jia/02.reactjs/04.yi-wen-shuo-qing-virtualdom-de-han-yi-yu-shi-xian/" title="一文说清「VirtualDOM」的含义与实现">一文说清「VirtualDOM」的含义与实现</a><time datetime="2019-11-11T00:00:00.000Z" title="发表于 2019-11-11 08:00:00">2019-11-11</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E7%B3%BB%E7%BB%9F/"><span class="card-category-list-name">Linux系统</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Node-js/"><span class="card-category-list-name">Node.js</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/UI%E8%AE%BE%E8%AE%A1/"><span class="card-category-list-name">UI设计</span><span class="card-category-list-count">14</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">前端开发</span><span class="card-category-list-count">27</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/"><span class="card-category-list-name">前端框架</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">基础学习</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BA%94%E7%94%A8/"><span class="card-category-list-name">数据库应用</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"><span class="card-category-list-name">网络安全</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">设计模式与算法</span><span class="card-category-list-count">65</span></a></li>
+            <li class="card-category-list-item more is-center"><a class="card-category-list-link-more" href="/categories/">
+                <span>查看更多</span><i class="fas fa-angle-right"></i></a></li>
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CSS3/" style="font-size: 1.44em; color: #99a7ba">CSS3</a> <a href="/tags/Chrome/" style="font-size: 1.16em; color: #999b9e">Chrome</a> <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 1.1em; color: #999">C语言</a> <a href="/tags/HTML5/" style="font-size: 1.33em; color: #99a2af">HTML5</a> <a href="/tags/Javascript/" style="font-size: 1.39em; color: #99a4b4">Javascript</a> <a href="/tags/Jest/" style="font-size: 1.21em; color: #999ea4">Jest</a> <a href="/tags/Koa/" style="font-size: 1.27em; color: #99a0a9">Koa</a> <a href="/tags/Linux%E5%91%BD%E4%BB%A4/" style="font-size: 1.1em; color: #999">Linux命令</a> <a href="/tags/MySQL/" style="font-size: 1.1em; color: #999">MySQL</a> <a href="/tags/Node-js/" style="font-size: 1.21em; color: #999ea4">Node.js</a> <a href="/tags/React/" style="font-size: 1.27em; color: #99a0a9">React</a> <a href="/tags/Serverless/" style="font-size: 1.1em; color: #999">Serverless</a> <a href="/tags/TypeScript/" style="font-size: 1.16em; color: #999b9e">TypeScript</a> <a href="/tags/Vue/" style="font-size: 1.1em; color: #999">Vue</a> <a href="/tags/Web%E5%AE%89%E5%85%A8/" style="font-size: 1.16em; color: #999b9e">Web安全</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 1.1em; color: #999">微信小程序</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.1em; color: #999">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.5em; color: #99a9bf">算法</a> <a href="/tags/%E8%81%94%E8%B0%83/" style="font-size: 1.1em; color: #999">联调</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.1em; color: #999">读书笔记</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 1.33em; color: #99a2af">面试</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/01/"><span class="card-archive-list-date">一月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/12/"><span class="card-archive-list-date">十二月 2019</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/11/"><span class="card-archive-list-date">十一月 2019</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/10/"><span class="card-archive-list-date">十月 2019</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/09/"><span class="card-archive-list-date">九月 2019</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/08/"><span class="card-archive-list-date">八月 2019</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/07/"><span class="card-archive-list-date">七月 2019</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/06/"><span class="card-archive-list-date">六月 2019</span><span class="card-archive-list-count">49</span></a></li><li class="card-archive-list-item more is-center"><a class="card-archive-list-link-more" href="/archives/">
+              <span>查看更多</span><i class="fas fa-angle-right"  ></i></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">128</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2018-06-06T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">148.5k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2020-10-28T08:13:01.821Z"></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lucas</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function subtitleType () {
+  if (true) { 
+    var typed = new Typed("#subtitle", {
+      strings: "今日事&#44;今日毕,Never put off till tomorrow what you can do today".split(","),
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50
+    })
+  } else {
+    document.getElementById("subtitle").innerHTML = '今日事&#44;今日毕'
+  }
+}
+
+if (true) {
+  if (typeof Typed === 'function') subtitleType()
+  else $.getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js', subtitleType)
+} else {
+  subtitleType()
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="aplayer no-destroy" data-listmaxheight="200px" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script src="/js/background.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>

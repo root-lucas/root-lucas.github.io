@@ -1,0 +1,265 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FileAPI文件操作实战 | Hexo</title><meta name="keywords" content="HTML5 FileAPI文件操作实战"><meta name="author" content="Lucas"><meta name="copyright" content="Lucas"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="HTML5 FileAPI文件操作实战">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FileAPI文件操作实战">
+<meta property="og:url" content="https://root-lucas.github.io/2019/02/24/qian-duan-zhi-shi-ti-xi/03.html5/html5-fileapi-wen-jian-cao-zuo-shi-zhan/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="HTML5 FileAPI文件操作实战">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/27/BMjcnJ.md.jpg">
+<meta property="article:published_time" content="2019-02-24T13:43:28.000Z">
+<meta property="article:modified_time" content="2020-10-27T07:57:21.768Z">
+<meta property="article:author" content="Lucas">
+<meta property="article:tag" content="HTML5">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/10/27/BMjcnJ.md.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://root-lucas.github.io/2019/02/24/qian-duan-zhi-shi-ti-xi/03.html5/html5-fileapi-wen-jian-cao-zuo-shi-zhan/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-10-27 15:57:21'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/tags.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">检测兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%91%E5%90%AC%E6%96%87%E4%BB%B6%E9%80%89%E6%8B%A9"><span class="toc-number">4.</span> <span class="toc-text">监听文件选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7-File"><span class="toc-number">5.</span> <span class="toc-text">文件属性-File</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6-FileReader"><span class="toc-number">6.</span> <span class="toc-text">读取文件-FileReader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%91%E6%8E%A7%E8%AF%BB%E5%8F%96%E8%BF%9B%E5%BA%A6"><span class="toc-number">7.</span> <span class="toc-text">监控读取进度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E6%96%87%E4%BB%B6%E5%88%86%E7%89%87%E8%AF%BB%E5%8F%96"><span class="toc-number">8.</span> <span class="toc-text">大文件分片读取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%96%E6%8B%BD%E4%B8%8A%E4%BC%A0"><span class="toc-number">9.</span> <span class="toc-text">拖拽上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E7%9B%B8%E5%85%B3"><span class="toc-number">10.</span> <span class="toc-text">后端相关</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://s1.ax1x.com/2020/10/27/BMjcnJ.md.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">FileAPI文件操作实战</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-02-24T13:43:28.000Z" title="发表于 2019-02-24 21:43:28">2019-02-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-27T07:57:21.768Z" title="更新于 2020-10-27 15:57:21">2020-10-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>HTML5 为我们提供了 File API 相关规范。主要涉及 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/File">File 接口</a> 和 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader">FileReader 对象</a> 。</p>
+<p>本文整理了兼容性检测、文件选择、属性读取、文件读取、进度监控、大文件分片上传以及拖拽上传等开发中常见的前端文件操作。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>首先，我们的 File 来自于<code>&lt;input&gt;</code>标签中选中的文件列表。所以，准备如下的 HTML 代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">id</span>=<span class="string">&quot;files&quot;</span> <span class="attr">multiple</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;list&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;images&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- File API相关操作写在了script.js中 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./script.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="检测兼容性"><a href="#检测兼容性" class="headerlink" title="检测兼容性"></a>检测兼容性</h2><p>File 对象是特殊类型的 Blob。在 script 入口处，应该检测当前浏览器是否支持 File API：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!(<span class="built_in">window</span>.File &amp;&amp; <span class="built_in">window</span>.FileReader &amp;&amp; <span class="built_in">window</span>.FileList &amp;&amp; <span class="built_in">window</span>.Blob)) &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;当前浏览器对FileAPI的支持不完善&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="监听文件选择"><a href="#监听文件选择" class="headerlink" title="监听文件选择"></a>监听文件选择</h2><p>对于 type 为 file 类型的<code>&lt;input&gt;</code>标签，在选择文件的时候，会触发<code>change</code>事件。用户选中的文件信息也会传入回调函数的第一个参数中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleFileSelect</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; files &#125; = event.target;</span><br><span class="line">  <span class="keyword">if</span> (!files.length) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;没有选择文件&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;选中的文件信息是：&quot;</span>, files);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span></span><br><span class="line">  .querySelector(<span class="string">&quot;#files&quot;</span>)</span><br><span class="line">  .addEventListener(<span class="string">&quot;change&quot;</span>, handleFileSelect, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件属性-File"><a href="#文件属性-File" class="headerlink" title="文件属性-File"></a>文件属性-File</h2><p><code>event.target.files</code> 是一个<code>FileList</code>对象，它是一个由<code>File</code>对象组成的列表。</p>
+<p>每个 File 对象，保存着选中的对应文件的属性。常用的有：</p>
+<ul>
+<li>name：文件名</li>
+<li>type：文件类型</li>
+<li>size：文件大小</li>
+</ul>
+<p>下面，通过 type 属性，过滤掉非图片类型的文件，只展示图片类型文件的信息：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleFileSelect</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; files &#125; = event.target;</span><br><span class="line">  <span class="keyword">if</span> (!files.length) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;没有选择文件&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> innerHTML = [];</span><br><span class="line">  <span class="keyword">const</span> reImage = <span class="regexp">/image.*/</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> file <span class="keyword">of</span> files) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!reImage.test(file.type)) &#123;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    innerHTML.push(</span><br><span class="line">      <span class="string">`</span></span><br><span class="line"><span class="string">      &lt;li&gt;</span></span><br><span class="line"><span class="string">        &lt;strong&gt;<span class="subst">$&#123;file.name&#125;</span>&lt;/strong&gt;</span></span><br><span class="line"><span class="string">        (<span class="subst">$&#123;file.type || <span class="string">&quot;n/a&quot;</span>&#125;</span>) -</span></span><br><span class="line"><span class="string">        <span class="subst">$&#123;file.size&#125;</span> bytes</span></span><br><span class="line"><span class="string">      &lt;/li&gt;</span></span><br><span class="line"><span class="string">      `</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.querySelector(<span class="string">&quot;#list&quot;</span>).innerHTML = <span class="string">`&lt;ul&gt;<span class="subst">$&#123;innerHTML.join(<span class="string">&quot;&quot;</span>)&#125;</span>&lt;/ul&gt;`</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="读取文件-FileReader"><a href="#读取文件-FileReader" class="headerlink" title="读取文件-FileReader"></a>读取文件-FileReader</h2><p>还是以图片读取为例，读取并且显示所有的图片类型文件。</p>
+<p>文件读取需要使用<code>FileReader</code>对象，它常用 3 个回调方法：</p>
+<ul>
+<li>onload: 文件读取完成</li>
+<li>onloadstart：文件上传开始</li>
+<li>onprogress : 文件上传中触发</li>
+</ul>
+<p><strong>和<code>Image</code>类似，在读取文件之前，需要先绑定事件处理</strong>。它读取操作有：readAsArrayBuffer、readAsDataURL、readAsBinaryString、readAsText。传入的参数就是<code>File</code>对象。</p>
+<p>那么这几个方法有什么区别呢？<strong>不同的读取方式，回调事件<code>onload</code>接受到的<code>event.target.result</code>不相同</strong>。比如，<code>readAsDataURL</code>读取的话，result 是一个图片的 url。</p>
+<p>下面就是读取图片文件，然后展示的一个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleFileSelect</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> &#123; files &#125; = event.target;</span><br><span class="line">  <span class="keyword">if</span> (!files.length) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> vm = <span class="built_in">document</span>.createDocumentFragment(),</span><br><span class="line">    re = <span class="regexp">/image.*/</span>,</span><br><span class="line">    loaded = <span class="number">0</span>, <span class="comment">// 完成加载的图片数量</span></span><br><span class="line">    total = <span class="number">0</span>; <span class="comment">// 总共图片数量</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 统计image文件数量</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> file <span class="keyword">of</span> files) &#123;</span><br><span class="line">    re.test(file.type) &amp;&amp; total++;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// onloadstart回调</span></span><br><span class="line">  <span class="keyword">const</span> handleLoadStart = <span class="function">(<span class="params">ev, file</span>) =&gt;</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`&gt;&gt;&gt; Start load <span class="subst">$&#123;file.name&#125;</span>`</span>);</span><br><span class="line">  <span class="comment">// onload回调</span></span><br><span class="line">  <span class="keyword">const</span> handleOnload = <span class="function">(<span class="params">ev, file</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`&lt;&lt;&lt; End load <span class="subst">$&#123;file.name&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> img = <span class="built_in">document</span>.createElement(<span class="string">&quot;img&quot;</span>);</span><br><span class="line">    img.height = <span class="number">250</span>;</span><br><span class="line">    img.width = <span class="number">250</span>;</span><br><span class="line">    img.src = ev.target.result;</span><br><span class="line">    vm.appendChild(img);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 完成加载后，将其放入dom元素中</span></span><br><span class="line">    <span class="keyword">if</span> (++loaded === total) &#123;</span><br><span class="line">      <span class="built_in">document</span>.querySelector(<span class="string">&quot;#images&quot;</span>).appendChild(vm);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> file <span class="keyword">of</span> files) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!re.test(file.type)) &#123;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">    reader.onloadstart = <span class="function"><span class="params">ev</span> =&gt;</span> handleLoadStart(ev, file);</span><br><span class="line">    reader.onload = <span class="function"><span class="params">ev</span> =&gt;</span> handleOnload(ev, file);</span><br><span class="line">    <span class="comment">// 读取文件对象</span></span><br><span class="line">    reader.readAsDataURL(file);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span></span><br><span class="line">  .querySelector(<span class="string">&quot;#files&quot;</span>)</span><br><span class="line">  .addEventListener(<span class="string">&quot;change&quot;</span>, handleFileSelect, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="监控读取进度"><a href="#监控读取进度" class="headerlink" title="监控读取进度"></a>监控读取进度</h2><p>在监控读取进度的时候，主要是处理 FileReader 对象上的 <code>onprogress</code> 事件。</p>
+<p>下面的例子，请打开一个较大的文件来查看效果（否则一下就读取完了）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleFileSelect</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> &#123; files &#125; = event.target;</span><br><span class="line">  <span class="keyword">if</span> (!files.length) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> handleLoadStart = <span class="function">(<span class="params">ev, file</span>) =&gt;</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`&gt;&gt;&gt; Start load <span class="subst">$&#123;file.name&#125;</span>`</span>);</span><br><span class="line">  <span class="keyword">const</span> handleProgress = <span class="function">(<span class="params">ev, file</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!ev.lengthComputable) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 计算进度，并且以百分比形式展示</span></span><br><span class="line">    <span class="keyword">const</span> percent = <span class="built_in">Math</span>.round((ev.loaded / ev.total) * <span class="number">100</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`&lt;&lt;&lt; Loding <span class="subst">$&#123;file.name&#125;</span>, progress is <span class="subst">$&#123;percent&#125;</span>%`</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> file <span class="keyword">of</span> files) &#123;</span><br><span class="line">    <span class="keyword">const</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">    reader.onloadstart = <span class="function"><span class="params">ev</span> =&gt;</span> handleLoadStart(ev, file);</span><br><span class="line">    reader.onprogress = <span class="function"><span class="params">ev</span> =&gt;</span> handleProgress(ev, file);</span><br><span class="line">    reader.readAsArrayBuffer(file);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span></span><br><span class="line">  .querySelector(<span class="string">&quot;#files&quot;</span>)</span><br><span class="line">  .addEventListener(<span class="string">&quot;change&quot;</span>, handleFileSelect, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="大文件分片读取"><a href="#大文件分片读取" class="headerlink" title="大文件分片读取"></a>大文件分片读取</h2><p>在对于超大文件，一般采用分片上传的思路解决。文章开头有讲到，File 是 Blob 的一个特例。而 Blob 上有一个<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Blob/slice">slice 方法</a>，通过它，前端就可以实现分片读取大文件的操作。</p>
+<p>为了方便说明，请先准备好一个 txt 文件，文件内容就是：<code>hello world</code>。</p>
+<p>示例代码如下，代码中只读取前 5 个字节，由于每个英文字母占 1 个字节，所以打印结果应该是“hello”。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleFileSelect</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> &#123; files &#125; = event.target;</span><br><span class="line">  <span class="keyword">if</span> (!files.length) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 为了方便说明，这里仅仅读取第一个文件</span></span><br><span class="line">  <span class="keyword">const</span> file = files[<span class="number">0</span>];</span><br><span class="line">  <span class="comment">// 读取前5个字节的内容</span></span><br><span class="line">  <span class="keyword">const</span> blob = file.slice(<span class="number">0</span>, <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">  <span class="comment">// 控制台输出结果应该是：hello</span></span><br><span class="line">  reader.onload = <span class="function"><span class="params">ev</span> =&gt;</span> <span class="built_in">console</span>.log(ev.target.result);</span><br><span class="line">  reader.readAsText(blob);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span></span><br><span class="line">  .querySelector(<span class="string">&quot;#files&quot;</span>)</span><br><span class="line">  .addEventListener(<span class="string">&quot;change&quot;</span>, handleFileSelect, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="拖拽上传"><a href="#拖拽上传" class="headerlink" title="拖拽上传"></a>拖拽上传</h2><p>和前面所述的 File API 相关是完全一样的。唯一需要特殊处理的是文件对象的获取入口改变了。对于<code>&lt;input&gt;</code>标签，监听 onchange 事件，FileList 存放在 event.target.files 中；对于拖拽操作，FileList 存放在拖拽事件的回调函数参数里，通过 event.dataTransfer.files 访问即可。</p>
+<p>需要修改一下 html 代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#container</span> &#123;</span></span><br><span class="line">      width: 300px;</span><br><span class="line">      height: 300px;</span><br><span class="line">      border: 3px dotted red;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;container&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./script.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>脚本文件的代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleDropover</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  event.stopPropagation();</span><br><span class="line">  event.preventDefault();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleDrop</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  event.stopPropagation();</span><br><span class="line">  event.preventDefault();</span><br><span class="line">  <span class="comment">/***** 访问拖拽文件 *****/</span></span><br><span class="line">  <span class="keyword">const</span> files = event.dataTransfer.files;</span><br><span class="line">  <span class="built_in">console</span>.log(files);</span><br><span class="line">  <span class="comment">/**********/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> target = <span class="built_in">document</span>.querySelector(<span class="string">&quot;#container&quot;</span>);</span><br><span class="line">target.addEventListener(<span class="string">&quot;dragover&quot;</span>, handleDropover);</span><br><span class="line">target.addEventListener(<span class="string">&quot;drop&quot;</span>, handleDrop);</span><br></pre></td></tr></table></figure>
+
+<h2 id="后端相关"><a href="#后端相关" class="headerlink" title="后端相关"></a>后端相关</h2><p>后端相关超出了本文的讨论范围，可以参考<a target="_blank" rel="noopener" href="https://github.com/purplebamboo/blog/issues/17">这篇文章</a>。</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Lucas</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://root-lucas.github.io/2019/02/24/qian-duan-zhi-shi-ti-xi/03.html5/html5-fileapi-wen-jian-cao-zuo-shi-zhan/">https://root-lucas.github.io/2019/02/24/qian-duan-zhi-shi-ti-xi/03.html5/html5-fileapi-wen-jian-cao-zuo-shi-zhan/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://root-lucas.github.io" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/HTML5/">HTML5</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2020/10/27/BMjcnJ.md.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/02/28/qian-duan-zhi-shi-ti-xi/03.html5/html5-yuan-sheng-tuo-fang-shi-jian-de-xue-xi-yu-shi-jian/"><img class="prev-cover" src="https://s1.ax1x.com/2020/10/27/BMjN0s.md.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">HTML5原生拖放事件的学习与实践</div></div></a></div><div class="next-post pull-right"><a href="/2019/01/31/she-ji-mo-shi-shou-ce/03.xing-wei-xing-mo-shi/03.mo-ban-mo-shi/"><img class="next-cover" src="https://s1.ax1x.com/2020/10/27/BMjbBd.md.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">设计模式手册之模板模式</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2019/02/28/qian-duan-zhi-shi-ti-xi/03.html5/html5-yuan-sheng-tuo-fang-shi-jian-de-xue-xi-yu-shi-jian/" title="HTML5原生拖放事件的学习与实践"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjN0s.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-02-28</div><div class="title">HTML5原生拖放事件的学习与实践</div></div></a></div><div><a href="/2019/04/20/qian-duan-zhi-shi-ti-xi/03.html5/serviceworker-chi-xian-huan-cun-shi-zhan/" title="ServiceWorker离线缓存实战"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjwt0.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-04-20</div><div class="title">ServiceWorker离线缓存实战</div></div></a></div><div><a href="/2018/10/24/qian-duan-zhi-shi-ti-xi/03.html5/canvas-xue-xi-he-lu-jing-shi-xian/" title="canvas学习和滤镜实现"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjocD.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-10-24</div><div class="title">canvas学习和滤镜实现</div></div></a></div><div><a href="/2019/05/20/qian-duan-zhi-shi-ti-xi/03.html5/websocket-xue-xi-he-qun-liao-shi-xian/" title="WebSocket学习和群聊实现"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BQMj5q.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-05-20</div><div class="title">WebSocket学习和群聊实现</div></div></a></div><div><a href="/2018/08/27/qian-duan-zhi-shi-ti-xi/03.html5/canvas-chi-ping-ji-zhu-yu-fang-da-jing-shi-xian/" title="canvas离屏技术与放大镜实现"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BQQS2T.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-08-27</div><div class="title">canvas离屏技术与放大镜实现</div></div></a></div></div></div></article></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lucas</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="aplayer no-destroy" data-listmaxheight="200px" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script src="/js/background.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>

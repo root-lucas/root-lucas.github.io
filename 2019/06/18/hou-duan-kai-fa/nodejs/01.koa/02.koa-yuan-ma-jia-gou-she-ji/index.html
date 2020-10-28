@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>深入koa源码：架构设计 | Hexo</title><meta name="keywords" content="深入koa源码：架构设计"><meta name="author" content="Lucas"><meta name="copyright" content="Lucas"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="深入koa源码：架构设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入koa源码：架构设计">
+<meta property="og:url" content="https://root-lucas.github.io/2019/06/18/hou-duan-kai-fa/nodejs/01.koa/02.koa-yuan-ma-jia-gou-she-ji/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="深入koa源码：架构设计">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/27/BMjhh6.md.jpg">
+<meta property="article:published_time" content="2019-06-18T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-10-27T11:51:44.958Z">
+<meta property="article:author" content="Lucas">
+<meta property="article:tag" content="Koa">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/10/27/BMjhh6.md.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://root-lucas.github.io/2019/06/18/hou-duan-kai-fa/nodejs/01.koa/02.koa-yuan-ma-jia-gou-she-ji/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-10-27 19:51:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/tags.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#req-%E5%92%8C-res"><span class="toc-number">1.</span> <span class="toc-text">req 和 res</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">上下文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Application"><span class="toc-number">3.</span> <span class="toc-text">Application</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E5%A4%96%E6%9A%B4%E9%9C%B2%E6%8E%A5%E5%8F%A3"><span class="toc-number">3.1.</span> <span class="toc-text">对外暴露接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%96%B0%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-number">3.2.</span> <span class="toc-text">生成新的上下文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%9C%BA%E5%88%B6"><span class="toc-number">3.3.</span> <span class="toc-text">中间件机制</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://s1.ax1x.com/2020/10/27/BMjhh6.md.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">深入koa源码：架构设计</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-06-18T00:00:00.000Z" title="发表于 2019-06-18 08:00:00">2019-06-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-27T11:51:44.958Z" title="更新于 2020-10-27 19:51:44">2020-10-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Node-js/">Node.js</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><blockquote>
+<p>最近读了 koa 的源码，理清楚了架构设计与用到的第三方库。本系列将分为 3 篇，分别介绍 koa 的架构设计和 3 个核心库，最终会手动实现一个简易的 koa。</p>
+</blockquote>
+<p>koa 的实现都在仓库的<code>lib</code>目录下，如下图所示，只有 4 个文件：</p>
+<p><img src="https://static.godbmw.com/img/2019-06-18-deep-in-koa/1.png"></p>
+<p>对于这四个文件，根据用途和封装逻辑，可以分为 3 类：req 和 res，上下文以及 application。</p>
+<h2 id="req-和-res"><a href="#req-和-res" class="headerlink" title="req 和 res"></a>req 和 res</h2><p>对应的文件是：<code>request.js</code> 和 <code>response.js</code>。分别代表着客户端请求信息和服务端返回信息。</p>
+<p>这两个文件在实现逻辑上完全一致。对外暴露都是一个对象，对象上的属性都使用了<code>getter</code>或<code>setter</code>来实现读写控制。</p>
+<h2 id="上下文"><a href="#上下文" class="headerlink" title="上下文"></a>上下文</h2><p>对应的文件是：<code>context.js</code>。存了运行环境的上下文信息，例如<code>cookies</code>。</p>
+<p>除此之外，因为<code>request</code>和<code>response</code>都属于上下文信息，所以通过<code>delegate.js</code>库来实现了对<code>request.js</code>和<code>response.js</code>上所有属性的代理。例如以下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Response delegation.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">delegate(proto, <span class="string">&#x27;response&#x27;</span>).method(<span class="string">&#x27;attachment&#x27;</span>).method(<span class="string">&#x27;redirect&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Request delegation.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">delegate(proto, <span class="string">&#x27;request&#x27;</span>).method(<span class="string">&#x27;acceptsLanguages&#x27;</span>).method(<span class="string">&#x27;acceptsEncodings&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>使用代理的另外一个好处就是：更方便的访问 req 和 res 上的属性。比如在开发 koa 应用的时候，可以通过<code>ctx.headers</code>来读取客户端请求的头部信息，不需要写成<code>ctx.res.headers</code>了（这样写没错）。</p>
+<p><strong>注意</strong>：req 和 res 并不是在<code>context.js</code>中被绑定到上下文的，而是在<code>application</code>被绑定到上下文变量<code>ctx</code>中的。原因是因为每个请求的 req/res 都不是相同的。</p>
+<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><p>对应的文件是: <code>application.js</code>。这个文件的逻辑是最重要的，它的作用主要是：</p>
+<ul>
+<li>  给用户暴露服务启动接口</li>
+<li>  针对每个请求，生成新的上下文</li>
+<li>  处理中间件，将其串联</li>
+</ul>
+<h3 id="对外暴露接口"><a href="#对外暴露接口" class="headerlink" title="对外暴露接口"></a>对外暴露接口</h3><p>使用 koa 时候，我们常通过<code>listen</code>或者<code>callback</code>来启动服务器：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa()</span><br><span class="line">app.listen(<span class="number">3000</span>) <span class="comment">// listen启动</span></span><br><span class="line">http.createServer(app.callback()).listen(<span class="number">3000</span>) <span class="comment">// callback启动</span></span><br></pre></td></tr></table></figure>
+
+<p>这两种启动方法是完全等价的。因为<code>listen</code>方法内部，就调用了<code>callback</code>，并且将它传给<code>http.createServer</code>。接着看一下<code>callback</code>这个方法主要做了什么：</p>
+<ol>
+<li>调用<code>koa-compose</code>将中间件串联起来（下文再讲）。</li>
+<li>生成传给<code>http.createServer()</code>的函数，并且返回。</li>
+</ol>
+<ul>
+<li>  <code>http.createServer</code>传给函数参数的请求信息和返回信息，都被这个函数拿到了。并且传给<code>createContext</code>方法，生成本次请求的上下文。</li>
+<li>  将生成的上下文传给第 1 步生成的中间件调用链，<strong>这就是为什么我们在中间件处理逻辑的时候能够访问<code>ctx</code></strong></li>
+</ul>
+<h3 id="生成新的上下文"><a href="#生成新的上下文" class="headerlink" title="生成新的上下文"></a>生成新的上下文</h3><p>这里上下文的方法对应的是<code>createContext</code>方法。这里我觉得更像语法糖，是为了让 koa 使用者使用更方便。比如以下这段代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// this.request 是 request.js 暴露出来的对象，将其引用保存在context.request中</span></span><br><span class="line"><span class="comment">// 用户可以直接通过 ctx.属性名 来访问对应属性</span></span><br><span class="line"><span class="keyword">const</span> request = (context.request = <span class="built_in">Object</span>.create(<span class="built_in">this</span>.request))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个req是本次请求信息，是由 http.createServer 传递给回调函数的</span></span><br><span class="line">context.req = request.req = response.req = req</span><br></pre></td></tr></table></figure>
+
+<p>读到这里，虽然可以解释 <code>context.headers</code> 是 <code>context.request.headers</code> 的语法糖这类问题。但是感觉怪怪的。就以这个例子，context.headers 访问的是 context.request 上的 headers，而不是本次请求信息上的<code>headers</code>。本次请求信息挂在了<code>context.req</code>上。</p>
+<p>让我们再回到<code>reqeust.js</code>的源码，看到了<code>headers</code>的 getter 实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">get</span> <span class="title">headers</span>() &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.req.headers;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以，<code>context.request.headers</code> 就是 <code>context.request.req.headers</code>。而前面提及的<code>createContext</code>方法中的逻辑，<code>context.reqest</code>上的<code>req</code>属性就是由<code>http</code>模块函数传来的真实请求信息。 <strong>感谢 <a target="_blank" rel="noopener" href="https://github.com/theniceangel">@theniceangel</a> 的评论指正</strong>。</p>
+<p>可以看到，koa 为了让开发者使用方便，在上下文上做了很多工作。</p>
+<h3 id="中间件机制"><a href="#中间件机制" class="headerlink" title="中间件机制"></a>中间件机制</h3><p>中间件的设计是 koa 最重要的部分，实现上用到了<code>koa-compose</code>库来串联中间件，形成“洋葱模型”。关于这个库，放在第二篇关于 koa 核心库的介绍中说明。</p>
+<p>application 中处理中间件的函数是<code>use</code>和<code>handleRequest</code>：</p>
+<ul>
+<li>  <code>use</code>函数：传入<code>async/await</code>函数，并将其放入 application 实例上的<code>middleware</code>数组中。如果传入是 generator，会调用<code>koa-conver</code>库将其转化为<code>async/await</code>函数。</li>
+<li>  <code>handleRequest(ctx, fnMiddleware)</code>函数：传入的<code>fnMiddleware</code>是已经串联好的中间件，函数所做的工作就是再其后再添加一个返回给客户端的函数和错误处理函数。返回给客户端的函数其实就是<code>respond</code>函数，里面通过调用<code>res.end()</code>来向客户端返回信息，整个流程就走完了。</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Lucas</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://root-lucas.github.io/2019/06/18/hou-duan-kai-fa/nodejs/01.koa/02.koa-yuan-ma-jia-gou-she-ji/">https://root-lucas.github.io/2019/06/18/hou-duan-kai-fa/nodejs/01.koa/02.koa-yuan-ma-jia-gou-she-ji/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://root-lucas.github.io" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Koa/">Koa</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2020/10/27/BMjhh6.md.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/06/21/hou-duan-kai-fa/nodejs/01.koa/03.koa-yuan-ma-shou-dong-shi-xian/"><img class="prev-cover" src="https://s1.ax1x.com/2020/10/27/BMj27R.md.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">深入koa源码：手动实现玩具版koa</div></div></a></div><div class="next-post pull-right"><a href="/2019/05/20/qian-duan-zhi-shi-ti-xi/03.html5/websocket-xue-xi-he-qun-liao-shi-xian/"><img class="next-cover" src="https://s1.ax1x.com/2020/10/27/BQMj5q.md.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">WebSocket学习和群聊实现</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2019/06/21/hou-duan-kai-fa/nodejs/01.koa/01.koa-yuan-ma-he-xin-ku-yuan-li/" title="深入koa源码：核心库原理"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BQQpxU.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-06-21</div><div class="title">深入koa源码：核心库原理</div></div></a></div><div><a href="/2019/06/21/hou-duan-kai-fa/nodejs/01.koa/03.koa-yuan-ma-shou-dong-shi-xian/" title="深入koa源码：手动实现玩具版koa"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMj27R.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-06-21</div><div class="title">深入koa源码：手动实现玩具版koa</div></div></a></div><div><a href="/2019/05/07/hou-duan-kai-fa/nodejs/02.ming-ling-xing/01.wan-zhuan-nodejs-ming-ling-xing/" title="玩转 Nodejs 命令行"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjwt0.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-05-07</div><div class="title">玩转 Nodejs 命令行</div></div></a></div></div></div></article></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lucas</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="aplayer no-destroy" data-listmaxheight="200px" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script src="/js/background.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>

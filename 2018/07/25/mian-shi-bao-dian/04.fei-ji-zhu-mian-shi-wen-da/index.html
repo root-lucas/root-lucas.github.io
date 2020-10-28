@@ -1,0 +1,287 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>非技术面试问答 | Hexo</title><meta name="keywords" content="非技术面试问答"><meta name="author" content="Lucas"><meta name="copyright" content="Lucas"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="非技术面试问答">
+<meta property="og:type" content="article">
+<meta property="og:title" content="非技术面试问答">
+<meta property="og:url" content="https://root-lucas.github.io/2018/07/25/mian-shi-bao-dian/04.fei-ji-zhu-mian-shi-wen-da/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="非技术面试问答">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/27/BMjXNt.jpg">
+<meta property="article:published_time" content="2018-07-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-10-27T15:09:51.858Z">
+<meta property="article:author" content="Lucas">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/10/27/BMjXNt.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://root-lucas.github.io/2018/07/25/mian-shi-bao-dian/04.fei-ji-zhu-mian-shi-wen-da/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-10-27 23:09:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/tags.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E4%B8%89%E5%A4%A7%E9%BB%84%E9%87%91%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">面试三大黄金法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E4%BD%A0%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E4%BD%A0%E8%87%AA%E5%B7%B2"><span class="toc-number">2.</span> <span class="toc-text">请你自我介绍一下你自已</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E5%B9%B4%E5%86%85%E7%9A%84%E8%81%8C%E4%B8%9A%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92"><span class="toc-number">3.</span> <span class="toc-text">五年内的职业生涯规划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E6%88%91%E8%AF%84%E4%BB%B7"><span class="toc-number">4.</span> <span class="toc-text">自我评价</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E4%BD%A0%E5%AF%B9%E8%AF%A5%E5%B2%97%E4%BD%8D%E8%81%8C%E8%B4%A3%E7%9A%84%E6%8F%8F%E8%BF%B0"><span class="toc-number">5.</span> <span class="toc-text">说说你对该岗位职责的描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E4%BD%A0%E7%9A%84%E4%BC%98%E7%82%B9%E5%92%8C%E7%BC%BA%E7%82%B9"><span class="toc-number">6.</span> <span class="toc-text">说说你的优点和缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E6%8B%85%E4%BB%BB%E8%AF%A5%E8%81%8C%E4%BD%8D%E7%9A%84%E4%BC%98%E5%8A%BF%E5%92%8C%E5%8A%A3%E5%8A%BF%E5%9C%A8%E9%82%A3"><span class="toc-number">7.</span> <span class="toc-text">你担任该职位的优势和劣势在那</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%93%E4%BD%A0%E9%81%87%E5%88%B0%E6%97%A0%E6%B3%95%E5%9B%9E%E7%AD%94%E7%9A%84%E9%97%AE%E9%A2%98%E6%97%B6"><span class="toc-number">8.</span> <span class="toc-text">当你遇到无法回答的问题时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E6%88%91%E5%BD%95%E7%94%A8%E4%BD%A0%EF%BC%8C%E4%BD%A0%E5%B0%86%E6%80%8E%E6%A0%B7%E5%BC%80%E5%B1%95%E5%B7%A5%E4%BD%9C"><span class="toc-number">9.</span> <span class="toc-text">如果我录用你，你将怎样开展工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E5%AF%B9%E5%8A%A0%E7%8F%AD%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85%EF%BC%9F"><span class="toc-number">10.</span> <span class="toc-text">你对加班如何看待？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E6%9C%80%E5%A4%A7%E7%9A%84%E4%BC%98%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">11.</span> <span class="toc-text">你最大的优点是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E4%BD%A0%E6%9C%80%E5%A4%A7%E7%9A%84%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="toc-number">12.</span> <span class="toc-text">说说你最大的缺点？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E5%AF%B9%E8%96%AA%E8%B5%84%E7%9A%84%E8%A6%81%E6%B1%82%EF%BC%9F"><span class="toc-number">13.</span> <span class="toc-text">你对薪资的要求？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E5%B9%B4%E5%86%85%E4%BD%A0%E7%9A%84%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">14.</span> <span class="toc-text">五年内你的职业规划是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E6%88%91%E4%BB%AC%E5%BD%95%E7%94%A8%E4%BA%86%E4%BD%A0%EF%BC%8C%E4%BD%86%E4%B8%80%E6%AE%B5%E6%97%B6%E9%97%B4%E5%90%8E%E5%8F%91%E7%8E%B0%E4%BD%A0%E4%B8%8D%E9%80%82%E5%90%88%E8%BF%99%E4%B8%AA%E8%81%8C%E4%BD%8D%EF%BC%8C%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="toc-number">15.</span> <span class="toc-text">如果我们录用了你，但一段时间后发现你不适合这个职位，怎么办？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E5%AD%A6%E7%9A%84%E4%B8%93%E4%B8%9A%E4%B8%8D%E5%90%8C%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%81%9A%E6%9C%AC%E8%A1%8C%E5%91%A2%EF%BC%9F"><span class="toc-number">16.</span> <span class="toc-text">你学的专业不同，为什么不做本行呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9%E6%88%91%E4%BB%AC%E5%85%AC%E5%8F%B8%EF%BC%9F"><span class="toc-number">17.</span> <span class="toc-text">为什么选择我们公司？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E4%B8%8A%E7%BA%A7%E6%84%8F%E8%A7%81%E4%B8%8D%E4%B8%80%E8%87%B4%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="toc-number">18.</span> <span class="toc-text">与上级意见不一致怎么办？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%BD%95%E7%94%A8%E4%BD%A0%EF%BC%9F"><span class="toc-number">19.</span> <span class="toc-text">我们为什么要录用你？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%82%A8%E5%9C%A8%E5%89%8D%E4%B8%80%E5%AE%B6%E5%85%AC%E5%8F%B8%E7%9A%84%E7%A6%BB%E8%81%8C%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">20.</span> <span class="toc-text">您在前一家公司的离职原因是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E6%98%AF%E5%BA%94%E5%B1%8A%E6%AF%95%E4%B8%9A%E7%94%9F%EF%BC%8C%E7%BC%BA%E4%B9%8F%E7%BB%8F%E9%AA%8C%EF%BC%8C%E5%A6%82%E4%BD%95%E8%83%BD%E8%83%9C%E4%BB%BB%E8%BF%99%E9%A1%B9%E5%B7%A5%E4%BD%9C%EF%BC%9F"><span class="toc-number">21.</span> <span class="toc-text">你是应届毕业生，缺乏经验，如何能胜任这项工作？</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://s1.ax1x.com/2020/10/27/BMjXNt.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">非技术面试问答</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2018-07-24T16:00:00.000Z" title="发表于 2018-07-25 00:00:00">2018-07-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-27T15:09:51.858Z" title="更新于 2020-10-27 23:09:51">2020-10-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h3 id="面试三大黄金法"><a href="#面试三大黄金法" class="headerlink" title="面试三大黄金法"></a>面试三大黄金法</h3><p>总的来说，回答问题时遵循这三大黄金法则准没错：</p>
+<pre><code>1.你要承担起80%的谈话，留给面试官20%。
+2.不要表现得不自信，也不要说空话、说大话。
+3.凡事要结合自身，举例子+列数字会让你更接地气、更加分哦！</code></pre>
+<p>面试是求职过程中至关重要的一环，无论你简历多么优秀、笔试成绩多高，面试没过，就无法进入心仪的企业。面试题花样虽多，但万变不离其宗，如何把“送命题”变成“送分题”，这就要看你的自我修炼了。</p>
+<h3 id="请你自我介绍一下你自已"><a href="#请你自我介绍一下你自已" class="headerlink" title="请你自我介绍一下你自已"></a>请你自我介绍一下你自已</h3><p>你可能会疑惑：“简历上明明写得很清楚，为什么还要我介绍自己？是 HR 没看简历吗？”</p>
+<p>其实，企业最希望知道的是求职者能否胜任工作，而不是学校那点流水账，可以按照下面这两步去阐述，而且用时不超过 3 分钟。</p>
+<p>① 简单开场：教育经历、基本信息，一到两句就可以了。<br>② 进入这个行业的原因：做过什么实习，参加过什么比赛，有过什么相关实习经历。</p>
+<p><strong>回答提示：</strong>大家好，我是 xxx 我是一名 xxx 开发工程师，我毕业于哪所学校，学的是什么专业，在校期间获得了哪些奖项。假期曾在哪家公司的何种岗位实习，帮助公司在 2 个月内取得了什么成果。通过实习发现，这是最适合我的岗位，我也想迎接新的挑战，所以一直在寻找这方面的工作。了解到贵公司在某领域表现颇佳，想要加入进来，和大家一起努力，做出成绩。</p>
+<h3 id="五年内的职业生涯规划"><a href="#五年内的职业生涯规划" class="headerlink" title="五年内的职业生涯规划"></a>五年内的职业生涯规划</h3><p>第一阶段，我希望在 1 年之内能够在我目前申请的这个职位上沉淀下来，在熟悉公司的情况的基础上，积累最起码的工作经验，把基础打牢。</p>
+<p>在 1-3 年内，在该领域中技术能力和业务能力上不断提高的过程中，能够出色地业绩将上级分派给的项目完成,胜任这份工作能将的更好。</p>
+<p>在 3-5 年内，并为未来的雇主提升看得到的业绩,并逐渐向 xxx 组主管迈进，无论是技术上还是业务能力中都能带领团队中其他的成员一起共同进步,做出能为公司体现自我价值的 150%。努力的向一名某 X 领域专业化的专家前进。</p>
+<p>为了达到我的规划</p>
+<ol>
+<li>解决自我盘点中的劣势和缺点并改进</li>
+<li>时间安排：</li>
+<li>付出行动：计划落实到行动上来</li>
+</ol>
+<p>假如一直没有达到我的规划目标，那么我将按实际情况作出改变，或另制定计划和目标 。</p>
+<h3 id="自我评价"><a href="#自我评价" class="headerlink" title="自我评价"></a>自我评价</h3><pre><code>热爱编程技术,热衷于钻研新型计算机技术，自学能力较强。
+逻辑条理性强，具备良好的沟通能力。
+有较强的业务理解能力，有良好的接口设计风格和编程习惯，对代码及性能优化有自己的理解。
+工作认真且负责，责任心强，抗压能力强，如工作需要会配合工作进行长时间加班</code></pre>
+<h3 id="说说你对该岗位职责的描述"><a href="#说说你对该岗位职责的描述" class="headerlink" title="说说你对该岗位职责的描述"></a>说说你对该岗位职责的描述</h3><ol>
+<li>根据产品需求对各种不同的客户端页面进行设计、开发和维护</li>
+<li>与项目相关人员配合共同完成软件的开发设计工作</li>
+<li>按照项目工作计划，在保证质量的前提下，按时完成开发任务</li>
+<li>协助测试人员进行相关的调试</li>
+</ol>
+<h3 id="说说你的优点和缺点"><a href="#说说你的优点和缺点" class="headerlink" title="说说你的优点和缺点"></a>说说你的优点和缺点</h3><p>优点回答提示：沉着冷静、条理清楚、立场坚定、顽强向上、乐于助人和关心他人、适应能力和幽默感、乐观和友爱。</p>
+<p>要例举具体的优点，如：做事认真、抗压能力强、乐于助人、学习能力强等，然后要举实例证明这也是最重要的一点。</p>
+<p>缺点回答提示：企业喜欢求职者从自己的优点说起，中间加一些小缺点，最后再把问题转回到优点上，突出优点的部分。<br>回答样本：我平时比较爱忘事，然后我通过写便条来提醒我自己什么时候该做什么事。</p>
+<h3 id="你担任该职位的优势和劣势在那"><a href="#你担任该职位的优势和劣势在那" class="headerlink" title="你担任该职位的优势和劣势在那"></a>你担任该职位的优势和劣势在那</h3><p>优势：</p>
+<pre><code>1.有前端领域有三年开发经验，能够熟练处理日常事务和应对紧急事务
+2.单身，并且年富力强，能够专注为公司服务
+3.能够独立的完成各个组件的开发</code></pre>
+<p>在读书期间我一直利用各种机会在这个行业里做兼职。我也发现，实际工作远比书本知识丰富、复杂。但我有较强的责任心、适应能力和学习能力，而且比较勤奋，所以在兼职中均能圆满完成各项工作，从中获取的经验也令我受益非浅。</p>
+<p>劣势：</p>
+<pre><code>1、上班路程相对远些，但会尽快解决这个问题；
+2、其他相关部门需要加深沟通和了解；
+3、需要熟悉公司各项规章制度和工作流程，因为每家公司的规定和工作流程都是不一样的；
+综上，请给我一点时间来适应和融入公司。</code></pre>
+<h3 id="当你遇到无法回答的问题时"><a href="#当你遇到无法回答的问题时" class="headerlink" title="当你遇到无法回答的问题时"></a>当你遇到无法回答的问题时</h3><p>思路：</p>
+<pre><code>1、不要着急回答，低头沉思片刻，以示自己的认真态度与这个问题的难度。
+2、抬头注视着对方，面带愧疚，表明自己在这个问题上只知道皮毛，不知道深意。
+3、适时将问题抛给对方，表示出愿意聆听教导的诚意。
+同一个面试问题并非只有一个答案，而同一个答案并不是在任何面试场合都有效，关键在于应聘者掌握了规律后，对面试的具体情况进行把握，有意识地揣摩面试官提出问题的心理背景，然后投其所好。</code></pre>
+<h3 id="如果我录用你，你将怎样开展工作"><a href="#如果我录用你，你将怎样开展工作" class="headerlink" title="如果我录用你，你将怎样开展工作"></a>如果我录用你，你将怎样开展工作</h3><p>首先听取领导的指示和要求，然后就有关情况进行了解和熟悉，接下来制定一份近期的工作计划并报领导批准，最后根据计划开展工作。</p>
+<h3 id="你对加班如何看待？"><a href="#你对加班如何看待？" class="headerlink" title="你对加班如何看待？"></a>你对加班如何看待？</h3><p>但是你也不能表现出来愿意加班到“天荒地老”，这样可能会让 HR 认为你的工作效率会很低。那么究竟要如何回答才能给你加分呢？</p>
+<p><strong>回答提示:</strong> 如果工作需要，我会义不容辞的加班，我现在单身，没有家庭负担，可以全身心的投入工作。但同时,我也会提高工作效率，尽量减少不必要的加班，这个回答是本人见过最完美的答案了。也确实符合，哈哈哈！</p>
+<h3 id="你最大的优点是什么？"><a href="#你最大的优点是什么？" class="headerlink" title="你最大的优点是什么？"></a>你最大的优点是什么？</h3><p>沉着冷静、条理清楚、乐于助人、适应能力、乐观？能用的好词都用上就 OK 了？</p>
+<p>看准君想说，回答这道题时你千万别飘，不要越夸自己越起劲，其实这些虚词并没什么用，要与实际结合在一起举出例子才能让人信服。</p>
+<p><strong>回答提示：</strong> 我的优点是细心、善于总结。在学校帮忙组织过某某活动，过程中确实出现了问题，这些问题都用了什么手段得到及时的修正，活动结束后做出总结。在下次活动中，我提前做了准备，并拟好了应急方案，数据结果比上次有了怎样的增长。</p>
+<h3 id="说说你最大的缺点？"><a href="#说说你最大的缺点？" class="headerlink" title="说说你最大的缺点？"></a>说说你最大的缺点？</h3><p>请注意以下几点：<br>① 避免谈致命弱点：如拖延症、脾气大、懒、工作效率低。<br>② 避免谈非职业缺点：如感情洁癖、挑食、不会做饭。<br>③ 避免狂妄自大：如“我的缺点就是没有缺点”“过于追求完美”。</p>
+<p><strong>回答提示：</strong> 我公开演讲能力比较差，会特别紧张，不过当谈论到我熟悉的领域时会慢慢放松下来。我也正在锻炼自己这方面的能力，会在公开演讲前会做好充分的准备，并提前演练。</p>
+<p>或是：我的缺点是话太多，经常遭到同学的吐槽，我也注意到自己确实太爱急于表达，这样会忽略掉别人的意见，所以我也正在积极改正，试着让自己多去聆听，这样才会让沟通效率得到提高。</p>
+<h3 id="你对薪资的要求？"><a href="#你对薪资的要求？" class="headerlink" title="你对薪资的要求？"></a>你对薪资的要求？</h3><p>这是 HR 的一个套路：表面上问工资，实际上问定位。有很多时候，HR 不一定真想知道你的理想工资，只是想了解你对自己的定位，从而得知你的真实水平。</p>
+<p><strong>回答提示：</strong> 我对工资没有硬性要求，也觉得能够胜任这份工作，看到贵公司该岗位的薪资标准为 8-10k，也确实在我的考虑范围内。如果非要说一个数字的话，是 9k。</p>
+<p>我对工资没有硬性要求，我相信贵公司在处理我的问题上会友善合理。我注重的是找对工作机会，所以只要条件公平，我不会计较太多。</p>
+<p><strong>看准君小贴士：</strong> 谈薪资时最好别说区间。因为 HR 一定会给到你报价的最低位。若觉得自己没什么竞争优势，建议报成最低价，若觉得还 ok 就取个中间值，若有相关经验、学历背景好，且能够超越其他面试者，可以报成最高价，并说明原因，让公司觉得录用你很超值。</p>
+<h3 id="五年内你的职业规划是什么？"><a href="#五年内你的职业规划是什么？" class="headerlink" title="五年内你的职业规划是什么？"></a>五年内你的职业规划是什么？</h3><p>你千万不要说“目前没有什么想法”“不知道”“我也没有想清楚”，HR 喜欢有进取心的应聘者，此时如果说“不知道”，或许就会使你丧失一个好机会。</p>
+<p><strong>回答提示：</strong> 我在实习过程中发现对某一领域很感兴趣，我思维逻辑能力比较强（结合自身说明），也很适合做何种岗位，目前找工作也都是朝着这个方向去选择，想要在未来的五年时间内能够在这个领域有所作为。</p>
+<h3 id="如果我们录用了你，但一段时间后发现你不适合这个职位，怎么办？"><a href="#如果我们录用了你，但一段时间后发现你不适合这个职位，怎么办？" class="headerlink" title="如果我们录用了你，但一段时间后发现你不适合这个职位，怎么办？"></a>如果我们录用了你，但一段时间后发现你不适合这个职位，怎么办？</h3><p>面试官为什么要问这道题呢？他是想知道你是否有责任心、有韧性，从你的回答中同样也能看出，你是否是真心想要应聘这个职位，而不是盲目投递简历：“今天面试销售，明天面试运营，后天面试产品、技术”。</p>
+<p><strong>回答提示：</strong> 我会分析是哪里出现了问题，如果是自身能力不足，我会不断向前辈学习、讨教经验，同时自己也会在工作之余，在线上听一些其他大厂大佬们的讲课，尽快调整状态、力争减少差距。</p>
+<p>如果面试官深究下去，就接着回答：若是工作了一年多都没有起色，或是发现我更适合某些相关岗位，我会向公司申请内部调岗。</p>
+<h3 id="你学的专业不同，为什么不做本行呢？"><a href="#你学的专业不同，为什么不做本行呢？" class="headerlink" title="你学的专业不同，为什么不做本行呢？"></a>你学的专业不同，为什么不做本行呢？</h3><p>思路： 1.最好不要回答自己学习不好</p>
+<p>答:当初报考的时候不是很了解这个专业,进了大学之后感觉自己兴趣不在这里,我志不在此。我认为我更擅长这个领域,做起来也会更快乐更有动力,非常希望在这个领域有一番作为。在大学期间我经常去该领域的课程去蹭课。</p>
+<h3 id="为什么选择我们公司？"><a href="#为什么选择我们公司？" class="headerlink" title="为什么选择我们公司？"></a>为什么选择我们公司？</h3><p>我十分看好贵公司所在的行业,我认为贵公司十分重视人才,而且这项工作很适合我,相信自己一定能做好。</p>
+<h3 id="与上级意见不一致怎么办？"><a href="#与上级意见不一致怎么办？" class="headerlink" title="与上级意见不一致怎么办？"></a>与上级意见不一致怎么办？</h3><p>1.我会给上级以必要的解释和提醒，在这种情况下，我会服从上级的意见。 2.对于非原则性的问题，我会服从上级的意见，对于涉及公司利益的重大问题,我希望能向更高领导反映</p>
+<h3 id="我们为什么要录用你？"><a href="#我们为什么要录用你？" class="headerlink" title="我们为什么要录用你？"></a>我们为什么要录用你？</h3><p>我符合贵公司的招聘条件，凭我目前掌握的技能、高度的责任感和良好的适应能力及学习能力 ，完全能胜任这份工作。我十分希望能为贵 公司服务，如果贵公司给我这个机会，我一定能成为贵公司的栋梁！</p>
+<h3 id="您在前一家公司的离职原因是什么？"><a href="#您在前一家公司的离职原因是什么？" class="headerlink" title="您在前一家公司的离职原因是什么？"></a>您在前一家公司的离职原因是什么？</h3><p>我离职是因为这家公司倒闭。我在公司工作了三年多，有较深的感情。从去年始，由于市场形势突变，公司的局面急转直下。到眼下这一步我觉得很遗憾，但还要面对显示，重新寻找能发挥我能力的舞台</p>
+<h3 id="你是应届毕业生，缺乏经验，如何能胜任这项工作？"><a href="#你是应届毕业生，缺乏经验，如何能胜任这项工作？" class="headerlink" title="你是应届毕业生，缺乏经验，如何能胜任这项工作？"></a>你是应届毕业生，缺乏经验，如何能胜任这项工作？</h3><p>作为应届毕业生，在工作经验方面的确会有所欠缺，因此在读书期间我一直利用各种机会在这个行业里做兼职。我也发现，实际工作远比书本知识丰富、复杂。但我有较强的责任心、适应能力和学习能力，而且比较勤奋，所以在兼职中均能圆满完成各项工作，从中获取的经验也令我受益非浅。请贵公司放心，学校所学及兼职的工作经验使我一定能胜任这个职位。</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Lucas</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://root-lucas.github.io/2018/07/25/mian-shi-bao-dian/04.fei-ji-zhu-mian-shi-wen-da/">https://root-lucas.github.io/2018/07/25/mian-shi-bao-dian/04.fei-ji-zhu-mian-shi-wen-da/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://root-lucas.github.io" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2020/10/27/BMjXNt.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2018/08/24/qian-duan-zhi-shi-ti-xi/04.offer/qian-duan-mian-shi-zhong-chang-kao-de-yuan-ma-shi-xian/"><img class="prev-cover" src="https://s1.ax1x.com/2020/10/27/BQQEI1.md.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">前端面试中常考的源码实现</div></div></a></div><div class="next-post pull-right"><a href="/2018/07/15/mian-shi-bao-dian/03.vue-wen-ti/"><img class="next-cover" src="https://s1.ax1x.com/2020/10/27/BQQAaR.md.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Vue问题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2018/07/15/mian-shi-bao-dian/03.vue-wen-ti/" title="Vue问题"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BQQAaR.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-07-15</div><div class="title">Vue问题</div></div></a></div><div><a href="/2018/08/24/qian-duan-zhi-shi-ti-xi/04.offer/qian-duan-mian-shi-zhong-chang-kao-de-yuan-ma-shi-xian/" title="前端面试中常考的源码实现"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BQQEI1.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-08-24</div><div class="title">前端面试中常考的源码实现</div></div></a></div><div><a href="/2018/11/24/qian-duan-zhi-shi-ti-xi/04.offer/liu-lan-qi-chang-jian-kao-dian/" title="浏览器常见考点"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMTZ9J.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-11-24</div><div class="title">浏览器常见考点</div></div></a></div><div><a href="/2018/03/09/mian-shi-bao-dian/01.html-yu-css/" title="HTML与CSS"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjdkq.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-03-09</div><div class="title">HTML与CSS</div></div></a></div><div><a href="/2018/07/09/mian-shi-bao-dian/02.javascript-wen-ti/" title="Javascript问题"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjJXQ.md.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-07-09</div><div class="title">Javascript问题</div></div></a></div></div></div></article></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lucas</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="aplayer no-destroy" data-listmaxheight="200px" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script src="/js/background.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>

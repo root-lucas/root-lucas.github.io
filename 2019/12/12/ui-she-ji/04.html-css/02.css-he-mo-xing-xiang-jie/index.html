@@ -1,0 +1,300 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CSS盒模型详解 | Hexo</title><meta name="keywords" content="CSS盒模型详解"><meta name="author" content="Lucas"><meta name="copyright" content="Lucas"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="CSS盒模型详解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS盒模型详解">
+<meta property="og:url" content="https://root-lucas.github.io/2019/12/12/ui-she-ji/04.html-css/02.css-he-mo-xing-xiang-jie/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="CSS盒模型详解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/27/BQQiqJ.md.jpg">
+<meta property="article:published_time" content="2019-12-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-10-27T13:29:10.826Z">
+<meta property="article:author" content="Lucas">
+<meta property="article:tag" content="CSS3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/10/27/BQQiqJ.md.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://root-lucas.github.io/2019/12/12/ui-she-ji/04.html-css/02.css-he-mo-xing-xiang-jie/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-10-27 21:29:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/tags.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">CSS盒模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">1.基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%A0%87%E5%87%86%E6%A8%A1%E5%9E%8B%E5%92%8CIE%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.</span> <span class="toc-text">2.标准模型和IE模型的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-CSS-%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E8%BF%99%E4%BF%A9%E7%A7%8D%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">3.CSS 如何设置这俩种模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-JS-%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E8%8E%B7%E5%8F%96%E7%9B%92%E6%A8%A1%E5%9E%8B%E5%AF%B9%E5%BA%94%E7%9A%84%E5%AE%BD%E5%92%8C%E9%AB%98"><span class="toc-number">5.</span> <span class="toc-text">4.JS 如何设置获取盒模型对应的宽和高</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%A0%B9%E6%8D%AE%E7%9B%92%E6%A8%A1%E5%9E%8B%E8%A7%A3%E9%87%8A%E8%BE%B9%E8%B7%9D%E9%87%8D%E5%8F%A0"><span class="toc-number">6.</span> <span class="toc-text">5.根据盒模型解释边距重叠</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-BFC-%EF%BC%88%E8%BE%B9%E8%B7%9D%E9%87%8D%E5%8F%A0%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">6.BFC （边距重叠的解决方案）</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://s1.ax1x.com/2020/10/27/BQQiqJ.md.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">CSS盒模型详解</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-12-11T16:00:00.000Z" title="发表于 2019-12-12 00:00:00">2019-12-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-27T13:29:10.826Z" title="更新于 2020-10-27 21:29:10">2020-10-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/UI%E8%AE%BE%E8%AE%A1/">UI设计</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="CSS盒模型"><a href="#CSS盒模型" class="headerlink" title="CSS盒模型"></a>CSS盒模型</h2><ul>
+<li>基本概念： 标准模型 + IE 模型</li>
+<li>标准模型和IE模型的区别</li>
+<li>CSS 如何设置这俩种模型</li>
+<li>JS 如何设置获取盒模型对应的宽和高</li>
+<li>实例 （根据盒模型解释边距重叠）</li>
+<li>BFC （边距重叠的解决方案）</li>
+</ul>
+<h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><p>CSS盒模型本质上是一个盒子，封装周围的HTML元素，它包括：边距，边框，填充，和实际内容。</p>
+<p>盒子一共有四部分：</p>
+<ul>
+<li><strong>Margin(外边距)</strong> - 清除边框外的区域，外边距是透明的。（虽然margin不是盒子宽度 但却占用 像素）</li>
+<li><strong>Border(边框)</strong> - 围绕在内边距和内容外的边框。</li>
+<li><strong>Padding(内边距)</strong> - 清除内容周围的区域，内边距是透明的。</li>
+<li><strong>Content(内容)</strong> - 盒子的内容，显示文本和图像。</li>
+</ul>
+<p><strong>根据浏览器的不同将盒子模型分为俩种：</strong> 标准模型和IE模型</p>
+<h2 id="2-标准模型和IE模型的区别"><a href="#2-标准模型和IE模型的区别" class="headerlink" title="2.标准模型和IE模型的区别"></a>2.标准模型和IE模型的区别</h2><p>在做出区别之前我们在这里先了解CSS盒子模型是怎么计算的！</p>
+<p>示例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">25px</span> solid green;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">25px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">25px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>CSS盒子的总宽度 = 内容宽度 + 填充宽度 + 边框宽度 + 外边框宽度；</p>
+<p>CSS盒子的总宽度计算公式 = width + padding-left + padding-right + border-left + border-right + margin-left + margin-right；</p>
+<p>以上面的CSS例子作准：</p>
+<p>让我们自己算算：<code>300px (宽) + 50px (左 + 右填充) + 50px (左 + 右边框) + 50px (左 + 右外边距) = 450px</code></p>
+<p>好了我们知道CSS盒子模型的计算方式我们下面来讲述标准模型和IE模型</p>
+<p><strong>1.W3C盒子模型（标准盒模型）：</strong></p>
+<p><img src="https://img4.mukewang.com/5b73f51e00015f7907740523.jpg" alt="img"></p>
+<p><strong>标准模型</strong>的宽度是：<strong>content的宽度，不包含padding和border</strong>；（内容content是一个独立的部分）</p>
+<p><strong>2.IE盒子模型（怪异盒模型）：</strong></p>
+<p><img src="https://img1.mukewang.com/5b73f53f0001a7ec07610507.jpg" alt="img"></p>
+<p><strong>IE模型</strong>的宽度是：<strong>宽和高是计算 border 和 padding 的</strong>。</p>
+<p>计算方式：width + border + padding</p>
+<h2 id="3-CSS-如何设置这俩种模型"><a href="#3-CSS-如何设置这俩种模型" class="headerlink" title="3.CSS 如何设置这俩种模型"></a>3.CSS 如何设置这俩种模型</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">box-sizing</span><span class="selector-pseudo">:content-box</span>;（标准模型<span class="selector-tag">--</span>浏览器默认）   </span><br><span class="line"><span class="selector-tag">box-sizing</span><span class="selector-pseudo">:border-box</span>;（<span class="selector-tag">IE</span>模型<span class="selector-tag">--IE</span>浏览器专属）</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-JS-如何设置获取盒模型对应的宽和高"><a href="#4-JS-如何设置获取盒模型对应的宽和高" class="headerlink" title="4.JS 如何设置获取盒模型对应的宽和高"></a>4.JS 如何设置获取盒模型对应的宽和高</h2><p>获取盒模型的方式有四种：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>dom.style.width/height(只能取内联样式的宽和高,支持读写)</span><br><span class="line">    ----getElementById(<span class="string">&#x27;div&#x27;</span>).style.width/height</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>dom.currentStyle.width/height</span><br><span class="line">(渲染之后的宽高--只有IE支持)</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span><span class="built_in">window</span>.getComputedStyle(dom).width/height</span><br><span class="line">(渲染之后的宽高--兼容性通用型更好一些,包括了内联样式、嵌入样式和外部样式,支持读取但不支持写入)</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span>dom.getBoundingClientRect().width/height</span><br><span class="line">(适用场景：计算一个元素的绝对位置；这个绝对位置根据视窗</span><br><span class="line">也就是左上角这个位置的绝对位置) 这个方法可以拿到四个元素：left top width height)</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-根据盒模型解释边距重叠"><a href="#5-根据盒模型解释边距重叠" class="headerlink" title="5.根据盒模型解释边距重叠"></a>5.根据盒模型解释边距重叠</h2><p><strong>1.父子元素边距重叠</strong></p>
+<p>已知子元素高度为100px，距父元素顶部10px，计算父元素的高度？</p>
+<ol>
+<li>因为父元素和子元素存在边距重叠(margin-top)，所以父元素高度为100px；</li>
+<li>父元素设置了overflow：hidden；之后父元素高度为110px；</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    *&#123;<span class="attribute">margin</span>: <span class="number">0</span>; <span class="attribute">padding</span>: <span class="number">0</span>;&#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.parent</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">background</span>: <span class="selector-tag">blue</span>;  <span class="comment">/*若是不加overflow则父背景与子背景重叠,被覆盖*/</span></span></span><br><span class="line"><span class="css">        <span class="comment">/* overflow: hidden; 父子元素边距重叠 */</span></span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="css">    <span class="selector-class">.child</span>&#123;</span></span><br><span class="line">        height: 100px;</span><br><span class="line">        margin-top: 10px;</span><br><span class="line">        background: red;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">&#x27;parent&#x27;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">article</span> <span class="attr">class</span>=<span class="string">&#x27;child&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>overflow:hidden;</code> 解决了重叠问题；相当于给父元素创建了一个BFC（块级格式化上下文，后面会讲）</p>
+<p><strong>2.兄弟元素重叠</strong></p>
+<p>若是兄弟元素都存在上边距或者下边距，发生重叠则取最大值；</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">        *&#123;<span class="attribute">margin</span>: <span class="number">0</span>; <span class="attribute">padding</span>: <span class="number">0</span>;&#125;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.brother1</span>&#123;</span></span><br><span class="line">            height: 100px;</span><br><span class="line"><span class="css">            <span class="selector-tag">margin-bottom</span>: 20<span class="selector-tag">px</span>;    <span class="comment">/*与下面的元素重叠,20px较10px大则取最大值*/</span></span></span><br><span class="line">            background: blue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="css">        <span class="selector-class">.brother2</span>&#123;</span></span><br><span class="line">            height: 100px;</span><br><span class="line">            margin-top: 10px;</span><br><span class="line">            background: red;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">&#x27;brother1&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">&#x27;brother2&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>borther1</code>元素下边距为20px，下面那个<code>brother2</code>元素上边距为10px，因此发生了重叠，根据两者之间取最大值则会合并成20px。大多数边距重叠都会发生在兄弟重叠。</p>
+<p><strong>3.空元素</strong></p>
+<p>如果一个无内容空元素设置上下边距，其自身上下边距也会产生重叠，从margin-top\margin-bottom取一个最大值，作为它的一个边距。   </p>
+<h2 id="6-BFC-（边距重叠的解决方案）"><a href="#6-BFC-（边距重叠的解决方案）" class="headerlink" title="6.BFC （边距重叠的解决方案）"></a>6.BFC （边距重叠的解决方案）</h2><p>BFC是块级元素格式化上下文，IFC是内联元素格式化上下文。</p>
+<p><strong>BFC的原理（渲染规则）：</strong></p>
+<ol>
+<li>在BFC这个元素的垂直方向的边距会发生重叠</li>
+<li>BFC的区域不会与浮动元素的相重叠（清除浮动布局）</li>
+<li>BFC在页面是一个独立的容器，外面的元素不会影响它里面元素，反过来一样</li>
+<li>计算BFC高度的时候浮动元素也会参与计算</li>
+</ol>
+<p><strong>如何创建BFC？</strong></p>
+<ul>
+<li>overflow 不为 visible</li>
+<li>float值不为 none（只要有浮动，当前元素就创建了BFC）</li>
+<li>position不为 static 和relative</li>
+<li>display为 inline-block, table-cell, table-caption, flex, inline-flex</li>
+</ul>
+<p><strong>BFC使用场景</strong></p>
+<ol>
+<li>在写页面布局的时候不想有这个重叠，就给子元素增加一个父元素，<strong>父元素创建一个BFC就能解决问题；</strong></li>
+<li>布局相关的BFC应用:</li>
+</ol>
+<p><strong>应用1：BFC垂直方向边距重叠</strong></p>
+<p>垂直方向三个p元素，p{margin:5px auto 25px},之后第二个第三个的上边距变成25px；发生了边距重叠，取得的是最大值；如果不想重叠，就需要再那个元素在加一个父级div，<strong>对父级div创建BFC（overflow：hidden）</strong></p>
+<p><strong>应用2：BFC不与float重叠</strong></p>
+<p>两栏布局，左边宽度固定左浮动height：100px，右边自适应height：120px;右边的高度增高的时候，右边的背景色已经侵染到了左侧，（当布局的时候左侧没有float元素，它依然会往左侵染），解决方法：<strong>给右侧元素创建一个BFC（overflow：atuo）</strong></p>
+<p><strong>应用3：清除浮动；（BFC子元素即使是float元素也会参与计算）</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.layout&#123;<span class="attr">background</span>:orange&#125;</span><br><span class="line">.float&#123;<span class="attr">float</span>:left;&#125;</span><br><span class="line"></span><br><span class="line">----&gt;只看到.float的内容没看到父级的背景颜色；父级高度为<span class="number">0</span>；</span><br><span class="line">----&gt;一个普通的元素当子元素是float元素的时候，它的高度计算没有包含进来；</span><br><span class="line"></span><br><span class="line">.layout&#123;<span class="attr">background</span>:orange;overflow:hidden;&#125;</span><br><span class="line">.float&#123;<span class="attr">float</span>:left;&#125;</span><br><span class="line"></span><br><span class="line">----&gt;给layout设置BFC之后，float内容有了背景颜色，父级有了高度；</span><br><span class="line">----&gt;当把外层元素设为BFC的时候，子元素的浮动元素也会参与父级的高度计算；</span><br></pre></td></tr></table></figure>
+
+<p>演示代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">        *&#123;<span class="attribute">margin</span>: <span class="number">0</span>;<span class="attribute">padding</span>: <span class="number">0</span>;&#125;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 1.BFC 垂直方向边距重叠 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span> <span class="attr">id</span>=<span class="string">&quot;margin&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">            <span class="selector-id">#margin</span>&#123;</span></span><br><span class="line">                background: palegoldenrod;</span><br><span class="line">                overflow: hidden;</span><br><span class="line">            &#125;</span><br><span class="line"><span class="css">            <span class="selector-id">#margin</span>&gt;<span class="selector-tag">p</span>&#123;</span></span><br><span class="line">                margin-bottom: 45px;</span><br><span class="line">                background: red;</span><br><span class="line">                border: 1px solid blue;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;overflow: hidden;&quot;</span>&gt;</span>   <span class="comment">&lt;!-- 不产生边距重叠 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span>2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>3<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--2.BFC 不与float重叠 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span> <span class="attr">id</span>=<span class="string">&quot;layout&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">            <span class="selector-id">#layout</span>&#123;</span></span><br><span class="line">                background: red;</span><br><span class="line">            &#125;</span><br><span class="line"><span class="css">            <span class="selector-id">#layout</span> <span class="selector-class">.left</span>&#123;</span></span><br><span class="line">                float: left;</span><br><span class="line">                width: 100px;</span><br><span class="line">                height: 100px;</span><br><span class="line">                background: pink;</span><br><span class="line">            &#125;</span><br><span class="line"><span class="css">            <span class="selector-id">#layout</span> <span class="selector-class">.right</span>&#123;</span></span><br><span class="line">                height: 110px;</span><br><span class="line"><span class="css">                <span class="selector-tag">background</span>: <span class="selector-id">#ccc</span>;</span></span><br><span class="line">                overflow: auto;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;left&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;right&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 3.BFC 子元素即使是float也会参与高度计算 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span> <span class="attr">id</span>=<span class="string">&quot;float&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">            <span class="selector-id">#float</span>&#123;</span></span><br><span class="line">                background: red;</span><br><span class="line">                overflow: auto;</span><br><span class="line"><span class="css">                <span class="comment">/* float: left; */</span></span></span><br><span class="line">            &#125;</span><br><span class="line"><span class="css">            <span class="selector-id">#float</span> <span class="selector-class">.float</span>&#123;</span></span><br><span class="line">                float: left;</span><br><span class="line">                font-size: 30px;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;float&quot;</span>&gt;</span>我是浮动元素<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>应用4：BFC的元素在计算高度的时候会考虑内部子元素float</strong><br>（子元素是float也不影响父元素高度的计算，它的内容页会被参与进来）</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Lucas</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://root-lucas.github.io/2019/12/12/ui-she-ji/04.html-css/02.css-he-mo-xing-xiang-jie/">https://root-lucas.github.io/2019/12/12/ui-she-ji/04.html-css/02.css-he-mo-xing-xiang-jie/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://root-lucas.github.io" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CSS3/">CSS3</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2020/10/27/BQQiqJ.md.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/01/14/qian-duan-zhi-shi-ti-xi/05.qi-ta-wen-zhang/qian-duan-cuo-wu-jian-kong/"><img class="prev-cover" src="https://s2.ax1x.com/2019/05/27/VZWhn0.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">前端错误监控</div></div></a></div><div class="next-post pull-right"><a href="/2019/12/12/ui-she-ji/04.html-css/03.dom-shi-jian-xiang-jie/"><img class="next-cover" src="https://s1.ax1x.com/2020/10/27/BMvCuQ.md.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">DOM事件详解</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2018/06/05/ui-she-ji/01.css3/01.border-sizing-shu-xing-xiang-jie-he-ying-yong/" title="border-sizing属性详解和应用"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjyX4.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-06-05</div><div class="title">border-sizing属性详解和应用</div></div></a></div><div><a href="/2019/03/20/ui-she-ji/01.css3/02.flex-shang-shou-yu-shi-zhan/" title="Flex上手与实战"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjocD.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-03-20</div><div class="title">Flex上手与实战</div></div></a></div><div><a href="/2019/03/19/ui-she-ji/01.css3/03.ni-liao-jie-css3-de-nth-child-ma/" title="你了解css3的nth-child吗"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjN0s.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-03-19</div><div class="title">你了解css3的nth-child吗</div></div></a></div><div><a href="/2018/05/29/ui-she-ji/02.scss/01.ji-chu-pei-zhi-yu-yun-xing/" title="基础：配置与运行"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjG6g.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-05-29</div><div class="title">基础：配置与运行</div></div></a></div><div><a href="/2018/05/29/ui-she-ji/02.scss/02.jin-jie-ji-cheng-zhan-wei-fu-he-hun-he-hong/" title="进阶：继承、占位符和混合宏"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BQMXan.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-05-29</div><div class="title">进阶：继承、占位符和混合宏</div></div></a></div><div><a href="/2019/05/17/ui-she-ji/02.scss/03.yi-wen-zhu-bu-ti-huan-sass/" title="「译文」逐步替换Sass"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BQQAaR.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-05-17</div><div class="title">「译文」逐步替换Sass</div></div></a></div></div></div></article></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lucas</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="aplayer no-destroy" data-listmaxheight="200px" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script src="/js/background.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>

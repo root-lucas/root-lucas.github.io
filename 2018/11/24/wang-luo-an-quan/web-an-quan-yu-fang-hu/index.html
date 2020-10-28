@@ -1,0 +1,265 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Web安全与防护 | Hexo</title><meta name="keywords" content="Web安全与防护"><meta name="author" content="Lucas"><meta name="copyright" content="Lucas"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="Web安全与防护">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web安全与防护">
+<meta property="og:url" content="https://root-lucas.github.io/2018/11/24/wang-luo-an-quan/web-an-quan-yu-fang-hu/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Web安全与防护">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/27/BQQS2T.jpg">
+<meta property="article:published_time" content="2018-11-24T13:43:28.000Z">
+<meta property="article:modified_time" content="2020-10-27T08:00:41.388Z">
+<meta property="article:author" content="Lucas">
+<meta property="article:tag" content="Web安全">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/10/27/BQQS2T.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://root-lucas.github.io/2018/11/24/wang-luo-an-quan/web-an-quan-yu-fang-hu/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-10-27 16:00:41'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/tags.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-SQL-%E6%B3%A8%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">1. SQL 注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E9%98%B2%E8%8C%83"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 防范</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-XSS%EF%BC%9A%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB"><span class="toc-number">2.</span> <span class="toc-text">2. XSS：跨站脚本攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E9%98%B2%E8%8C%83"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 防范</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-CSRF-%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0"><span class="toc-number">3.</span> <span class="toc-text">3. CSRF: 跨站请求伪造</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E9%98%B2%E8%8C%83"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 防范</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB"><span class="toc-number">4.</span> <span class="toc-text">4. 中间人攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%8E%9F%E7%90%86%E5%92%8C%E9%98%B2%E8%8C%83"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 原理和防范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-https-%E4%BA%A4%E4%BA%92%E7%BB%86%E8%8A%82"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 https 交互细节</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-DDoS"><span class="toc-number">5.</span> <span class="toc-text">5. DDoS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81"><span class="toc-number">6.</span> <span class="toc-text">6. 点击劫持</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://s1.ax1x.com/2020/10/27/BQQS2T.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">Web安全与防护</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2018-11-24T13:43:28.000Z" title="发表于 2018-11-24 21:43:28">2018-11-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-27T08:00:41.388Z" title="更新于 2020-10-27 16:00:41">2020-10-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="1-SQL-注入"><a href="#1-SQL-注入" class="headerlink" title="1. SQL 注入"></a>1. SQL 注入</h2><h3 id="1-1-介绍"><a href="#1-1-介绍" class="headerlink" title="1.1 介绍"></a>1.1 介绍</h3><p>例如做一个系统的登录界面，输入用户名和密码，提交之后，后端直接拿到数据就拼接 SQL 语句去查询数据库。如果在输入时进行了恶意的 SQL 拼装，那么最后生成的 SQL 就会有问题。</p>
+<p>比如后端拼接的 SQL 字符串是：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">WHERE</span> username = <span class="string">&#x27;user&#x27;</span> <span class="keyword">AND</span> <span class="keyword">password</span> = <span class="string">&#x27;pwd&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果不做任何防护，直接拼接前端的字符，就会出现问题。比如前端传来的<code>user</code>字段是以<code>&#39;#</code>结尾，<code>password</code>随意：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">WHERE</span> username = <span class="string">&#x27;user&#x27;</span><span class="comment">#&#x27;AND password = &#x27;pwd&#x27;;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>密码验证部分直接被注释掉了</strong>。</p>
+<h3 id="1-2-防范"><a href="#1-2-防范" class="headerlink" title="1.2 防范"></a>1.2 防范</h3><p>后端应该对于字符串有转义，可以借助成熟的库的 API 来拼接命令，而不是自己手动拼接。</p>
+<h2 id="2-XSS：跨站脚本攻击"><a href="#2-XSS：跨站脚本攻击" class="headerlink" title="2. XSS：跨站脚本攻击"></a>2. XSS：跨站脚本攻击</h2><h3 id="2-1-介绍"><a href="#2-1-介绍" class="headerlink" title="2.1 介绍"></a>2.1 介绍</h3><p>原理上就是黑客通过某种方式（发布文章、发布评论等）将一段特定的 JS 代码隐蔽地输入进去。然后别人再看这篇文章或者评论时，之前注入的这段 JS 代码就执行了。<strong>JS 代码一旦执行，那可就不受控制了，因为它跟网页原有的 JS 有同样的权限</strong>，例如可以获取 server 端数据、可以获取 cookie 等。</p>
+<p>比如早些年社交网站经常爆出 XSS 蠕虫，通过发布的文章内插入 JS，用户访问了感染不安全 JS 注入的文章，会自动重新发布新的文章，这样的文章会通过推荐系统进入到每个用户的文章列表面前，很快就会造成大规模的感染。</p>
+<h3 id="2-2-防范"><a href="#2-2-防范" class="headerlink" title="2.2 防范"></a>2.2 防范</h3><p>前端对用户输入内容进行验证，如果有风险，就进行替换。例如：<code>&amp;</code> 替换为 <code>&amp;amp;</code></p>
+<h2 id="3-CSRF-跨站请求伪造"><a href="#3-CSRF-跨站请求伪造" class="headerlink" title="3. CSRF: 跨站请求伪造"></a>3. CSRF: 跨站请求伪造</h2><h3 id="3-1-介绍"><a href="#3-1-介绍" class="headerlink" title="3.1 介绍"></a>3.1 介绍</h3><p>CSRF 是借用了当前操作者的权限来偷偷地完成某个操作，而不是拿到用户的信息。比如获取<code>cookie</code>、破解<code>token</code>加密等等。</p>
+<h3 id="3-2-防范"><a href="#3-2-防范" class="headerlink" title="3.2 防范"></a>3.2 防范</h3><ul>
+<li>敏感数据不使用<code>GET</code></li>
+<li>前后端约定加密方式和密钥，<strong>并且经常更新密钥</strong></li>
+<li>对 IP 限制一定时间内的访问次数</li>
+<li>设置网站白名单</li>
+</ul>
+<h2 id="4-中间人攻击"><a href="#4-中间人攻击" class="headerlink" title="4. 中间人攻击"></a>4. 中间人攻击</h2><h3 id="4-1-原理和防范"><a href="#4-1-原理和防范" class="headerlink" title="4.1 原理和防范"></a>4.1 原理和防范</h3><p>它也被称为浏览器劫持、web 劫持。可以往 web 中添加一些第三方厂商的 dom 元素，或者重定向到另外的钓鱼站。</p>
+<p>常用手段有 2 种：</p>
+<ol>
+<li>网络报文传输过程中对其截获、篡改（过程中）</li>
+<li>客户端发起 http 请求之前或者得到 response 之后对数据篡改（开头、结尾）</li>
+</ol>
+<p>防范方式就是使用 <code>https</code> 协议，一套在传输层 TCP 和应用层 HTTP 之间的 TLS 协议。</p>
+<h3 id="4-2-https-交互细节"><a href="#4-2-https-交互细节" class="headerlink" title="4.2 https 交互细节"></a>4.2 https 交互细节</h3><p>以下内容摘自：<a target="_blank" rel="noopener" href="https://toutiao.io/posts/ju2uhb/preview">《深入理解 Web 安全：中间人攻击》</a></p>
+<p>简单地说，一次 https 网络请求在建立开始阶段具有以下的一个“握手”流程：</p>
+<p>首先，客户端向服务端发起一个基于 https 协议的网络请求，这相当于告诉它：“我希望得到一个安全加密的网页，你可别直接把明文扔过来！”</p>
+<p>服务端接收到这个网络请求后，了解到客户端的提出的这种加密的诉求，于是先把一个<em>公钥</em>和网站的 https 证书发送给客户端。</p>
+<p>客户端随后要做两件事，一是验证证书的合法性与时效性，如果颁发证书的机构客户端这边不承认或者证书中标明的过期时间已经过了，这都会导致客户端浏览器报出那个红叉子，chrome 浏览器还会直接拦截掉这个请求，除非用户点详情-&gt;继续，否则不会与该网站的服务器进行后续沟通，这相当于一个强交互的提醒，告诉用户“我拿到的证书有问题，这网站可能是个冒牌货，你要看仔细了！”</p>
+<p>如果以上两步验证无误，那么客户端会先生成一个<em>随机秘钥</em>，利用刚刚拿到的<em>公钥</em>给自己要访问的 url+这个<em>随机秘钥</em>进行加密，把密文再次发往服务端。</p>
+<p>当服务端收到客户端传过来的密文之后，会通过自己手里持有的一个<em>私钥</em>对密文进行解密。<em>注意，这里提到的私钥和刚刚的公钥是一对儿秘钥，这是一个典型的非对称加密，加密和解密分别使用两把不同的钥匙，这也保证了在此场景下的安全性。</em></p>
+<p>此时，服务端要将真正的 html 网页文本发给你了，它会利用解密得到的<em>随机秘钥</em>对网页文本内容进行加密，将密文发给客户端。</p>
+<p>客户端拿到真正的 html 报文之后，就用自己刚才生成的那个<em>随机秘钥</em>进行解密，然后就得到了跟普通 http 请求时一样的一个网页文本了，在这之后就像往常那样解析、渲染、加载更多资源……</p>
+<p>对于真正要传输的 html 文本，实际上是使用刚刚提到的这个<em>随机秘钥</em>进行了一次对称加密，因为上锁和开锁的钥匙实际上是一模一样的。</p>
+<h2 id="5-DDoS"><a href="#5-DDoS" class="headerlink" title="5. DDoS"></a>5. DDoS</h2><p>攻击者在短时间内发起大量请求，利用协议的缺点，耗尽服务器的资源，导致网站无法响应正常的访问。</p>
+<p>我之前也经历过！</p>
+<p>防范的措施，或者称之为补救措施更合适，有以下建议：</p>
+<ol>
+<li>借助云厂商 CDN：静态流量的资源还得自己掏钱</li>
+<li>IP 黑/白名单：<code>nginx</code> 和 <code>apache</code> 都可以设置</li>
+<li>HTTP 请求信息：根据 UserAgent 等字段的信息</li>
+<li>静态化：博客网站直接挂在 github 等平台上</li>
+<li>备份网站：阮一峰老师的网站被 ddos 的时候就有个备份页面</li>
+<li>其他：弹性 ip、免费的 DNSpod、国内外分流、高防 ip 等等</li>
+</ol>
+<h2 id="6-点击劫持"><a href="#6-点击劫持" class="headerlink" title="6. 点击劫持"></a>6. 点击劫持</h2><p>点击劫持是一种视觉欺骗的攻击手段。攻击者通过 <code>iframe</code> 嵌套嵌入被攻击网页，诱导用户点击。如果用户之前登陆过被攻击网页，那么浏览器可能保存了信息，因此可以以用户的身份实现操作。</p>
+<p>js 防范手段：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span> <span class="attr">id</span>=<span class="string">&quot;click-jack&quot;</span>&gt;</span></span><br><span class="line">    html &#123;</span><br><span class="line">      display: none !important;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 判断当前页面是否是iframe加载</span></span></span><br><span class="line">    if (self === top) &#123;</span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> style = <span class="built_in">document</span>.getElementById(<span class="string">&quot;click-jack&quot;</span>);</span></span><br><span class="line"><span class="javascript">      <span class="built_in">document</span>.body.removeChild(style);</span></span><br><span class="line"><span class="javascript">    &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line">      top.location = self.location;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Lucas</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://root-lucas.github.io/2018/11/24/wang-luo-an-quan/web-an-quan-yu-fang-hu/">https://root-lucas.github.io/2018/11/24/wang-luo-an-quan/web-an-quan-yu-fang-hu/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://root-lucas.github.io" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2020/10/27/BQQS2T.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2018/11/25/she-ji-mo-shi-shou-ce/03.xing-wei-xing-mo-shi/01.ming-ling-mo-shi/"><img class="prev-cover" src="https://s1.ax1x.com/2020/10/27/BMjN0s.md.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">设计模式手册之命令模式</div></div></a></div><div class="next-post pull-right"><a href="/2018/11/24/qian-duan-zhi-shi-ti-xi/04.offer/liu-lan-qi-chang-jian-kao-dian/"><img class="next-cover" src="https://s1.ax1x.com/2020/10/27/BMTZ9J.md.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">浏览器常见考点</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2018/09/24/wang-luo-an-quan/xss-gong-ji-shi-zhan/" title="XSS攻击实战"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BQMqbj.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-09-24</div><div class="title">XSS攻击实战</div></div></a></div></div></div></article></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lucas</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="aplayer no-destroy" data-listmaxheight="200px" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script src="/js/background.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>

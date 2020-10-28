@@ -1,0 +1,333 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JavaScript基础知识梳理(上) | Hexo</title><meta name="keywords" content="Javascript"><meta name="author" content="Lucas"><meta name="copyright" content="Lucas"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="👇 内容速览 👇    普通函数和箭头函数的this   原始数据类型及其判断和转化方法   深浅拷贝及实现   JS 事件模型   常见的高阶函数  普通函数和箭头函数的 this还是一道经典题目，下面的这段代码的输出是什么？（为了方便解释，输出放在了注释中） 1234567891011121314151617181920function fn() &amp;#123;    console.log">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript基础知识梳理(上)">
+<meta property="og:url" content="https://root-lucas.github.io/2019/03/26/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-ji-chu-zhi-shi-shu-li-shang/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="👇 内容速览 👇    普通函数和箭头函数的this   原始数据类型及其判断和转化方法   深浅拷贝及实现   JS 事件模型   常见的高阶函数  普通函数和箭头函数的 this还是一道经典题目，下面的这段代码的输出是什么？（为了方便解释，输出放在了注释中） 1234567891011121314151617181920function fn() &amp;#123;    console.log">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/27/BMjocD.md.jpg">
+<meta property="article:published_time" content="2019-03-26T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-10-27T07:51:20.034Z">
+<meta property="article:author" content="Lucas">
+<meta property="article:tag" content="Javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/10/27/BMjocD.md.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://root-lucas.github.io/2019/03/26/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-ji-chu-zhi-shi-shu-li-shang/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-10-27 15:51:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/tags.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%92%8C%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E7%9A%84-this"><span class="toc-number">1.</span> <span class="toc-text">普通函数和箭头函数的 this</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%88%A4%E6%96%AD%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">原始数据类型和判断方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">原始类型转化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="toc-number">4.</span> <span class="toc-text">深拷贝和浅拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS-%E4%BA%8B%E4%BB%B6%E6%B5%81"><span class="toc-number">5.</span> <span class="toc-text">JS 事件流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%92%8C%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7"><span class="toc-number">5.1.</span> <span class="toc-text">事件冒泡和事件捕获</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DOM0-%E7%BA%A7-%E5%92%8C-DOM2-%E7%BA%A7"><span class="toc-number">5.2.</span> <span class="toc-text">DOM0 级 和 DOM2 级</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text">常见的高阶函数</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://s1.ax1x.com/2020/10/27/BMjocD.md.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">JavaScript基础知识梳理(上)</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-03-26T00:00:00.000Z" title="发表于 2019-03-26 08:00:00">2019-03-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-27T07:51:20.034Z" title="更新于 2020-10-27 15:51:20">2020-10-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>👇 内容速览 👇</p>
+<ul>
+<li>  普通函数和箭头函数的<code>this</code></li>
+<li>  原始数据类型及其判断和转化方法</li>
+<li>  深浅拷贝及实现</li>
+<li>  JS 事件模型</li>
+<li>  常见的高阶函数</li>
+</ul>
+<h3 id="普通函数和箭头函数的-this"><a href="#普通函数和箭头函数的-this" class="headerlink" title="普通函数和箭头函数的 this"></a>普通函数和箭头函数的 this</h3><p>还是一道经典题目，下面的这段代码的输出是什么？（为了方便解释，输出放在了注释中）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>) <span class="comment">// 1. &#123;a: 100&#125;</span></span><br><span class="line">    <span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">    ;(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>) <span class="comment">// 2. Window</span></span><br><span class="line">    &#125;)()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 普通 JS</span></span><br><span class="line">    arr.map(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>) <span class="comment">// 3. Window</span></span><br><span class="line">        <span class="keyword">return</span> item + <span class="number">1</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 箭头函数</span></span><br><span class="line">    <span class="keyword">let</span> brr = arr.map(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;es6&#x27;</span>, <span class="built_in">this</span>) <span class="comment">// 4. &#123;a: 100&#125;</span></span><br><span class="line">        <span class="keyword">return</span> item + <span class="number">1</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">fn.call(&#123; <span class="attr">a</span>: <span class="number">100</span> &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>其实诀窍很简单，常见的基本是 3 种情况：es5 普通函数、es6 的箭头函数以及通过<code>bind</code>改变过上下文返回的新函数。</p>
+<p>① <strong>es5 普通函数</strong>：</p>
+<ul>
+<li>  函数被直接调用，上下文一定是<code>window</code></li>
+<li>  函数作为对象属性被调用，例如：<code>obj.foo()</code>，上下文就是对象本身<code>obj</code></li>
+<li>  通过<code>new</code>调用，<code>this</code>绑定在返回的实例上</li>
+</ul>
+<p>② <strong>es6 箭头函数</strong>： 它本身没有<code>this</code>，会沿着作用域向上寻找，直到<code>global</code> / <code>window</code>。请看下面的这段代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> inner = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="built_in">this</span>.a)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    inner()()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">run.bind(&#123; <span class="attr">a</span>: <span class="number">1</span> &#125;)() <span class="comment">// Output: 1</span></span><br></pre></td></tr></table></figure>
+
+<p>③ <strong>bind 绑定上下文返回的新函数</strong>：就是被第一个 bind 绑定的上下文，而且 bind 对“箭头函数”无效。请看下面的这段代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">run.bind(&#123; <span class="attr">a</span>: <span class="number">1</span> &#125;)() <span class="comment">// output: 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 多次bind，上下文由第一个bind的上下文决定</span></span><br><span class="line">run.bind(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;).bind(&#123; <span class="attr">a</span>: <span class="number">1</span> &#125;)() <span class="comment">// output: 2</span></span><br></pre></td></tr></table></figure>
+
+<p>最后，再说说这几种方法的优先级：new &gt; bind &gt; 对象调用 &gt; 直接调用</p>
+<p>至此，这道题目的输出就说可以解释明白了。</p>
+<h3 id="原始数据类型和判断方法"><a href="#原始数据类型和判断方法" class="headerlink" title="原始数据类型和判断方法"></a>原始数据类型和判断方法</h3><blockquote>
+<p>题目：JS 中的原始数据类型？</p>
+</blockquote>
+<p>ECMAScript 中定义了 7 种原始类型：</p>
+<ul>
+<li>  Boolean</li>
+<li>  String</li>
+<li>  Number</li>
+<li>  Null</li>
+<li>  Undefined</li>
+<li>  Symbol（新定义）</li>
+<li>  BigInt（新定义）</li>
+</ul>
+<p><strong>注意</strong>：原始类型不包含 Object 和 Function</p>
+<blockquote>
+<p>题目：常用的判断方法？</p>
+</blockquote>
+<p>在进行判断的时候有<code>typeof</code>、<code>instanceof</code>。对于数组的判断，使用<code>Array.isArray()</code>：</p>
+<ul>
+<li><p>typeof：</p>
+<ul>
+<li>  typeof 基本都可以正确判断数据类型</li>
+<li>  <code>typeof null</code>和<code>typeof [1, 2, 3]</code>均返回”object”</li>
+<li>  ES6 新增：<code>typeof Symbol()</code>返回”symbol”</li>
+</ul>
+</li>
+<li><p>instanceof：</p>
+<ul>
+<li><p>专门用于实例和构造函数对应</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Obj</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.value = value</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> Obj(<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(obj <span class="keyword">instanceof</span> Obj) <span class="comment">// output: true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>  判断是否是数组：<code>[1, 2, 3] instanceof Array</code></p>
+</li>
+</ul>
+</li>
+<li><p>  Array.isArray()：ES6 新增，用来判断是否是’Array’。<code>Array.isArray(&#123;&#125;)</code>返回<code>false</code>。</p>
+</li>
+</ul>
+<h3 id="原始类型转化"><a href="#原始类型转化" class="headerlink" title="原始类型转化"></a>原始类型转化</h3><p>当我们对一个“对象”进行数学运算操作时候，会涉及到对象 =&gt; 基础数据类型的转化问题。</p>
+<p>事实上，当一个对象执行例如加法操作的时候，如果它是原始类型，那么就不需要转换。否则，将遵循以下规则：</p>
+<ol>
+<li>调用实例的<code>valueOf()</code>方法，如果有返回的是基础类型，停止下面的过程；否则继续</li>
+<li>调用实例的<code>toString()</code>方法，如果有返回的是基础类型，停止下面的过程；否则继续</li>
+<li>都没返回原始类型，就会报错</li>
+</ol>
+<p>请看下面的测试代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;a&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = &#123;</span><br><span class="line">    valueOf: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">100</span></span><br><span class="line">    &#125;,</span><br><span class="line">    toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;b&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="built_in">Object</span>.create(<span class="literal">null</span>) <span class="comment">// 创建一个空对象</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a + <span class="string">&#x27;123&#x27;</span>) <span class="comment">// output: a123</span></span><br><span class="line"><span class="built_in">console</span>.log(b + <span class="number">1</span>) <span class="comment">// output: 101</span></span><br><span class="line"><span class="built_in">console</span>.log(c + <span class="string">&#x27;123&#x27;</span>) <span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
+
+<p>除了<code>valueOf</code>和<code>toString</code>，es6 还提供了<code>Symbol.toPrimitive</code>供对象向原始类型转化，并且<strong>它的优先级最高</strong>！！稍微改造下上面的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> b = &#123;</span><br><span class="line">    valueOf: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">100</span></span><br><span class="line">    &#125;,</span><br><span class="line">    toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;b&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    [<span class="built_in">Symbol</span>.toPrimitive]: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">10000</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b + <span class="number">1</span>) <span class="comment">// output: 10001</span></span><br></pre></td></tr></table></figure>
+
+<p>最后，其实关于<code>instanceof</code>判断是否是某个对象的实例，es6 也提供了<code>Symbol.hasInstance</code>接口，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Even</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> [<span class="built_in">Symbol</span>.hasInstance](num) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Number</span>(num) % <span class="number">2</span> === <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Odd = &#123;</span><br><span class="line">    [<span class="built_in">Symbol</span>.hasInstance](num) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Number</span>(num) % <span class="number">2</span> !== <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> <span class="keyword">instanceof</span> Even) <span class="comment">// output: false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> <span class="keyword">instanceof</span> Odd) <span class="comment">// output: true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h3><blockquote>
+<p>题目：实现对象的深拷贝。</p>
+</blockquote>
+<p>在 JS 中，函数和对象都是浅拷贝（地址引用）；其他的，例如布尔值、数字等基础数据类型都是深拷贝（值引用）。</p>
+<p>值得提醒的是，ES6 的<code>Object.assign()</code>和 ES7 的<code>...</code>解构运算符都是“浅拷贝”。实现深拷贝还是需要自己手动撸“轮子”或者借助第三方库（例如<code>lodash</code>）：</p>
+<ul>
+<li><p>  手动做一个“完美”的深拷贝函数：<a href="https://root-lucas.github.io/passages/2019-03-18-interview-js-code/">https://root-lucas.github.io/passages/2019-03-18-interview-js-code/</a></p>
+</li>
+<li><p>  借助第三方库：jq 的<code>extend(true, result, src1, src2[ ,src3])</code>、lodash 的<code>cloneDeep(src)</code></p>
+</li>
+<li><p>  <code>JSON.parse(JSON.stringify(src))</code>：这种方法有局限性，如果属性值是函数或者一个类的实例的时候，无法正确拷贝</p>
+</li>
+<li><p>借助 HTML5 的<code>MessageChannel</code>：这种方法有局限性，当属性值是函数的时候，会报错</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">obj</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> &#123; port1, port2 &#125; = <span class="keyword">new</span> MessageChannel()</span></span><br><span class="line"><span class="javascript">            port2.onmessage = <span class="function">(<span class="params">ev</span>) =&gt;</span> resolve(ev.data)</span></span><br><span class="line">            port1.postMessage(obj)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> obj = &#123;</span></span><br><span class="line">        a: 1,</span><br><span class="line">        b: &#123;</span><br><span class="line">            c: [1, 2],</span><br><span class="line"><span class="javascript">            d: <span class="string">&#x27;() =&gt; &#123;&#125;&#x27;</span>,</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    deepClone(obj).then(<span class="function">(<span class="params">obj2</span>) =&gt;</span> &#123;</span></span><br><span class="line">        obj2.b.c[0] = 100</span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(obj.b.c) <span class="comment">// output: [1, 2]</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(obj2.b.c) <span class="comment">// output: [100, 2]</span></span></span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="JS-事件流"><a href="#JS-事件流" class="headerlink" title="JS 事件流"></a>JS 事件流</h3><h4 id="事件冒泡和事件捕获"><a href="#事件冒泡和事件捕获" class="headerlink" title="事件冒泡和事件捕获"></a>事件冒泡和事件捕获</h4><p>事件流分为：<strong>冒泡</strong>和<strong>捕获</strong>，顺序是先捕获再冒泡。</p>
+<p><strong>事件冒泡</strong>：子元素的触发事件会一直向父节点传递，一直到根结点停止。此过程中，可以在每个节点捕捉到相关事件。可以通过<code>stopPropagation</code>方法终止冒泡。</p>
+<p><strong>事件捕获</strong>：和“事件冒泡”相反，从根节点开始执行，一直向子节点传递，直到目标节点。</p>
+<p><code>addEventListener</code>给出了第三个参数同时支持冒泡与捕获：默认是<code>false</code>，事件冒泡；设置为<code>true</code>时，是事件捕获。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span> <span class="attr">style</span>=<span class="string">&quot;width: 100vw; background: red;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>点我<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 事件捕获：先输出 &quot;外层click事件触发&quot;; 再输出 &quot;内层click事件触发&quot;</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> useCapture = <span class="literal">true</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn&#x27;</span>)</span></span><br><span class="line">    btn.addEventListener(</span><br><span class="line"><span class="javascript">        <span class="string">&#x27;click&#x27;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">&#x27;内层click事件触发&#x27;</span>)</span></span><br><span class="line">        &#125;,</span><br><span class="line">        useCapture</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> app = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;app&#x27;</span>)</span></span><br><span class="line"><span class="javascript">    app.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">&#x27;外层click事件触发&#x27;</span>)</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="DOM0-级-和-DOM2-级"><a href="#DOM0-级-和-DOM2-级" class="headerlink" title="DOM0 级 和 DOM2 级"></a>DOM0 级 和 DOM2 级</h4><p><strong>DOM2 级</strong>：前面说的<code>addEventListener</code>，它定义了<code>DOM</code>事件流，捕获 + 冒泡。</p>
+<p><strong>DOM0 级</strong>：</p>
+<ul>
+<li>  直接在 html 标签内绑定<code>on</code>事件</li>
+<li>  在 JS 中绑定<code>on</code>系列事件</li>
+</ul>
+<p><strong>注意</strong>：现在通用<code>DOM2</code>级事件，优点如下：</p>
+<ol>
+<li>可以绑定 / 卸载事件</li>
+<li>支持事件流</li>
+<li>冒泡 + 捕获：相当于每个节点同一个事件，至少 2 次处理机会</li>
+<li>同一类事件，可以绑定多个函数</li>
+</ol>
+<h3 id="常见的高阶函数"><a href="#常见的高阶函数" class="headerlink" title="常见的高阶函数"></a>常见的高阶函数</h3><p>没什么好说的，跑一下下面的代码就可以理解了：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// map: 生成一个新数组，遍历原数组，</span></span><br><span class="line"><span class="comment">// 将每个元素拿出来做一些变换然后放入到新的数组中</span></span><br><span class="line"><span class="keyword">let</span> newArr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function">(<span class="params">item</span>) =&gt;</span> item * <span class="number">2</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`New array is <span class="subst">$&#123;newArr&#125;</span>`</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// filter: 数组过滤, 根据返回的boolean</span></span><br><span class="line"><span class="comment">// 决定是否添加到数组中</span></span><br><span class="line"><span class="keyword">let</span> newArr2 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>].filter(<span class="function">(<span class="params">item</span>) =&gt;</span> item !== <span class="number">6</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`New array2 is <span class="subst">$&#123;newArr2&#125;</span>`</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// reduce: 结果汇总为单个返回值</span></span><br><span class="line"><span class="comment">// acc: 累计值; current: 当前item</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> sum = arr.reduce(<span class="function">(<span class="params">acc, current</span>) =&gt;</span> acc + current)</span><br><span class="line"><span class="keyword">const</span> sum2 = arr.reduce(<span class="function">(<span class="params">acc, current</span>) =&gt;</span> acc + current, <span class="number">100</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sum) <span class="comment">// 6</span></span><br><span class="line"><span class="built_in">console</span>.log(sum2) <span class="comment">// 106</span></span><br></pre></td></tr></table></figure>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Lucas</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://root-lucas.github.io/2019/03/26/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-ji-chu-zhi-shi-shu-li-shang/">https://root-lucas.github.io/2019/03/26/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-ji-chu-zhi-shi-shu-li-shang/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://root-lucas.github.io" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Javascript/">Javascript</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2020/10/27/BMjocD.md.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/03/26/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-ji-chu-zhi-shi-shu-li-xia/"><img class="prev-cover" src="https://s1.ax1x.com/2020/10/27/BMj59K.md.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JavaScript基础知识梳理(下)</div></div></a></div><div class="next-post pull-right"><a href="/2019/03/24/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-yuan-xing-lian/"><img class="next-cover" src="https://s1.ax1x.com/2020/10/27/BMjtmj.md.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Javascript原型链</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2019/04/29/qian-duan-zhi-shi-ti-xi/01.javascript/es6-chong-nan-dian-zheng-li/" title="ES6重难点整理"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjDpT.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-04-29</div><div class="title">ES6重难点整理</div></div></a></div><div><a href="/2019/03/26/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-ji-chu-zhi-shi-shu-li-xia/" title="JavaScript基础知识梳理(下)"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMj59K.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-03-26</div><div class="title">JavaScript基础知识梳理(下)</div></div></a></div><div><a href="/2019/03/24/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-yuan-xing-lian/" title="Javascript原型链"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjtmj.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-03-24</div><div class="title">Javascript原型链</div></div></a></div><div><a href="/2019/04/24/qian-duan-zhi-shi-ti-xi/01.javascript/promise-gai-shu/" title="Promise概述"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjbBd.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-04-24</div><div class="title">Promise概述</div></div></a></div><div><a href="/2019/08/26/qian-duan-zhi-shi-ti-xi/01.javascript/javascript-mian-xiang-dui-xiang/" title="Javascript面向对象"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjqHA.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-26</div><div class="title">Javascript面向对象</div></div></a></div><div><a href="/2019/03/28/qian-duan-zhi-shi-ti-xi/01.javascript/shu-zu-yu-zi-fu-chuan-lei-xing-xiang-tong-fang-fa-qu-bie/" title="数组与字符串类型相同方法区别"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BQQZPx.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-03-28</div><div class="title">数组与字符串类型相同方法区别</div></div></a></div></div></div></article></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lucas</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="aplayer no-destroy" data-listmaxheight="200px" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script src="/js/background.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>

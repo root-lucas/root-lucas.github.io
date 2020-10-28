@@ -1,0 +1,270 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NodeJS实现简易区块链 | Hexo</title><meta name="keywords" content="NodeJS实现简易区块链"><meta name="author" content="Lucas"><meta name="copyright" content="Lucas"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="NodeJS实现简易区块链">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NodeJS实现简易区块链">
+<meta property="og:url" content="https://root-lucas.github.io/2019/05/02/hou-duan-kai-fa/nodejs/05.geng-duo/01.nodejs-shi-xian-jian-yi-qu-kuai-lian/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="NodeJS实现简易区块链">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/27/BMj27R.md.jpg">
+<meta property="article:published_time" content="2019-05-02T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-10-27T13:15:35.560Z">
+<meta property="article:author" content="Lucas">
+<meta property="article:tag" content="Node.js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/10/27/BMj27R.md.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://root-lucas.github.io/2019/05/02/hou-duan-kai-fa/nodejs/05.geng-duo/01.nodejs-shi-xian-jian-yi-qu-kuai-lian/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-10-27 21:15:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/tags.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94-%F0%9F%94%8D"><span class="toc-number">1.</span> <span class="toc-text">技术调研 🔍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%9D%97%E5%AE%9A%E4%B9%89"><span class="toc-number">2.</span> <span class="toc-text">区块定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89"><span class="toc-number">3.</span> <span class="toc-text">链结构定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%B5%B7%E6%BA%90%E5%9D%97"><span class="toc-number">3.1.</span> <span class="toc-text">1. 起源块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%A1%E7%AE%97%E4%B8%8B%E4%B8%80%E4%B8%AA%E5%8C%BA%E5%9D%97"><span class="toc-number">3.2.</span> <span class="toc-text">2. 计算下一个区块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%8F%92%E5%85%A5%E5%8C%BA%E5%9D%97"><span class="toc-number">3.3.</span> <span class="toc-text">3. 插入区块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5"><span class="toc-number">3.4.</span> <span class="toc-text">4. 批量插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%EF%BC%9F"><span class="toc-number">3.5.</span> <span class="toc-text">5. 为什么需要批量插入？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E6%B5%8B%E8%AF%95"><span class="toc-number">4.</span> <span class="toc-text">效果测试</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://s1.ax1x.com/2020/10/27/BMj27R.md.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">NodeJS实现简易区块链</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-05-02T00:00:00.000Z" title="发表于 2019-05-02 08:00:00">2019-05-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-27T13:15:35.560Z" title="更新于 2020-10-27 21:15:35">2020-10-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Node-js/">Node.js</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>之前由于课程要求，基于 Nodejs 做了一个实现简易区块链。要求非常简单，结构体记录区块结构，顺便能向链中插入新的区块即可。</p>
+<p>但是如果要支持多用户使用，就需要考虑“可信度”的问题。那么按照区块链要求，链上的数据不能被篡改，除非算力超过除了攻击者本身之外其余所以机器的算力。</p>
+<p>想了想，就动手做试试咯。</p>
+<h2 id="技术调研-🔍"><a href="#技术调研-🔍" class="headerlink" title="技术调研 🔍"></a>技术调研 🔍</h2><p>在 google 上搜了搜，发现有个项目不错： <a target="_blank" rel="noopener" href="https://github.com/lhartikk/naivechain">https://github.com/lhartikk/naivechain</a> 。大概只有 200 行，但是其中几十行都是关于搭建 ws 和 http 服务器，美中不足的是没有实现批量插入区块链和计算可信度。</p>
+<p>结合这个项目，基本上可以确定每个区块会封装成一个 class（结构化表示），区块链也封装成一个 class，再对外暴露接口。</p>
+<h2 id="区块定义"><a href="#区块定义" class="headerlink" title="区块定义"></a>区块定义</h2><p>为了方便表示区块，将其封装为一个 class，它没有任何方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 区块信息的结构化定义</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Block</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构造函数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="type">&#123;Number&#125;</span> <span class="variable">index</span></span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="type">&#123;String&#125;</span> <span class="variable">previousHash</span></span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="type">&#123;Number&#125;</span> <span class="variable">timestamp</span></span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="type">&#123;*&#125;</span> <span class="variable">data</span></span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="type">&#123;String&#125;</span> <span class="variable">hash</span></span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">index, previousHash, timestamp, data, hash</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.index = index <span class="comment">// 区块的位置</span></span><br><span class="line">        <span class="built_in">this</span>.previousHash = previousHash + <span class="string">&#x27;&#x27;</span> <span class="comment">// 前一个区块的hash</span></span><br><span class="line">        <span class="built_in">this</span>.timestamp = timestamp <span class="comment">// 生成区块时候的时间戳</span></span><br><span class="line">        <span class="built_in">this</span>.data = data <span class="comment">// 区块本身携带的数据</span></span><br><span class="line">        <span class="built_in">this</span>.hash = hash + <span class="string">&#x27;&#x27;</span> <span class="comment">// 区块根据自身信息和规则生成的hash</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至于怎么生成 hash，这里采用的规则比较简单：</p>
+<ol>
+<li>拼接 index、previouHash、timestamp 和 data，将其字符串化</li>
+<li>利用 sha256 算法，计算出的记过就是 hash</li>
+</ol>
+<p>为了方便，会引入一个加密库：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> CryptoJS = <span class="built_in">require</span>(<span class="string">&#x27;crypto-js&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="链结构定义"><a href="#链结构定义" class="headerlink" title="链结构定义"></a>链结构定义</h2><p>很多区块链接在一起，就组成了一条链。这条链，也用 class 来表示。并且其中实现了很多方法：</p>
+<ol>
+<li>按照加密规则生成 hash</li>
+<li>插入新块和检查操作</li>
+<li>批量插入块和检查操作以及可信度计算</li>
+</ol>
+<h3 id="1-起源块"><a href="#1-起源块" class="headerlink" title="1. 起源块"></a>1. 起源块</h3><p>起源块是“硬编码”，因为它前面没数据呀。并且规定它不能被篡改，即不能强制覆盖。我们在构造函数中，直接将生成的起源块放入链中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BlockChain</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.blocks = [<span class="built_in">this</span>.getGenesisBlock()]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建区块链起源块, 此块是硬编码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="title">getGenesisBlock</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Block(<span class="number">0</span>, <span class="string">&#x27;0&#x27;</span>, <span class="number">1552801194452</span>, <span class="string">&#x27;genesis block&#x27;</span>, <span class="string">&#x27;810f9e854ade9bb8730d776ea02622b65c02b82ffa163ecfe4cb151a14412ed4&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-计算下一个区块"><a href="#2-计算下一个区块" class="headerlink" title="2. 计算下一个区块"></a>2. 计算下一个区块</h3><p>BlockChain 对象可以根据当前链，自动计算下一个区块。并且与用户传来的区块信息比较，如果一样，说明合法，可以插入；否则，用户的区块就是非法的，不允许插入。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法都是BlockChain对象方法</span></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 根据信息计算hash值</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="title">calcuteHash</span>(<span class="params">index, previousHash, timestamp, data</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> CryptoJS.SHA256(index + previousHash + timestamp + data) + <span class="string">&#x27;&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 得到区块链中最后一个块节点</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="title">getLatestBlock</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.blocks[<span class="built_in">this</span>.blocks.length - <span class="number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 计算当前链表的下一个区块</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;*&#125;</span> <span class="variable">blockData</span></span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="title">generateNextBlock</span>(<span class="params">blockData</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> previousBlock = <span class="built_in">this</span>.getLatestBlock()</span><br><span class="line">    <span class="keyword">const</span> nextIndex = previousBlock.index + <span class="number">1</span></span><br><span class="line">    <span class="keyword">const</span> nextTimeStamp = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime()</span><br><span class="line">    <span class="keyword">const</span> nextHash = <span class="built_in">this</span>.calcuteHash(nextIndex, previousBlock.hash, nextTimeStamp, blockData)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Block(nextIndex, previousBlock.hash, nextTimeStamp, blockData, nextHash)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-插入区块"><a href="#3-插入区块" class="headerlink" title="3. 插入区块"></a>3. 插入区块</h3><p>插入区块的时候，需要检查当前块是否合法，如果合法，那么插入并且返回 true；否则返回 false。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 向区块链添加新节点</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Block&#125;</span> <span class="variable">newBlock</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="title">addBlock</span>(<span class="params">newBlock</span>)</span> &#123;</span><br><span class="line">  <span class="comment">// 合法区块</span></span><br><span class="line">  <span class="function"><span class="title">if</span>(<span class="params"><span class="built_in">this</span>.isValidNewBlock(newBlock, <span class="built_in">this</span>.getLatestBlock())</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.blocks.push(newBlock)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>检查的逻辑就就放在了 <code>isValidNewBlock</code>  方法中, 它主要完成 3 件事情：</p>
+<ol>
+<li>判断新区块的 index 是否是递增的</li>
+<li>判断 previousHash 是否和前一个区块的 hash 相等</li>
+<li>判断新区块的 hash 是否按约束好的规则生成</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判断新加入的块是否合法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Block&#125;</span> <span class="variable">newBlock</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Block&#125;</span> <span class="variable">previousBlock</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="title">isValidNewBlock</span>(<span class="params">newBlock, previousBlock</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">if</span>(</span><br><span class="line">    !(newBlock <span class="keyword">instanceof</span> Block) ||</span><br><span class="line">    !(previousBlock <span class="keyword">instanceof</span> Block)</span><br><span class="line">  ) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 判断index</span></span><br><span class="line">  <span class="function"><span class="title">if</span>(<span class="params">newBlock.index !== previousBlock.index + <span class="number">1</span></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 判断hash值</span></span><br><span class="line">  <span class="function"><span class="title">if</span>(<span class="params">newBlock.previousHash !== previousBlock.hash</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 计算新块的hash值是否符合规则</span></span><br><span class="line">  <span class="function"><span class="title">if</span>(<span class="params"><span class="built_in">this</span>.calcuteHash(newBlock.index, newBlock.previousHash, newBlock.timestamp, newBlock.data) !== newBlock.hash</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-批量插入"><a href="#4-批量插入" class="headerlink" title="4. 批量插入"></a>4. 批量插入</h3><p>批量插入的逻辑比较复杂，比如当前链上有 4 个区块的下标是：0-&gt;1-&gt;2-&gt;3。除了起源块 0 不能被覆盖，当插入一条新的下标为“1-&gt;2-&gt;3-&gt;4”的链时候，就可以替换原来的区块。最终结果是：0-&gt;1-&gt;2-&gt;3-&gt;4。</p>
+<p>在下标 index 的处理上，假设还是上面的情况，如果传入的链的下标是从大于 4 的整数开始，显然无法拼接原来的区块链的下标，直接扔掉。</p>
+<p>但是如何保证可信度呢？就是当新链（B 链）替换原来的链（A 链）后，生成新的链（C 链）。如果 length(C) &gt; length(A)，那么即可覆盖要替换的部分。 <strong>这就保证了，只有在算力超过所有算力 50%的时候，才能篡改这条链</strong> 。</p>
+<p>插入新链的方法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 插入新链表</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Array&#125;</span> <span class="variable">newChain</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="title">addChain</span>(<span class="params">newChain</span>)</span> &#123;</span><br><span class="line">  <span class="function"><span class="title">if</span>(<span class="params"><span class="built_in">this</span>.isValidNewChain(newChain)</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> index = newChain[<span class="number">0</span>].index</span><br><span class="line">    <span class="built_in">this</span>.blocks.splice(index)</span><br><span class="line">    <span class="built_in">this</span>.blocks = <span class="built_in">this</span>.blocks.concat(newChain)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实现上面所述逻辑的方法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判断新插入的区块链是否合法而且可以覆盖原来的节点</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Array&#125;</span> <span class="variable">newChain</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="title">isValidNewChain</span>(<span class="params">newChain</span>)</span> &#123;</span><br><span class="line">  <span class="function"><span class="title">if</span>(<span class="params"><span class="built_in">Array</span>.isArray(newChain) === <span class="literal">false</span> || newChain.length === <span class="number">0</span></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> newChainLength = newChain.length,</span><br><span class="line">    firstBlock = newChain[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 硬编码的起源块不能改变</span></span><br><span class="line">  <span class="function"><span class="title">if</span>(<span class="params">firstBlock.index === <span class="number">0</span></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 移植新的链的长度 &lt;= 现有链的长度</span></span><br><span class="line">  <span class="comment">// 新的链不可信</span></span><br><span class="line">  <span class="function"><span class="title">if</span>(<span class="params">newChainLength + firstBlock.index &lt;= <span class="built_in">this</span>.blocks.length</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 下面检查新的链能否移植</span></span><br><span class="line">  <span class="comment">// 以及新的链的每个节点是否符合规则</span></span><br><span class="line">  <span class="function"><span class="title">if</span>(<span class="params">!<span class="built_in">this</span>.isValidNewBlock(firstBlock, <span class="built_in">this</span>.blocks[firstBlock.index - <span class="number">1</span>])</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">for</span>(<span class="params"><span class="keyword">let</span> i = <span class="number">1</span>; i &lt; newChainLength; ++i</span>)</span> &#123;</span><br><span class="line">    <span class="function"><span class="title">if</span>(<span class="params">!<span class="built_in">this</span>.isValidNewBlock(newChain[i], newChain[i - <span class="number">1</span>])</span>)</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-为什么需要批量插入？"><a href="#5-为什么需要批量插入？" class="headerlink" title="5. 为什么需要批量插入？"></a>5. 为什么需要批量插入？</h3><p>我当时很奇怪，为什么需要“批量插入”这个方法。后来想明白了（希望没想错）。假设服务器 S，以及两个用户 A 与 B。</p>
+<p>A 与 B 同时拉取到已知链的数据，然后各自生成。A 网速较快，但是算力低，就生成了 1 个区块，放入了 S 上。注意：此时 S 上的区块已经更新。</p>
+<p>而 B 比较惨了，它在本地生成了 2 个区块，但是受限于网速，只能等网速恢复了传入区块。这时候，按照规则，它是可以覆盖的（算力高嘛）。所以这种情况下，服务器 S 接受到 B 的 2 个区块，更新后的链长度是 3（算上起源块），并且 A 的那个区块已经被覆盖了。</p>
+<h2 id="效果测试"><a href="#效果测试" class="headerlink" title="效果测试"></a>效果测试</h2><p>虽然没有写服务器，但是还是模拟了上面讲述的第 5 种情况。代码在 <code>test.js</code>  文件中，直接 run 即可。看下效果截图吧：</p>
+<p><img src="https://s2.ax1x.com/2019/12/23/lpUVHA.jpg" alt="image.png"></p>
+<p>红线上面就是先算出来的，红线下面就是被算力更高的客户端篡改后的区块链。具体模拟过程可以看代码，这里不再冗赘了。</p>
+<p>全部代码在都放在： <a target="_blank" rel="noopener" href="https://github.com/root-lucas/Blog-demos/tree/master/nodeJS/node-blockchain">https://github.com/root-lucas/Blog-demos/tree/master/nodeJS/node-blockchain</a></p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Lucas</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://root-lucas.github.io/2019/05/02/hou-duan-kai-fa/nodejs/05.geng-duo/01.nodejs-shi-xian-jian-yi-qu-kuai-lian/">https://root-lucas.github.io/2019/05/02/hou-duan-kai-fa/nodejs/05.geng-duo/01.nodejs-shi-xian-jian-yi-qu-kuai-lian/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://root-lucas.github.io" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Node-js/">Node.js</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2020/10/27/BMj27R.md.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/05/04/hou-duan-kai-fa/nodejs/05.geng-duo/02.fu-zai-jun-heng-lun-xun-diao-du-suan-fa-shi-xian/"><img class="prev-cover" src="https://s1.ax1x.com/2020/10/27/BMjqHA.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">负载均衡：轮询调度算法实现</div></div></a></div><div class="next-post pull-right"><a href="/2019/04/29/qian-duan-zhi-shi-ti-xi/01.javascript/es6-chong-nan-dian-zheng-li/"><img class="next-cover" src="https://s1.ax1x.com/2020/10/27/BMjDpT.md.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">ES6重难点整理</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2019/05/04/hou-duan-kai-fa/nodejs/05.geng-duo/02.fu-zai-jun-heng-lun-xun-diao-du-suan-fa-shi-xian/" title="负载均衡：轮询调度算法实现"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjqHA.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-05-04</div><div class="title">负载均衡：轮询调度算法实现</div></div></a></div><div><a href="/2019/04/23/hou-duan-kai-fa/nodejs/05.geng-duo/03.vemojs-yuan-ma-chai-jie/" title="VemoJS源码拆解"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjU7n.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-04-23</div><div class="title">VemoJS源码拆解</div></div></a></div></div></div></article></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lucas</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="aplayer no-destroy" data-listmaxheight="200px" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script src="/js/background.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>

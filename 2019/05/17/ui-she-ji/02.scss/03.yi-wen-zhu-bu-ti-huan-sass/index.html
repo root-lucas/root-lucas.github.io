@@ -1,0 +1,277 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>「译文」逐步替换Sass | Hexo</title><meta name="keywords" content="「译文」逐步替换Sass"><meta name="author" content="Lucas"><meta name="copyright" content="Lucas"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="「译文」逐步替换Sass">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「译文」逐步替换Sass">
+<meta property="og:url" content="https://root-lucas.github.io/2019/05/17/ui-she-ji/02.scss/03.yi-wen-zhu-bu-ti-huan-sass/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="「译文」逐步替换Sass">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/27/BQQAaR.md.jpg">
+<meta property="article:published_time" content="2019-05-17T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-10-27T13:23:38.873Z">
+<meta property="article:author" content="Lucas">
+<meta property="article:tag" content="CSS3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/10/27/BQQAaR.md.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://root-lucas.github.io/2019/05/17/ui-she-ji/02.scss/03.yi-wen-zhu-bu-ti-huan-sass/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-10-27 21:23:38'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/tags.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BF%BB%E8%AF%91%E8%AF%B4%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">翻译说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%96%87%E5%BC%80%E5%A7%8B"><span class="toc-number">2.</span> <span class="toc-text">正文开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass-%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">Sass 解决了什么问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%B8%83%E5%B1%80"><span class="toc-number">4.</span> <span class="toc-text">1) 布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-sass"><span class="toc-number">4.1.</span> <span class="toc-text">使用 sass</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80"><span class="toc-number">4.2.</span> <span class="toc-text">CSS 网格布局</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8F%98%E9%87%8F"><span class="toc-number">5.</span> <span class="toc-text">2) 变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B0%E5%BA%95%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C%EF%BC%9F"><span class="toc-number">5.1.</span> <span class="toc-text">到底有什么不同？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BD%91%E9%A1%B5%E6%8E%92%E7%89%88"><span class="toc-number">6.</span> <span class="toc-text">3) 网页排版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%95%E6%9C%9B"><span class="toc-number">7.</span> <span class="toc-text">展望</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://s1.ax1x.com/2020/10/27/BQQAaR.md.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">「译文」逐步替换Sass</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-05-17T00:00:00.000Z" title="发表于 2019-05-17 08:00:00">2019-05-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-27T13:23:38.873Z" title="更新于 2020-10-27 21:23:38">2020-10-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/UI%E8%AE%BE%E8%AE%A1/">UI设计</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="翻译说明"><a href="#翻译说明" class="headerlink" title="翻译说明"></a>翻译说明</h2><p>这是一篇介绍现代 css 核心特性的文章，并且借助 sass 进行横向对比，充分体现了 css 作为一门设计语言的快速发展以及新特性为我们开发者带来的强大生产力。</p>
+<p>第一次尝试翻译技术文，为了让文章更通俗易懂，很多地方结合了文章本意和自己的说话风格。另外，时间有限水平有限，难免有些失误或者翻译不恰当的地方，欢迎指出讨论。</p>
+<p><strong>英文原文地址</strong>：<a target="_blank" rel="noopener" href="https://cathydutton.co.uk/posts/why-i-stopped-using-sass/">https://cathydutton.co.uk/posts/why-i-stopped-using-sass/</a></p>
+<h2 id="正文开始"><a href="#正文开始" class="headerlink" title="正文开始"></a>正文开始</h2><p>我每年都要重新搭建和设计我的网站，这是一个非常不错的方式去跟进 HTML/CSS 的最新进展、开发模式和网站生成器。在上个月，我发布了新版本：从 Jekyll 和 GithubPages 迁移到 Eleventy 和 Netlify。</p>
+<p>一开始，我并没有移除代码中所有的 sass 代码。这本不是我计划中的事情，但随着我不断查看 sass 代码，我一直在思考：它们是否给网站带来了价值，还是仅仅增加了复杂度和依赖性(特指对：scss)？随着这年 css 的发展，曾经让我使用 sass 的原因似乎不那么重要了。</p>
+<p>其中一个例子就是我已经移除了媒体查询。当我了解到 CSS 的一些新的特性，那些针对特定屏幕大小的代码（媒体查询）没有必要，因此被移除了。</p>
+<h2 id="Sass-解决了什么问题？"><a href="#Sass-解决了什么问题？" class="headerlink" title="Sass 解决了什么问题？"></a>Sass 解决了什么问题？</h2><p>大概 5、6 年前，我第一次了解到 sass 的时候，我是有些换衣的。随着我搭建越来越多的响应式 web 应用，我才意识到借助 sass 的  <code>functions</code>  和  <code>mixins</code>  可以大大提高代码复用。显而易见的是，随着设备、视图窗口和主题等场景的变化，使用（sass 的）变量让代码迁移的成本更低。</p>
+<p>下面是我用 sass 做的事情：</p>
+<ul>
+<li>布局</li>
+<li>变量</li>
+<li>Typography</li>
+</ul>
+<h2 id="1-布局"><a href="#1-布局" class="headerlink" title="1) 布局"></a>1) 布局</h2><p>布局一直是 css 中让人困惑的地方。而响应式布局正是我最初决定使用 Sass 去创建 css 布局的重要原因。</p>
+<h3 id="使用-sass"><a href="#使用-sass" class="headerlink" title="使用 sass"></a>使用 sass</h3><p>我一直记得我第一次尝试用 css 创建一个响应式网格布局的时候，那要为每列创建一个对应的类名，然后再用语义化不强的类名（比如  <code>col-span-1</code>  和  <code>col-span-4</code> ）来标记它。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.col-span-3</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">24%</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">1%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.col-span-4</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">32.3%</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">1%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.col-span-5</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">40.6%</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">1%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>借助 sass 的  <code>mixin</code>  和变量，能够不再编写像上面那样的类名。并且能够通过改变  <code>$gridColumns</code>  变量，来创造更灵活的布局。</p>
+<p>下面是我写的第一个基于  <code>mixin</code>  的网格布局：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> grid($colSpan, $<span class="attribute">gridColumns:</span> <span class="number">12</span>, $<span class="attribute">margin:</span> <span class="number">1%</span>) &#123;</span><br><span class="line">  $unitWidth: $gridColumns / $colSpan;</span><br><span class="line">  <span class="selector-tag">float</span>: <span class="selector-tag">left</span>;</span><br><span class="line">  width: (100 - $unitWidth * $margin) / $unitWidth;</span><br><span class="line">  margin: 0 $margin/2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>引入方法如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.sidebar</span> &#123;</span><br><span class="line">  @include grid(3);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.main-content</span> &#123;</span><br><span class="line">  @include grid(9);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width:</span> <span class="number">480px</span>) &#123;</span><br><span class="line">  <span class="selector-class">.sidebar</span> &#123;</span><br><span class="line">    @include grid(12);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.main-content</span> &#123;</span><br><span class="line">    @include grid(12);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CSS-网格布局"><a href="#CSS-网格布局" class="headerlink" title="CSS 网格布局"></a>CSS 网格布局</h3><p>通过 css 的  <code>grid</code>  的介绍，我们不再需要用语义化不强的类名或者 sass 或者其他预处理器，来完成网格布局这项功能。Rachel Andrew 说这种方法是最好的：</p>
+<blockquote>
+<p>你不再需要一种工具来帮助你创建网格布局，因为你现在就拥有它。</p>
+</blockquote>
+<p>下面的的代码基于内容的宽度范围，创建了一个响应式布局，并且不再需要预设和计算设备的大小。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.project</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(auto-fill, minmax(<span class="number">12em</span>, <span class="number">1</span>fr));</span><br><span class="line">  <span class="attribute">grid-gap</span>: <span class="number">1em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从 sass 创建网格布局转变为 css 原生网格布局，是一个“无痛”体验。它不仅仅能够减少对 sass 的依赖，还可以让我编写更灵活的代码，激发更多的设计思路以及不再使用媒体查询设计网站。</p>
+<p>但是最明显的不足是浏览器的兼容性。Grid 是目前只在最新浏览器中被支持，包括 IE11、IE10。对  <code>auto-fill</code>  和  <code>auto-fit</code>  属性的支持更少，但可以通过查询规范支持来提前规避。</p>
+<h2 id="2-变量"><a href="#2-变量" class="headerlink" title="2) 变量"></a>2) 变量</h2><p>变量就是一个可能变化的值，我一直不知道 css 中有这个功能。今天我的大多数项目都遵循  <a target="_blank" rel="noopener" href="https://cathydutton.co.uk/posts/why-i-stopped-using-sass/">ITCSS methodology</a> ，并且创建一个配置文件专门用来存放变量定义。通常，我会为字体样式、颜色和媒体查询设置变量。</p>
+<p>之前 sass 的做法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* COLORS */</span></span><br><span class="line">$colors: (</span><br><span class="line">  &quot;<span class="selector-tag">black</span>&quot;: <span class="selector-id">#2a2a2a</span>,</span><br><span class="line">  &quot;<span class="selector-tag">white</span>&quot;: <span class="selector-id">#fff</span>,</span><br><span class="line">  &quot;<span class="selector-tag">grey-light</span>&quot;: <span class="selector-id">#ccc7c3</span>,</span><br><span class="line">  &quot;<span class="selector-tag">grey-dark</span>&quot;: <span class="selector-id">#2a2a2a</span>,</span><br><span class="line">  &quot;<span class="selector-tag">accent</span>&quot;: <span class="selector-id">#ffa600</span>,</span><br><span class="line">  &quot;<span class="selector-tag">off-white</span>&quot;: <span class="selector-id">#f3f3f3</span>,</span><br><span class="line">  &quot;<span class="selector-tag">sky-blue</span>&quot;: <span class="selector-id">#ccf2ff</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* BREAKPOINTS */</span></span><br><span class="line">$breakpoints: (</span><br><span class="line">  &quot;<span class="selector-tag">break-mobile</span>&quot;: 290<span class="selector-tag">px</span>,</span><br><span class="line">  &quot;<span class="selector-tag">break-phablet</span>&quot;: 480<span class="selector-tag">px</span>,</span><br><span class="line">  &quot;<span class="selector-tag">break-tablet</span>&quot;: 768<span class="selector-tag">px</span>,</span><br><span class="line">  &quot;<span class="selector-tag">break-desktop</span>&quot;: 1020<span class="selector-tag">px</span>,</span><br><span class="line">  &quot;<span class="selector-tag">break-wide</span>&quot;: 1280<span class="selector-tag">px</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* TYPOGRAPHY */</span></span><br><span class="line">$font-stack: (</span><br><span class="line">  decorative: #&#123;&quot;oswald&quot;,</span><br><span class="line">  <span class="selector-tag">Helvetica</span>,</span><br><span class="line">  <span class="selector-tag">sans-serif</span>&#125;,</span><br><span class="line">  general: #&#123;&quot;Helvetica Neue&quot;,</span><br><span class="line">  <span class="selector-tag">Helvetica</span>,</span><br><span class="line">  <span class="selector-tag">Arial</span>,</span><br><span class="line">  <span class="selector-tag">sans-serif</span>&#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>使用变量或者映射让我的网站能够快速和简单地应对大的改动。它也预防了在大型代码项目中过分堆积复杂的外形、颜色变量，特别是 hover 悬浮的动画、引用、边框等等。</p>
+<p>例如下面场景：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#4caf50</span>; <span class="comment">/* Green */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.button</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#3f8c42</span>; <span class="comment">/* Dark Green */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.button</span><span class="selector-pseudo">:active</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#266528</span>; <span class="comment">/* Darker Green */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>能够被 sass 的变量和颜色相关的内置函数重写：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$button-colour: #4caf50;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: $button-colour;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.button</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">darken</span>($button-colour, <span class="number">20%</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.button</span><span class="selector-pseudo">:active</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">darken</span>($button-colour, <span class="number">50%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="到底有什么不同？"><a href="#到底有什么不同？" class="headerlink" title="到底有什么不同？"></a>到底有什么不同？</h3><p>css 自带的变量能做的事情更多，不仅仅是替换静态字面量，它可以实时动态计算（而不仅仅是编译构建的时候静态替换）。它允许被 js 修改，并且不需要在代码外面再包裹一层  <code>mixins</code>  和  <code>funtions</code> 。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">--button-color</span>: <span class="number">#4caf50</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--button-color);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">header</span> <span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">--button-color</span>: <span class="number">#000000</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--button-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当然，sass 中对颜色的一些内置函数在 css 中也可以使用：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">--button-color</span>: <span class="number">#4caf50</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.button</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">color-mod</span>(var(--button-color) <span class="built_in">tint</span>(<span class="number">50%</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不幸的是，这（颜色相关内置函数）一直在处在提案阶段。我决定还是手动定义颜色变量来替换它（提案中的方案）。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">var</span>(--colour-dark);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.button</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">var</span>(--colour-bright);</span><br><span class="line">  <span class="attribute">text-decoration</span>: underline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你执意使用他们，那么这个包含了很多 css 颜色函数功能的  <a target="_blank" rel="noopener" href="https://github.com/jonathantneal/postcss-color-mod-function">PostCSS</a>  项目能够帮助到你。</p>
+<h2 id="3-网页排版"><a href="#3-网页排版" class="headerlink" title="3) 网页排版"></a>3) 网页排版</h2><p>最后，对于排版，在之前的代码中，我是用 sass 去创建响应式排版和布局。下面展示的  <code>mixin</code>  的用法让我能轻易地处理不同大小的屏幕与设备：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> typography($size) &#123;</span><br><span class="line">  font-size: $size;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">@include</span> mq(break-desktop) &#123;</span><br><span class="line">    font-size: $size * 1.2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在，我用原生的 css 的功能来进行这些计算：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">--font-size</span>: <span class="built_in">calc</span>(<span class="number">18px</span> + <span class="number">0.25vw</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">var</span>(--font-size);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="展望"><a href="#展望" class="headerlink" title="展望"></a>展望</h2><p>CSS 正在朝向更具内涵的规范发展，在 css 的  <code>grid</code>  特性中，有  <code>flexbox</code>  以及  <code>min-content</code> 、 <code>max-content</code> 、 <code>fit-content</code>  这些属性，而在 Css Grid Layout Module Level2 中也准备加入的新布局： <code>Subgrid</code> 。</p>
+<p>这些新的特性都让原生的 css 更有吸引力！</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Lucas</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://root-lucas.github.io/2019/05/17/ui-she-ji/02.scss/03.yi-wen-zhu-bu-ti-huan-sass/">https://root-lucas.github.io/2019/05/17/ui-she-ji/02.scss/03.yi-wen-zhu-bu-ti-huan-sass/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://root-lucas.github.io" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CSS3/">CSS3</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2020/10/27/BQQAaR.md.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/05/20/qian-duan-zhi-shi-ti-xi/03.html5/websocket-xue-xi-he-qun-liao-shi-xian/"><img class="prev-cover" src="https://s1.ax1x.com/2020/10/27/BQMj5q.md.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">WebSocket学习和群聊实现</div></div></a></div><div class="next-post pull-right"><a href="/2019/05/07/hou-duan-kai-fa/nodejs/02.ming-ling-xing/01.wan-zhuan-nodejs-ming-ling-xing/"><img class="next-cover" src="https://s1.ax1x.com/2020/10/27/BMjwt0.md.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">玩转 Nodejs 命令行</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2018/06/05/ui-she-ji/01.css3/01.border-sizing-shu-xing-xiang-jie-he-ying-yong/" title="border-sizing属性详解和应用"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjyX4.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-06-05</div><div class="title">border-sizing属性详解和应用</div></div></a></div><div><a href="/2019/03/20/ui-she-ji/01.css3/02.flex-shang-shou-yu-shi-zhan/" title="Flex上手与实战"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjocD.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-03-20</div><div class="title">Flex上手与实战</div></div></a></div><div><a href="/2019/03/19/ui-she-ji/01.css3/03.ni-liao-jie-css3-de-nth-child-ma/" title="你了解css3的nth-child吗"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjN0s.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-03-19</div><div class="title">你了解css3的nth-child吗</div></div></a></div><div><a href="/2018/05/29/ui-she-ji/02.scss/01.ji-chu-pei-zhi-yu-yun-xing/" title="基础：配置与运行"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjG6g.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-05-29</div><div class="title">基础：配置与运行</div></div></a></div><div><a href="/2018/05/29/ui-she-ji/02.scss/02.jin-jie-ji-cheng-zhan-wei-fu-he-hun-he-hong/" title="进阶：继承、占位符和混合宏"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BQMXan.md.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-05-29</div><div class="title">进阶：继承、占位符和混合宏</div></div></a></div><div><a href="/2019/07/16/ui-she-ji/03.dong-hua-she-ji/01.zi-ti-te-xiao/" title="字体特效"><img class="cover" src="https://s1.ax1x.com/2020/10/27/BMjHnH.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-07-16</div><div class="title">字体特效</div></div></a></div></div></div></article></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lucas</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="aplayer no-destroy" data-listmaxheight="200px" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script src="/js/background.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>

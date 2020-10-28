@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hexo</title><meta name="author" content="Lucas"><meta name="copyright" content="Lucas"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="一个收藏回忆与分享技术的地方！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://root-lucas.github.io/page/8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一个收藏回忆与分享技术的地方！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://root-lucas.github.io/img/avatar.jpg">
+<meta property="article:author" content="Lucas">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://root-lucas.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://root-lucas.github.io/page/8/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2020-10-28 16:13:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/tags.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/earth.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site-title">Hexo</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/root-lucas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/945832032@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title=""><i class="fa fa-rss"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-bilibili-fill"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-weixin"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-qq"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-zhifubao"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/05/04/hou-duan-kai-fa/nodejs/03.ce-shi/01.jest-shi-zhan-dan-yuan-ce-shi-yu-fu-wu-ce-shi/" title="Jest实战：单元测试与服务测试">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMjbBd.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Jest实战：单元测试与服务测试"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/05/04/hou-duan-kai-fa/nodejs/03.ce-shi/01.jest-shi-zhan-dan-yuan-ce-shi-yu-fu-wu-ce-shi/" title="Jest实战：单元测试与服务测试">Jest实战：单元测试与服务测试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-05-04T00:00:00.000Z" title="发表于 2019-05-04 08:00:00">2019-05-04</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Node-js/">Node.js</a></span></div><div class="content">需求与思路一名好的大前端开发人员，一定是一名好的“配置工程师”（滑稽脸）。被安排给 vemoJS  和 cloudbase-cli 写测试用例，并且要保证覆盖率！
+这里主要以 vemojs 下的测试用例为主来讲解 Jest 要注意的地方。测试代码在：https://github.com/vemoteam/vemo/tree/master/test
+观察 vemojs 这个项目，如果想进行全面测试，需要解决以下问题：
+
+以 utils.js errror.js 等文件，对应的是单元功能测试
+以 cloudbase.js 文件为代表的，需要请求远程 API，模拟不同的情况
+以 index.js 中的 http 和静态服务器为代表的，测试服务是否正常启动
+以 index.js 中的 websocket 服务为代表的，模拟用户使用环境，测试 ws 是否正常
+提供测试覆盖率
+
+针对以上问题，解决思路总结如下：
+
+函数功能测试：断言匹配功能
+请求 API：mock 模块和函数，例如测试用例中的 axios  就是被 mock 的
+http 和静态服务：测试代码中启动服务后，利用 axios  等第 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/05/04/hou-duan-kai-fa/nodejs/03.ce-shi/02.jest-jin-jie-jie-ru-ts-ji-cheng-ce-shi-yu-fu-gai-lu-tong-ji/" title="Jest进阶：接入ts、集成测试与覆盖率统计">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMjqHA.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Jest进阶：接入ts、集成测试与覆盖率统计"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/05/04/hou-duan-kai-fa/nodejs/03.ce-shi/02.jest-jin-jie-jie-ru-ts-ji-cheng-ce-shi-yu-fu-gai-lu-tong-ji/" title="Jest进阶：接入ts、集成测试与覆盖率统计">Jest进阶：接入ts、集成测试与覆盖率统计</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-05-04T00:00:00.000Z" title="发表于 2019-05-04 08:00:00">2019-05-04</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Node-js/">Node.js</a></span></div><div class="content">接入 TypeScript在给 vemojs 做完各种测试之后，很快又有了新的要求，给 clousebase-cli  编写测试用例。有个问题摆在眼前：它是用 typescript 编写，所以需要配置相关环境。
+好吧，不说废话了，直接上干货。
+jest.config.js  配置内容如下，解释在注释里面：
+123456789101112131415module.exports = &#123;    roots: [        &#x27;&lt;rootDir&gt;/test&#x27;, // 测试目录    ],    transform: &#123;        &#x27;^.+\\.tsx?$&#x27;: &#x27;ts-jest&#x27;, // 匹配 .ts 或者 .tsx 结尾的文件    &#125;,    collectCoverage: true, // 统计覆盖率    testEnvironment: &#x27;node&#x27;, // 测试环境    setupFilesAfterEnv: [        &#x27;&lt;ro ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/05/04/hou-duan-kai-fa/nodejs/05.geng-duo/02.fu-zai-jun-heng-lun-xun-diao-du-suan-fa-shi-xian/" title="负载均衡：轮询调度算法实现">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMjqHA.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="负载均衡：轮询调度算法实现"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/05/04/hou-duan-kai-fa/nodejs/05.geng-duo/02.fu-zai-jun-heng-lun-xun-diao-du-suan-fa-shi-xian/" title="负载均衡：轮询调度算法实现">负载均衡：轮询调度算法实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-05-04T00:00:00.000Z" title="发表于 2019-05-04 08:00:00">2019-05-04</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Node-js/">Node.js</a></span></div><div class="content">最近在学习 cluster 的时候，了解到它的负载均衡以及 NGINX 的负载均衡都是基于“轮询调度”算法来实现的。它由 Round Robin 提出，所以又称为“rr 算法”。除此之外，负载均衡使用的是基于权重的“wrr 算法”。为了深入理解，我这里都做了实现。
+RR 算法它的实现思路是：每一次把来自用户的请求轮流分配给内部中的服务器，从 1 开始，直到 N(内部服务器个数)，然后再从头开始分配。一直重复以上过程。
+毫无疑问，它的优点是实现简单，而且不需要统计服务器状态以及连接状态，是无状态调度，所以消耗极低。在配置基本一致的集群上，使用这种算法即可。
+在实现过程中，利用了 es6 提供的生成器，方便调用。请看下面的代码：
+123456789101112131415161718function* rr(num) &#123;    let i = 0    while (1) &#123;        yield i++ % num    &#125;&#125;/** * 测试代码 */const NUM = 5const reqTimes = 20const cluster = ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/05/02/hou-duan-kai-fa/nodejs/05.geng-duo/01.nodejs-shi-xian-jian-yi-qu-kuai-lian/" title="NodeJS实现简易区块链">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMj27R.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJS实现简易区块链"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/05/02/hou-duan-kai-fa/nodejs/05.geng-duo/01.nodejs-shi-xian-jian-yi-qu-kuai-lian/" title="NodeJS实现简易区块链">NodeJS实现简易区块链</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-05-02T00:00:00.000Z" title="发表于 2019-05-02 08:00:00">2019-05-02</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Node-js/">Node.js</a></span></div><div class="content">之前由于课程要求，基于 Nodejs 做了一个实现简易区块链。要求非常简单，结构体记录区块结构，顺便能向链中插入新的区块即可。
+但是如果要支持多用户使用，就需要考虑“可信度”的问题。那么按照区块链要求，链上的数据不能被篡改，除非算力超过除了攻击者本身之外其余所以机器的算力。
+想了想，就动手做试试咯。
+技术调研 🔍在 google 上搜了搜，发现有个项目不错： https://github.com/lhartikk/naivechain 。大概只有 200 行，但是其中几十行都是关于搭建 ws 和 http 服务器，美中不足的是没有实现批量插入区块链和计算可信度。
+结合这个项目，基本上可以确定每个区块会封装成一个 class（结构化表示），区块链也封装成一个 class，再对外暴露接口。
+区块定义为了方便表示区块，将其封装为一个 class，它没有任何方法：
+1234567891011121314151617181920/** * 区块信息的结构化定义 */class Block &#123;    /**     * 构造函数     * @param &#123;Number&#1 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/04/29/qian-duan-zhi-shi-ti-xi/01.javascript/es6-chong-nan-dian-zheng-li/" title="ES6重难点整理">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMjDpT.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ES6重难点整理"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/04/29/qian-duan-zhi-shi-ti-xi/01.javascript/es6-chong-nan-dian-zheng-li/" title="ES6重难点整理">ES6重难点整理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-04-29T13:43:28.000Z" title="发表于 2019-04-29 21:43:28">2019-04-29</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">👇 内容速览 👇
+
+let 和 const
+Set 和 Map
+Generator 和 yield
+Promise、async/await 介绍
+Proxy 代理器
+…
+
+let 和 constES6 新增了let和const，它们声明的变量，都处于“块级作用域”。并且不存在“变量提升”，不允许重复声明。
+同时，const声明的变量所指向的内存地址保存的数据不得改变：
+
+对于简单类型的数据（数值、字符串、布尔值），值就保存在变量指向的那个内存地址，因此等同于常量。
+对于复合类型的数据（主要是对象和数组），变量指向的内存地址，保存的只是一个指向实际数据的指针，const只能保证这个指针是固定的（即总是指向另一个固定的地址），不能保证指向的数据结构不可变。
+
+如果要保证指向的数据结构也不可变，需要自行封装：
+1234567891011121314151617181920212223242526272829303132333435363738/** * 冻结对象 * @param &#123;Object&#125; obj * @return &#123;Object&#125; */ ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/04/29/qian-duan-zhi-shi-ti-xi/01.javascript/tan-tan-promise-async-await-de-zhi-xing-shun-xu-yu-v8-yin-qing-de-bug/" title="谈谈promise-async-await的执行顺序与V8引擎的BUG">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BQMj5q.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="谈谈promise-async-await的执行顺序与V8引擎的BUG"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/04/29/qian-duan-zhi-shi-ti-xi/01.javascript/tan-tan-promise-async-await-de-zhi-xing-shun-xu-yu-v8-yin-qing-de-bug/" title="谈谈promise-async-await的执行顺序与V8引擎的BUG">谈谈promise-async-await的执行顺序与V8引擎的BUG</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-04-29T13:43:28.000Z" title="发表于 2019-04-29 21:43:28">2019-04-29</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">1. 题目和答案
+故事还是要从下面这道面试题说起：请问下面这段代码的输出是什么？
+
+12345678910111213141516171819202122232425262728console.log(&quot;script start&quot;);async function async1() &#123;  await async2();  console.log(&quot;async1 end&quot;);&#125;async function async2() &#123;  console.log(&quot;async2 end&quot;);&#125;async1();setTimeout(function() &#123;  console.log(&quot;setTimeout&quot;);&#125;, 0);new Promise(resolve =&gt; &#123;  console.log(&quot;Promise&quot;);  resolve();&#125;)  .then(function() &#123;    console ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/04/24/qian-duan-zhi-shi-ti-xi/01.javascript/promise-gai-shu/" title="Promise概述">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMjbBd.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Promise概述"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/04/24/qian-duan-zhi-shi-ti-xi/01.javascript/promise-gai-shu/" title="Promise概述">Promise概述</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-04-24T13:43:28.000Z" title="发表于 2019-04-24 21:43:28">2019-04-24</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">关于Promise
+Promise实例一旦被创建就会被执行
+Promise过程分为两个分支：pending=&gt;resolved和pending=&gt;rejected
+Promise状态改变后，依然会执行之后的代码：
+
+123456789const warnDemo = ctx =&gt; &#123;  const promise = new Promise(resolve =&gt; &#123;    resolve(ctx);    console.log(&quot;After resolved, but Run&quot;); // 依然会执行这个语句  &#125;);  return promise;&#125;;warnDemo(&quot;ctx&quot;).then(ctx =&gt; console.log(`This is $&#123;ctx&#125;`));
+
+then方法在Console键入以下内容：
+12let t = new Promise(() =&gt; &#123;&#125;);t.__proto__;
+
+可以看到，then方法是 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/04/23/hou-duan-kai-fa/nodejs/05.geng-duo/03.vemojs-yuan-ma-chai-jie/" title="VemoJS源码拆解">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMjU7n.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="VemoJS源码拆解"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/04/23/hou-duan-kai-fa/nodejs/05.geng-duo/03.vemojs-yuan-ma-chai-jie/" title="VemoJS源码拆解">VemoJS源码拆解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-04-23T00:00:00.000Z" title="发表于 2019-04-23 08:00:00">2019-04-23</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Node-js/">Node.js</a></span></div><div class="content">主要分析下 src 文件夹下的代码。从简单到难吧：
+utils.js按照命名，肯定是封装一些常用的方法。这里只提供了一个 cpuNum 的 getter 接口。
+这个是计算当前计算机的 cpu 核心数目，用于决定开启多大的集群进程。为了保证效率，最小的返回值是 4。
+error.js主要从 Error  对象上继承并且创建了新对象： VemoError 。对象构造函数上， 设计了一个有关此框架的错误状态码的信息 。
+除了 VemoError ，还暴露了一些错误的代号定义。
+cluster.js对外暴露了自定义的高并发集群代码，它引用了同级的 ./process.js  封装的管理类，并且初始化了它。它的具体含义请见”process.js”中的讲解。
+cloudbase.jsgetLocalSecret  方法是读取本地用户的根目录中的 .tcbrc.json  配置文件，并且将 Id 和 Key 放入 process.env  变量中。
+getTempSecret  方法是获取云主机的临时密钥：
+
+正常情况下，访问远程地址，获取 id、key、token 和过期时间，并且放入 proc ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/04/22/hou-duan-kai-fa/nodejs/03.ce-shi/03.dan-yuan-ce-shi/" title="单元测试">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMjbBd.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="单元测试"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/04/22/hou-duan-kai-fa/nodejs/03.ce-shi/03.dan-yuan-ce-shi/" title="单元测试">单元测试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-04-21T16:00:00.000Z" title="发表于 2019-04-22 00:00:00">2019-04-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Node-js/">Node.js</a></span></div><div class="content">一般而言我们若不借助工具开发者工具做测试的话,会采用以下几种测试方法为了方便我们新建一个文件夹用来存放此次测试的文件：mkdir API-testing。
+1.常规测试cd API-testing后新建一个文件。math.js
+123456789101112module.exports = &#123;    add:(...args) =&gt; &#123;        return args.reduce((prev, curr)=&gt;&#123;            return prev + curr;        &#125;)    &#125;,    mul:(...args) =&gt; &#123;        return args.reduce((prev, curr)=&gt;&#123;            return prev * curr;        &#125;)    &#125;,&#125;
+上面编写完我们需求测试的函数功能后紧接着我们根据需求来新建另一个文件来进行常规测试,改功能模块是否符合达到自己需求的标准。simple ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/04/20/qian-duan-zhi-shi-ti-xi/03.html5/serviceworker-chi-xian-huan-cun-shi-zhan/" title="ServiceWorker离线缓存实战">     <img class="post_bg" src="https://s1.ax1x.com/2020/10/27/BMjwt0.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ServiceWorker离线缓存实战"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/04/20/qian-duan-zhi-shi-ti-xi/03.html5/serviceworker-chi-xian-huan-cun-shi-zhan/" title="ServiceWorker离线缓存实战">ServiceWorker离线缓存实战</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-04-20T13:43:28.000Z" title="发表于 2019-04-20 21:43:28">2019-04-20</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">背景介绍最近实战了 Service Worker（以下简称“sw”）来进行网站缓存，以实现离线状态下，网站仍然可以正常使用。
+尤其对于个人博客这种以内容为主体的静态网站，离线访问和缓存优化尤其重要；并且 Ajax 交互较少，离线访问和缓存优化的实现壁垒因此较低。
+环境准备虽然 sw 要求必须在 https 环境下才可以使用，但是为了方便开发者，通过localhost或者127.0.0.1也可以正常加载和使用。
+利用 cnpm 下载http-server：npm install http-server -g
+进入存放示例代码的文件目录，启动静态服务器：http-server -p 80
+最后，准备下 html 代码：
+1234567891011121314151617181920212223&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;  &lt;head&gt;    &lt;meta charset=&quot;UTF-8&quot; /&gt;    &lt;meta name=&quot;viewport&quot; c ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/7/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/9/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Lucas</div><div class="author-info__description">一个收藏回忆与分享技术的地方！</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">128</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/root-lucas"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/root-lucas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/945832032@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title=""><i class="fa fa-rss"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-bilibili-fill"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-weixin"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-qq"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title=""><i class="iconfont  icon-zhifubao"></i></a></div></div></div><div class="sticky_layout"><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/01/14/qian-duan-zhi-shi-ti-xi/05.qi-ta-wen-zhang/qian-duan-cuo-wu-jian-kong/" title="前端错误监控"><img src="https://s2.ax1x.com/2019/05/27/VZWhn0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端错误监控"/></a><div class="content"><a class="title" href="/2020/01/14/qian-duan-zhi-shi-ti-xi/05.qi-ta-wen-zhang/qian-duan-cuo-wu-jian-kong/" title="前端错误监控">前端错误监控</a><time datetime="2020-01-13T16:00:00.000Z" title="发表于 2020-01-14 00:00:00">2020-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/12/12/ui-she-ji/04.html-css/02.css-he-mo-xing-xiang-jie/" title="CSS盒模型详解"><img src="https://s1.ax1x.com/2020/10/27/BQQiqJ.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSS盒模型详解"/></a><div class="content"><a class="title" href="/2019/12/12/ui-she-ji/04.html-css/02.css-he-mo-xing-xiang-jie/" title="CSS盒模型详解">CSS盒模型详解</a><time datetime="2019-12-11T16:00:00.000Z" title="发表于 2019-12-12 00:00:00">2019-12-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/12/12/ui-she-ji/04.html-css/03.dom-shi-jian-xiang-jie/" title="DOM事件详解"><img src="https://s1.ax1x.com/2020/10/27/BMvCuQ.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DOM事件详解"/></a><div class="content"><a class="title" href="/2019/12/12/ui-she-ji/04.html-css/03.dom-shi-jian-xiang-jie/" title="DOM事件详解">DOM事件详解</a><time datetime="2019-12-11T16:00:00.000Z" title="发表于 2019-12-12 00:00:00">2019-12-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019-12-11-learning-five-layout" title="三栏布局的5种方案"><img src="https://s1.ax1x.com/2020/10/27/BMjocD.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="三栏布局的5种方案"/></a><div class="content"><a class="title" href="/2019-12-11-learning-five-layout" title="三栏布局的5种方案">三栏布局的5种方案</a><time datetime="2019-12-10T16:00:00.000Z" title="发表于 2019-12-11 00:00:00">2019-12-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/11/11/qian-duan-kuang-jia/02.reactjs/04.yi-wen-shuo-qing-virtualdom-de-han-yi-yu-shi-xian/" title="一文说清「VirtualDOM」的含义与实现"><img src="https://s1.ax1x.com/2020/10/27/BMjwt0.md.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一文说清「VirtualDOM」的含义与实现"/></a><div class="content"><a class="title" href="/2019/11/11/qian-duan-kuang-jia/02.reactjs/04.yi-wen-shuo-qing-virtualdom-de-han-yi-yu-shi-xian/" title="一文说清「VirtualDOM」的含义与实现">一文说清「VirtualDOM」的含义与实现</a><time datetime="2019-11-11T00:00:00.000Z" title="发表于 2019-11-11 08:00:00">2019-11-11</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E7%B3%BB%E7%BB%9F/"><span class="card-category-list-name">Linux系统</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Node-js/"><span class="card-category-list-name">Node.js</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/UI%E8%AE%BE%E8%AE%A1/"><span class="card-category-list-name">UI设计</span><span class="card-category-list-count">14</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">前端开发</span><span class="card-category-list-count">27</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/"><span class="card-category-list-name">前端框架</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">基础学习</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BA%94%E7%94%A8/"><span class="card-category-list-name">数据库应用</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"><span class="card-category-list-name">网络安全</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">设计模式与算法</span><span class="card-category-list-count">65</span></a></li>
+            <li class="card-category-list-item more is-center"><a class="card-category-list-link-more" href="/categories/">
+                <span>查看更多</span><i class="fas fa-angle-right"></i></a></li>
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CSS3/" style="font-size: 1.44em; color: #99a7ba">CSS3</a> <a href="/tags/Chrome/" style="font-size: 1.16em; color: #999b9e">Chrome</a> <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 1.1em; color: #999">C语言</a> <a href="/tags/HTML5/" style="font-size: 1.33em; color: #99a2af">HTML5</a> <a href="/tags/Javascript/" style="font-size: 1.39em; color: #99a4b4">Javascript</a> <a href="/tags/Jest/" style="font-size: 1.21em; color: #999ea4">Jest</a> <a href="/tags/Koa/" style="font-size: 1.27em; color: #99a0a9">Koa</a> <a href="/tags/Linux%E5%91%BD%E4%BB%A4/" style="font-size: 1.1em; color: #999">Linux命令</a> <a href="/tags/MySQL/" style="font-size: 1.1em; color: #999">MySQL</a> <a href="/tags/Node-js/" style="font-size: 1.21em; color: #999ea4">Node.js</a> <a href="/tags/React/" style="font-size: 1.27em; color: #99a0a9">React</a> <a href="/tags/Serverless/" style="font-size: 1.1em; color: #999">Serverless</a> <a href="/tags/TypeScript/" style="font-size: 1.16em; color: #999b9e">TypeScript</a> <a href="/tags/Vue/" style="font-size: 1.1em; color: #999">Vue</a> <a href="/tags/Web%E5%AE%89%E5%85%A8/" style="font-size: 1.16em; color: #999b9e">Web安全</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 1.1em; color: #999">微信小程序</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.1em; color: #999">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.5em; color: #99a9bf">算法</a> <a href="/tags/%E8%81%94%E8%B0%83/" style="font-size: 1.1em; color: #999">联调</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.1em; color: #999">读书笔记</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 1.33em; color: #99a2af">面试</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/01/"><span class="card-archive-list-date">一月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/12/"><span class="card-archive-list-date">十二月 2019</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/11/"><span class="card-archive-list-date">十一月 2019</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/10/"><span class="card-archive-list-date">十月 2019</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/09/"><span class="card-archive-list-date">九月 2019</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/08/"><span class="card-archive-list-date">八月 2019</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/07/"><span class="card-archive-list-date">七月 2019</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/06/"><span class="card-archive-list-date">六月 2019</span><span class="card-archive-list-count">49</span></a></li><li class="card-archive-list-item more is-center"><a class="card-archive-list-link-more" href="/archives/">
+              <span>查看更多</span><i class="fas fa-angle-right"  ></i></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">128</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2018-06-06T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">148.5k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2020-10-28T08:13:01.821Z"></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lucas</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function subtitleType () {
+  if (true) { 
+    var typed = new Typed("#subtitle", {
+      strings: "今日事&#44;今日毕,Never put off till tomorrow what you can do today".split(","),
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50
+    })
+  } else {
+    document.getElementById("subtitle").innerHTML = '今日事&#44;今日毕'
+  }
+}
+
+if (true) {
+  if (typeof Typed === 'function') subtitleType()
+  else $.getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js', subtitleType)
+} else {
+  subtitleType()
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="aplayer no-destroy" data-listmaxheight="200px" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script src="/js/background.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>
